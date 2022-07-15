@@ -1,4 +1,5 @@
-<?php
+<?php defined( 'ABSPATH' ) || die;
+
 /**
  * Plugin Name:     WooCommerce Product Add-ons Autofill
  * Plugin URI:      https://github.com/magicoli/product-addons-autofill
@@ -13,3 +14,10 @@
  */
 
 // Your code starts here.
+if(!defined('WPAA_VERSION')) {
+  define('WPAA_VERSION', '0.1.0');
+  define('WPAA_PLUGIN_NAME', 'WooCommerce Product Add-ons Autofill');
+  define('WPAA_PLUGIN_SLUG', 'product-addons-autofill');
+
+  require(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
+}
