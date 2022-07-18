@@ -14,10 +14,12 @@
  */
 
 // Your code starts here.
-if(!defined('WPAA_VERSION')) {
-  define('WPAA_VERSION', '0.1.0');
-  define('WPAA_PLUGIN_NAME', 'WooCommerce Product Add-ons Autofill');
-  define('WPAA_PLUGIN_SLUG', 'product-addons-autofill');
+if(!defined('WCPAA_VERSION')) {
+  define('WCPAA_VERSION', '0.1.0');
+  define('WCPAA_PLUGIN_NAME', 'WooCommerce Product Add-ons Autofill');
+  define('WCPAA_PLUGIN', plugin_basename(__FILE__));
+  define('WCPAA_SLUG', dirname(WCPAA_PLUGIN));
 
   require(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
+  if(is_admin()) require(plugin_dir_path(__FILE__) . 'admin/settings.php');
 }
