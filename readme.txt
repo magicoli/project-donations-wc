@@ -1,4 +1,4 @@
-=== WooCommerce Product Add-ons Autofill ===
+=== Product Projects ===
 Contributors: magicoli69
 Donate link: https://magiiic.com/donate/
 Tags: comments, spam
@@ -9,11 +9,11 @@ Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Autofill WooCommerce product add-ons fields with values passed from the URL
+Add project field to product page to allow clients to assign their purchase to a project
 
 == Description ==
 
-Autofill WooCommerce product add-ons fields with values passed from the URL
+Add project field to product page to allow clients to assign their purchase to a project
 
 == Installation ==
 
