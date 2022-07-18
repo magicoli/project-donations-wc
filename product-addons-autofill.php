@@ -20,6 +20,6 @@ if(!defined('WCPAA_VERSION')) {
   define('WCPAA_PLUGIN', plugin_basename(__FILE__));
   define('WCPAA_SLUG', dirname(WCPAA_PLUGIN));
 
-  require(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
-  if(is_admin()) require(plugin_dir_path(__FILE__) . 'admin/settings.php');
+  // require(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
+  // if(is_admin()) require(plugin_dir_path(__FILE__) . 'admin/settings.php');
 }

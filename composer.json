@@ -1,39 +1,12 @@
 {
   "name": "magicoli/product-addons-autofill",
-  "description": "WooCommerce Product Add-ons Autofill",
+  "description": "Product Projects",
   "type": "wordpress-plugin",
   "license": "AGPL-V3",
-  "extra": {
-    "installer-types": ["library"],
-    "installer-paths": {
-      "vendor/meta-box/{$name}": ["vendor:wpmetabox","vendor:meta-box"],
-      "vendor/{$vendor}/{$name}": ["type:wordpress-plugin"]
-    }
-  },
   "authors": [
     {
       "name": "Olivier van Helden",
       "email": "olivier@van-helden.net"
     }
-  ],
-  "require": {
-    "wpmetabox/meta-box": "^5.6",
-    "meta-box/meta-box-aio": "dev-master",
-    "meta-box/meta-box-group": "dev-master",
-    "meta-box/meta-box-columns": "dev-master",
-    "meta-box/mb-settings-page": "dev-master"
-  },
-  "autoload": {
-    "files": [
-      "vendor/meta-box/meta-box/meta-box.php",
-      "vendor/meta-box/meta-box-columns/meta-box-columns.php",
-      "vendor/meta-box/meta-box-group/meta-box-group.php",
-      "vendor/meta-box/mb-settings-page/mb-settings-page.php"
-    ]
-  },
-  "config": {
-    "allow-plugins": {
-      "composer/installers": true
-    }
-  }
+  ]
 }
