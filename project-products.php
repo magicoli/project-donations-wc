@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die;
 /**
  * Plugin Name:     Project Products for WooCommerce
- * Plugin URI:      https://github.com/magicoli/project-products
+ * Plugin URI:      https://magiiic.com/internet/project-products/
  * Description:     Add project field to WooCommerce products, allow clients to link their purchase to a project
  * Author:          Magiiic
  * Author URI:      https://magiiic.com/

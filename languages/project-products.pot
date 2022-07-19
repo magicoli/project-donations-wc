@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Project Products for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Project Products for WooCommerce 0.1.0\n"
+"Project-Id-Version: Project Products for WooCommerce 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-products\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-19T17:16:26-04:00\n"
+"POT-Creation-Date: 2022-07-19T19:14:15-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 
@@ -18,7 +18,7 @@ msgid "Project Products for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://github.com/magicoli/project-products"
+msgid "https://magiiic.com/internet/project-products/"
 msgstr ""
 
 #. Description of the plugin

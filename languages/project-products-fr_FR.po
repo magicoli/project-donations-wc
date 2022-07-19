@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2022-07-19T17:13:07-04:00\n"
-"PO-Revision-Date: 2022-07-19 17:20-0400\n"
+"PO-Revision-Date: 2022-07-19 19:14-0400\n"
 "Language: fr_FR\n"
 "X-Generator: Poedit 3.0.1\n"
 
@@ -17,8 +17,8 @@ msgid "Project Products for WooCommerce"
 msgstr "Project Products for WooCommerce"
 
 #. Plugin URI of the plugin
-msgid "https://github.com/magicoli/project-products"
-msgstr "https://github.com/magicoli/project-products"
+msgid "https://magiiic.com/internet/project-products/"
+msgstr "https://magiiic.com/internet/project-products/"
 
 #. Description of the plugin
 msgid "Add project field to WooCommerce products, allow clients to link their purchase to a project"
@@ -30,7 +30,7 @@ msgstr "Magiiic"
 
 #. Author URI of the plugin
 msgid "https://magiiic.com/"
-msgstr ""
+msgstr "https://magiiic.com/fr/"
 
 #: includes/classes.php:50
 #: includes/classes.php:55
@@ -43,7 +43,7 @@ msgstr "Projet"
 
 #: includes/classes.php:70
 msgid "Check to add a project field to product page."
-msgstr "Activer pour ajouter un champ projet à la page produit"
+msgstr "Activer pour ajouter un champ projet à la page produit."
 
 #: includes/classes.php:99
 #: includes/classes.php:197
