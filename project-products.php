@@ -7,14 +7,14 @@
  * Author URI:      https://magiiic.com/
  * Text Domain:     project-products
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         1.0
  *
  * @package         Product_Addons_Autofill
  */
 
 // Your code starts here.
 if(!defined('PROPRO_VERSION')) {
-  define('PROPRO_VERSION', '0.1.0');
+  define('PROPRO_VERSION', '1.0');
   define('PROPRO_PLUGIN', plugin_basename(__FILE__));
   define('PROPRO_SLUG', dirname(PROPRO_PLUGIN));
   // define('PROPRO_PLUGIN_NAME', 'Project Products for WooCommerce');

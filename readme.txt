@@ -5,7 +5,7 @@ Tags: comments, spam
 Requires at least: 4.5
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 0.1.0
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Add project field to products, allow cutomers to link their purchase to a projec
 
 == Description ==
 
-Allow adding a project field to WooCommerce products, to link purchases to specific projects. Mostly useful [WooCommerce Name Your Price](https://woocommerce.com/products/name-your-price/) plugin, to allow cutomers to specify an amount and a project to donate.
+Allow adding a project field to WooCommerce products, to link purchases to specific projects. Mostly useful with [WooCommerce Name Your Price](https://woocommerce.com/products/name-your-price/) plugin, to allow cutomers to specify an amount and a project to donate.
 
 == Installation ==
 
@@ -22,7 +22,8 @@ Allow adding a project field to WooCommerce products, to link purchases to speci
 * Create a product, check "Project Donation" option.
 
 The product page will display a new "Project" field, that customer must fill to specify the related project.
-To create a link for a specific project, add "project" parameter to URL, like
+To create a link for a specific project, add "project" parameter to the URL, like:
+
 https://magiiic.com/donate/project/?project=Project+Donations+plugin
 
 == Frequently Asked Questions ==
@@ -40,6 +41,11 @@ Not currently, but these features could be added in a future release.
 Not currently, but it can be achived with another plugin like [WooCommerce Name Your Price](https://woocommerce.com/products/name-your-price/).
 
 == Changelog ==
+
+= 1.0 =
+* new Project name field on products, autofill if URL parameter project is provided, project name added in cart item name
+* added "Project Product" option to product type section in edit page
+* added french localization
 
 = 0.1.0 =
 * Initial commit
