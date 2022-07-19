@@ -1,11 +1,11 @@
 <?php defined( 'ABSPATH' ) || die;
 /**
- * Plugin Name:     Product Projects
- * Plugin URI:      https://github.com/magicoli/product-projects
- * Description:     Add project field to product page to allow clients to assign their purchase to a project
+ * Plugin Name:     Project Products for WooCommerce
+ * Plugin URI:      https://github.com/magicoli/project-products
+ * Description:     Add project field to WooCommerce products, allow clients to link their purchase to a project
  * Author:          Magiiic
  * Author URI:      https://magiiic.com/
- * Text Domain:     product-projects
+ * Text Domain:     project-products
  * Domain Path:     /languages
  * Version:         0.1.0
  *
@@ -17,7 +17,8 @@ if(!defined('PROPRO_VERSION')) {
   define('PROPRO_VERSION', '0.1.0');
   define('PROPRO_PLUGIN', plugin_basename(__FILE__));
   define('PROPRO_SLUG', dirname(PROPRO_PLUGIN));
-  // define('PROPRO_PLUGIN_NAME', 'Product Projects');
+  // define('PROPRO_PLUGIN_NAME', 'Project Products for WooCommerce');
 
   require(plugin_dir_path(__FILE__) . 'includes/classes.php');
+  // if(is_admin()) require(plugin_dir_path(__FILE__) . 'admin/wc-admin-classes.php');
 }

@@ -1,6 +1,6 @@
-=== Product Projects ===
+=== Project Products for WooCommerce ===
 Contributors: magicoli69
-Donate link: https://magiiic.com/donate/
+Donate link: https://magiiic.com/donate/project/?project=Project+Donations+plugin
 Tags: comments, spam
 Requires at least: 4.5
 Tested up to: 6.0.1
@@ -9,40 +9,37 @@ Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Add project field to product page to allow clients to assign their purchase to a project
+Add project field to products, allow cutomers to link their purchase to a project
 
 == Description ==
 
-Add project field to product page to allow clients to assign their purchase to a project
+Allow adding a project field to WooCommerce products, to link purchases to specific projects. Mostly useful [WooCommerce Name Your Price](https://woocommerce.com/products/name-your-price/) plugin, to allow cutomers to specify an amount and a project to donate.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+* Install as usual (download and unzip in wp-content/plugins/ folder, then activate).
+* Optionally install [WooCommerce Name Your Price](https://woocommerce.com/products/name-your-price/) or a similar plugin to allow customer to choose a purchase amount.
+* Create a product, check "Project Donation" option.
+
+The product page will display a new "Project" field, that customer must fill to specify the related project.
+To create a link for a specific project, add "project" parameter to URL, like
+https://magiiic.com/donate/project/?project=Project+Donations+plugin
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Can I link project to a project page / a specific projects list? =
 
-An answer to that question.
+Not currently, but these features could be added in a future release.
 
-= What about foo bar? =
+= Can I see sales statistics per project? =
 
-Answer to foo bar dilemma.
+Not currently, but these features could be added in a future release.
 
-== Screenshots ==
+= Can cutomer choose the purchase amount? =
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+Not currently, but it can be achived with another plugin like [WooCommerce Name Your Price](https://woocommerce.com/products/name-your-price/).
 
 == Changelog ==
 
-= 0.11.0 =
+= 0.1.0 =
 * Initial commit
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
