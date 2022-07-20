@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.1.1
+* updated tags
+
 ### 1.1
 * added update library
 
