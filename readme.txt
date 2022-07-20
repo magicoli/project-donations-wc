@@ -1,6 +1,6 @@
 === Project Products for WooCommerce ===
 Contributors: magicoli69
-Donate link: https://magiiic.com/donate/project/?project=Project+Donations+plugin
+Donate link: https://magiiic.com/support/Project+Products+plugin
 Tags: comments, spam
 Requires at least: 4.5
 Tested up to: 6.0.1
