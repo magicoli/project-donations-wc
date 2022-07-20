@@ -1,7 +1,7 @@
 === Project Products for WooCommerce ===
 Contributors: magicoli69
 Donate link: https://magiiic.com/support/Project+Products+plugin
-Tags: comments, spam
+Tags: woocommerce, projects, product, donation
 Requires at least: 4.5
 Tested up to: 6.0.1
 Requires PHP: 5.6
