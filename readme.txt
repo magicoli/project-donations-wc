@@ -42,6 +42,9 @@ Not currently, but it can be achived with another plugin like [WooCommerce Name 
 
 == Changelog ==
 
+= 1.1 =
+* added update library
+
 = 1.0.1 =
 * updated Plugin URI
 

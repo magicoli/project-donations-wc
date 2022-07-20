@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.1
+* added update library
+
 ### 1.0.1
 * updated Plugin URI
 
