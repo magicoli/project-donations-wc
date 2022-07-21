@@ -29,9 +29,9 @@ class PROPRO {
 		// add_filter( 'wc_add_to_cart_message', __CLASS__ . '::add_to_cart_message', 10, 2 );
 
 		add_filter( 'woocommerce_get_price_html', __CLASS__ . '::get_price_html', 10, 2 );
-		add_filter( 'woocommerce_variation_sale_price_html', __CLASS__ . '::get_variation_price_html', 10, 2 );
-		add_filter( 'woocommerce_variation_price_html', __CLASS__ . '::get_variation_price_html', 10, 2 );
-		add_filter( 'woocommerce_available_variation', __CLASS__ . '::my_variation', 10, 3);
+		// add_filter( 'woocommerce_variation_sale_price_html', __CLASS__ . '::get_variation_price_html', 10, 2 );
+		// add_filter( 'woocommerce_variation_price_html', __CLASS__ . '::get_variation_price_html', 10, 2 );
+		add_filter( 'woocommerce_available_variation', __CLASS__ . '::get_variation_price_html', 10, 3);
 
 		add_action( 'woocommerce_before_calculate_totals', __CLASS__ . '::before_calculate_totals', 10, 1 );
 
@@ -124,10 +124,10 @@ class PROPRO {
 		      <input type="number" class="input-text" name="propro_amount" value="%s" placeholder="%s" step="any" required>
 		    </p>
 		  </div>',
-		  ($price = 0 ) ? __('Amount', 'lodgify-link') : __('Add to fee', 'lodgify-link'),
+		  ($price > 0 ) ? __('Add to fee', 'lodgify-link') : __('Amount', 'lodgify-link'),
 		  ' <abbr class="required" title="required">*</abbr>',
 		  $amount,
-		  ($price = 0 ) ? __("Amount to pay", 'lodgify-link') : __("Amount to add", 'lodgify-link'),
+		  ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
 		);
   }
 
@@ -233,13 +233,17 @@ class PROPRO {
     return $price_html;
   }
 
-	static function get_variation_price_html( $price, $variation ) {
-	    return "variation price";
-	}
-
-	static function my_variation( $data, $product, $variation ) {
+	static function get_variation_price_html( $data, $product, $variation ) {
 		// if(propro_is_project_product( $product->get_id() ))
-		 $data['price_html'] = " ";
+		if($data['display_price'] > 0) {
+			$data['price_html'] = sprintf(
+				__('%s will be added to the chosen amount, the total price will be calculated before checkout.', 'project-products'),
+				wp_strip_all_tags($data['price_html']),
+			);
+		} else {
+			$data['price_html'] = " ";
+		}
+		// $data['price_html'] = $data['price_html'] . "<pre>" . print_r($data, true) . "</pre>";
 
 		return $data;
 	}
@@ -256,10 +260,10 @@ class PROPRO {
     foreach( $cart->get_cart() as $cart_key => $cart_item ) {
       $cached = wp_cache_get('propro_cart_item_processed_' . $cart_key, 'project-products');
       if(!$cached) {
-        if( is_numeric( $cart_item['propro_amount'] &! isset($cart_item['propro_amount_added']) )) {
+        if( isset($cart_item['propro_amount']) &! isset($cart_item['propro_amount_added']) ) {
 					// $cart_item['data']->adjust_price( $cart_item['propro_amount'] );
           $price = (float)$cart_item['data']->get_price( 'edit' );
-          $total = $price + $cart_item['propro_amount'];
+          $total = isset($cart_item['propro_amount']) ? $price + $cart_item['propro_amount'] : $price;
           $cart_item['data']->set_price( ( $total ) );
           $cart_item['propro_amount_added'] = true;
         }
