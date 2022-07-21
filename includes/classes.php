@@ -103,6 +103,7 @@ class PROPRO {
 		$price = $product->get_price();
 		$amount = (isset($_REQUEST['amount'])) ? esc_attr($_REQUEST['amount']) : ((isset($_REQUEST['nyp'])) ? esc_attr($_REQUEST['nyp']) : NULL);
 
+		printf('<div class="propro-fields" style="margin-bottom:1rem">');
 		printf(
       '<div class="propro-field propro-field-project-name">
 				<p class="form-row form-row-wide">
@@ -129,6 +130,7 @@ class PROPRO {
 		  $amount,
 		  ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
 		);
+		printf('</div>');
   }
 
   static function validate_custom_field( $passed, $product_id, $quantity ) {
