@@ -121,7 +121,7 @@ class PROPRO {
 		  '<div class="propro-field propro-field-amount">
 		    <p class="form-row form-row-wide">
 		      <label for="propro_amount" class="required">%s%s</label>
-		      <input type="number" class="input-text" name="propro_amount" value="%s" placeholder="%s" required>
+		      <input type="number" class="input-text" name="propro_amount" value="%s" placeholder="%s" step="any" required>
 		    </p>
 		  </div>',
 		  ($price = 0 ) ? __('Amount', 'lodgify-link') : __('Add to fee', 'lodgify-link'),
@@ -256,7 +256,7 @@ class PROPRO {
     foreach( $cart->get_cart() as $cart_key => $cart_item ) {
       $cached = wp_cache_get('propro_cart_item_processed_' . $cart_key, 'project-products');
       if(!$cached) {
-        if( is_numeric( $cart_item['propro_amount'] &! $cart_item['propro_amount_added']) ) {
+        if( is_numeric( $cart_item['propro_amount'] &! isset($cart_item['propro_amount_added']) )) {
 					// $cart_item['data']->adjust_price( $cart_item['propro_amount'] );
           $price = (float)$cart_item['data']->get_price( 'edit' );
           $total = $price + $cart_item['propro_amount'];
