@@ -13,7 +13,15 @@ Add project field to products, allow cutomers to link their purchase to a projec
 
 ## Description
 
-Allow adding a project field to WooCommerce products, to link purchases to specific projects. Mostly useful with [WooCommerce Name Your Price](https://woocommerce.com/products/name-your-price/) plugin, to allow cutomers to specify an amount and a project to donate.
+Allow to set WooCommerce product as "Project Product"
+
+* add a "Project" field
+* set flexible price with "Amount" field
+* compatible with subscriptions and variations
+
+If the product has a price higher than zero, the amount will be added to the regular product price.
+
+Mostly useful for donations, to allow cutomers to support different project.
 
 ## Frequently Asked Questions
 
@@ -27,5 +35,5 @@ Not currently, but these features could be added in a future release.
 
 ### Can cutomer choose the purchase amount?
 
-Not currently, but it can be achived with another plugin like [WooCommerce Name Your Price](https://woocommerce.com/products/name-your-price/).
+Yes
 

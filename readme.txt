@@ -55,6 +55,9 @@ Yes
 
 == Changelog ==
 
+= 1.2.1 =
+* updated readme with 1.2 changes
+
 = 1.2 =
 * added flexible amount field
 * fix fields position for variable products
