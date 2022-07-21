@@ -19,7 +19,8 @@ class PROPRO {
     add_action( 'save_post_product', __CLASS__ . '::save_product_type_options', 10, 3);
 
 		// Add project field to product page
-    add_action( 'woocommerce_before_add_to_cart_button', __CLASS__ . '::display_custom_field');
+		add_action( 'woocommerce_before_add_to_cart_button', __CLASS__ . '::display_custom_fields_simple');
+		add_action( 'woocommerce_before_variations_form', __CLASS__ . '::display_custom_fields');
 
 		// Update product name in cart
     add_filter( 'woocommerce_add_to_cart_validation', __CLASS__ . '::validate_custom_field', 10, 3 );
@@ -28,6 +29,10 @@ class PROPRO {
 		// add_filter( 'wc_add_to_cart_message', __CLASS__ . '::add_to_cart_message', 10, 2 );
 
 		add_filter( 'woocommerce_get_price_html', __CLASS__ . '::get_price_html', 10, 2 );
+		add_filter( 'woocommerce_variation_sale_price_html', __CLASS__ . '::get_variation_price_html', 10, 2 );
+		add_filter( 'woocommerce_variation_price_html', __CLASS__ . '::get_variation_price_html', 10, 2 );
+		add_filter( 'woocommerce_available_variation', __CLASS__ . '::my_variation', 10, 3);
+
 		add_action( 'woocommerce_before_calculate_totals', __CLASS__ . '::before_calculate_totals', 10, 1 );
 
 		add_action( 'woocommerce_checkout_create_order_line_item', __CLASS__ . '::add_custom_data_to_order', 10, 4 );
@@ -78,16 +83,39 @@ class PROPRO {
     update_post_meta($product->ID, "_linkproject", isset($_POST["_linkproject"]) ? "yes" : "no");
   }
 
+	static function display_custom_fields_simple() {
+		global $post, $product;
+		if( $product->has_child() ) return; // already called by woocommerce_before_variations_form
+		if(!propro_is_project_product( $post->ID )) return;
+
+		PROPRO::display_custom_fields();
+	}
+
   /**
   * Display custom field on the front end
   * @since 1.0.0
   */
-  static function display_custom_field() {
-    global $post;
-		if(!propro_is_project_product( wc_get_product( $post->ID ) )) return;
+  static function display_custom_fields() {
+		global $post, $product;
+		if(!propro_is_project_product( $post->ID )) return;
 
     $project = (isset($_REQUEST['project'])) ? esc_attr($_REQUEST['project']) : NULL;
+		$price = $product->get_price();
 		$amount = (isset($_REQUEST['amount'])) ? esc_attr($_REQUEST['amount']) : ((isset($_REQUEST['nyp'])) ? esc_attr($_REQUEST['nyp']) : NULL);
+
+		printf(
+      '<div class="propro-field propro-field-project-name">
+				<p class="form-row form-row-wide">
+        	<label for="propro_project_name" class="required">%s%s</label>
+          <input type="%s" class="input-text" name="propro_project_name" value="%s" placeholder="%s" required>
+        </p>
+      </div>',
+      __('Project', 'project-products'),
+      (empty($project)) ? ' <abbr class="required" title="required">*</abbr>' : ': <span class=project_name>' . $project . '</span>',
+      (empty($project)) ? 'text' : 'hidden',
+      $project,
+      __("Enter a project name", 'project-products'),
+    );
 
 		printf(
 		  '<div class="propro-field propro-field-amount">
@@ -96,29 +124,11 @@ class PROPRO {
 		      <input type="number" class="input-text" name="propro_amount" value="%s" placeholder="%s" required>
 		    </p>
 		  </div>',
-		  __('Amount', 'lodgify-link'),
+		  ($price = 0 ) ? __('Amount', 'lodgify-link') : __('Add to fee', 'lodgify-link'),
 		  ' <abbr class="required" title="required">*</abbr>',
 		  $amount,
-		  __("Amount to pay", 'lodgify-link'),
-		  '',
+		  ($price = 0 ) ? __("Amount to pay", 'lodgify-link') : __("Amount to add", 'lodgify-link'),
 		);
-
-    // $project = isset( $_POST['propro_project_name'] ) ? sanitize_text_field( $_POST['propro_project_name'] ) : '';
-    printf(
-      '<div class="propro-field propro-field-project-name">
-				<p class="form-row form-row-wide">
-        	<label for="propro_project_name" class="required">%s%s</label>
-          <input type="%s" class="input-text" name="propro_project_name" value="%s" placeholder="%s" required>
-        </p>
-        %s
-      </div>',
-      __('Project', 'project-products'),
-      (empty($project)) ? ' <abbr class="required" title="required">*</abbr>' : ': <span class=project_name>' . $project . '</span>',
-      (empty($project)) ? 'text' : 'hidden',
-      $project,
-      __("Enter a project name", 'project-products'),
-      (empty($project)) ? __('Specify the project related to this purchase.', 'project-products') : '',
-    );
   }
 
   static function validate_custom_field( $passed, $product_id, $quantity ) {
@@ -129,10 +139,13 @@ class PROPRO {
 
 			if(!empty($_POST['propro_amount'])) $amount = sanitize_text_field($_POST['propro_amount']);
       else if(!empty($_REQUEST['amount'])) $amount = sanitize_text_field($_REQUEST['amount']);
-      else $amount = NULL;
+      else $amount = 0;
 
-			if(!is_numeric($amount) || $amount <= 0) {
-				$product_title = wc_get_product( $product_id )->get_title();
+			$product = wc_get_product( $product_id );
+			$price = $product->get_price();
+
+			if(!is_numeric($amount) || $amount + $price <= 0) {
+				$product_title = $product->get_title();
 				wc_add_notice( sprintf(
           __('"%s" could not be added to the cart. Please provide a valid amount to pay.', 'lodgify-link'),
           sprintf('<a href="%s">%s</a>', get_permalink($product_id), $product_title),
@@ -220,6 +233,17 @@ class PROPRO {
     return $price_html;
   }
 
+	static function get_variation_price_html( $price, $variation ) {
+	    return "variation price";
+	}
+
+	static function my_variation( $data, $product, $variation ) {
+		// if(propro_is_project_product( $product->get_id() ))
+		 $data['price_html'] = " ";
+
+		return $data;
+	}
+
 	/**
   * Update the price in the cart
   * @since 1.0.0
@@ -233,12 +257,9 @@ class PROPRO {
       $cached = wp_cache_get('propro_cart_item_processed_' . $cart_key, 'project-products');
       if(!$cached) {
         if( is_numeric( $cart_item['propro_amount'] &! $cart_item['propro_amount_added']) ) {
+					// $cart_item['data']->adjust_price( $cart_item['propro_amount'] );
           $price = (float)$cart_item['data']->get_price( 'edit' );
           $total = $price + $cart_item['propro_amount'];
-          error_log('adding ' . $cart_item['propro_amount']
-          . "\n" . 'initial price ' . $price
-          . "\n" . 'adjusted price ' . $total);
-          // $cart_item['data']->adjust_price( $cart_item['propro_amount'] );
           $cart_item['data']->set_price( ( $total ) );
           $cart_item['propro_amount_added'] = true;
         }
