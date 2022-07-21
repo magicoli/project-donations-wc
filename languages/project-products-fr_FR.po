@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-19T17:13:07-04:00\n"
-"PO-Revision-Date: 2022-07-19 19:14-0400\n"
+"POT-Creation-Date: 2022-07-20T23:53:04-04:00\n"
+"PO-Revision-Date: 2022-07-20 23:56-0400\n"
 "Language: fr_FR\n"
 "X-Generator: Poedit 3.0.1\n"
 
@@ -17,8 +17,8 @@ msgid "Project Products for WooCommerce"
 msgstr "Project Products for WooCommerce"
 
 #. Plugin URI of the plugin
-msgid "https://magiiic.com/internet/project-products/"
-msgstr "https://magiiic.com/internet/project-products/"
+msgid "https://magiiic.com/wordpress/plugins/project-products/"
+msgstr "https://magiiic.com/fr/wordpress/plugins/projets-produits/"
 
 #. Description of the plugin
 msgid "Add project field to WooCommerce products, allow clients to link their purchase to a project"
@@ -32,36 +32,59 @@ msgstr "Magiiic"
 msgid "https://magiiic.com/"
 msgstr "https://magiiic.com/fr/"
 
-#: includes/classes.php:50
-#: includes/classes.php:55
+#: includes/classes.php:56
+#: includes/classes.php:61
 msgid "Support project"
 msgstr "Soutenir le projet"
 
-#: includes/classes.php:69
+#: includes/classes.php:75
 msgid "Project Product"
 msgstr "Projet"
 
-#: includes/classes.php:70
+#: includes/classes.php:76
 msgid "Check to add a project field to product page."
 msgstr "Activer pour ajouter un champ projet à la page produit."
 
-#: includes/classes.php:99
-#: includes/classes.php:197
+#: includes/classes.php:113
+#: includes/classes.php:213
 msgid "Project"
 msgstr "Projet"
 
-#: includes/classes.php:103
+#: includes/classes.php:117
 msgid "Enter a project name"
 msgstr "Entrez un nom de projet"
 
-#: includes/classes.php:104
-msgid "Specify the project related to this purchase."
-msgstr "Spécifiez à quel projet cet achat est lié."
+#: includes/classes.php:127
+msgid "Add to fee"
+msgstr "Ajouter au tarif"
 
-#: includes/classes.php:121
+#: includes/classes.php:127
+msgid "Amount"
+msgstr "Montant"
+
+#: includes/classes.php:130
+msgid "Amount to add"
+msgstr "Montant à ajouter"
+
+#: includes/classes.php:130
+msgid "Amount to pay"
+msgstr "Montant à payer"
+
+#: includes/classes.php:150
+msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
+msgstr "\"%s\" ne peut pas être ajouté au panier. Merci de fournir un montant à payer valide."
+
+#: includes/classes.php:160
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
 msgstr "\"%s\" ne peut pas être ajouté au panier. Merci de fournir un nom de projet."
 
-#: includes/classes.php:214
+#: includes/classes.php:230
 msgid "From"
 msgstr "À partir de"
+
+#: includes/classes.php:240
+msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
+msgstr "Le montant choisi sera ajouté au tarif de base de %s, le prix total sera calculé avant la validation de la commande."
+
+#~ msgid "Specify the project related to this purchase."
+#~ msgstr "Spécifiez à quel projet cet achat est lié."
