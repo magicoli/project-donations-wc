@@ -42,6 +42,10 @@ Not currently, but it can be achived with another plugin like [WooCommerce Name 
 
 == Changelog ==
 
+= 1.2 =
+* added flexible amount field
+* fix fields position for variable products
+
 = 1.1.1 =
 * updated tags
 
