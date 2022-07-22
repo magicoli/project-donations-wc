@@ -63,7 +63,6 @@ class PROPRO_WC_Admin {
     if (get_option('propro_custom_user_projects') == 'yes') return false;
     if ( get_option('propro_create_project_post_type') != 'yes'
     && empty(get_option('propro_project_post_type')) ) return false;
-    error_log('propro_project_post_type ' . get_option('propro_project_post_type'));
     return true;
   }
   /*
@@ -98,80 +97,85 @@ class PROPRO_WC_Admin {
         'options' => PROPRO_WC_Admin::select_post_type_options(),
         // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
       ),
-      array(
-        'name' => __( 'Customer defined projects', 'project-products' ),
-        'type' => 'checkbox',
-        'id'   => 'propro_custom_user_projects',
-        'desc' => __( 'Allow customer to enter abritrary project names', 'project-products' ),
-        'custom_attributes' => (
-          get_option('propro_create_project_post_type') != 'yes'
-          && empty(get_option('propro_project_post_type'))
-        ) ? [ 'disabled' => 'disabled' ] : [],
-        'desc_tip' => __( 'Always enabled if project post type is not set', 'project-products' ),
-      ),
-      array(
-        'name' => __( 'Back end defined projects', 'project-products' ),
-        'type' => 'checkbox',
-        'id'   => 'propro_custom_backend_projects',
-        'desc' => __( 'Allow custom project name passed as parameter', 'project-products' ),
-        'desc_tip' => __( 'Always enabled if customer defined projects are enabled or project post type is not set', 'project-products' ),
-        'class' => (PROPRO_WC_Admin::can_disable_custom_backend_projects()) ? '' : 'disabled',
-        'custom_attributes' => (PROPRO_WC_Admin::can_disable_custom_backend_projects()) ? '' : [ 'disabled' => 'disabled' ] ,
-      ),
-      array(
-        'name' => __( 'Customer defined amount', 'project-products' ),
-        'type' => 'checkbox',
-        'id'   => 'propro_custom_amount',
-        'desc' => sprintf(
-          '%s <span class=description>%s</span>',
-          __( 'Allow customer to choose the amount to pay', 'project-products' ),
-          __( '(enable only if no other plugin implements it)', 'project-products' ),
-        ),
-      ),
-      array(
-        'id' => 'propro_minimum_amount',
-        'name' => sprintf(__('Minimum donation amount (%s)', 'project-products'), get_woocommerce_currency_symbol()),
-        'type' => 'number',
-        'custom_attributes' => array( 'min' => 0, 'size' => 3 ),
-        'default' => 0,
-        'custom_attributes' => (get_option('propro_custom_amount') != 'yes') ? [ 'disabled' => 'disabled' ] : [],
-      ),
+      // array(
+      //   'name' => __( 'Customer defined projects', 'project-products' ),
+      //   'type' => 'checkbox',
+      //   'id'   => 'propro_custom_user_projects',
+      //   'desc' => __( 'Allow customer to enter abritrary project names', 'project-products' ),
+      //   'custom_attributes' => (
+      //     get_option('propro_create_project_post_type') != 'yes'
+      //     && empty(get_option('propro_project_post_type'))
+      //   ) ? [ 'disabled' => 'disabled' ] : [],
+      //   'desc_tip' => __( 'Always enabled if project post type is not set', 'project-products' ),
+      // ),
+      // array(
+      //   'name' => __( 'Back end defined projects', 'project-products' ),
+      //   'type' => 'checkbox',
+      //   'id'   => 'propro_custom_backend_projects',
+      //   'desc' => __( 'Allow custom project name passed as parameter', 'project-products' ),
+      //   'desc_tip' => __( 'Always enabled if customer defined projects are enabled or project post type is not set', 'project-products' ),
+      //   'class' => (PROPRO_WC_Admin::can_disable_custom_backend_projects()) ? '' : 'disabled',
+      //   'custom_attributes' => (PROPRO_WC_Admin::can_disable_custom_backend_projects()) ? '' : [ 'disabled' => 'disabled' ] ,
+      // ),
+      // array(
+      //   'name' => __( 'Customer defined amount', 'project-products' ),
+      //   'type' => 'checkbox',
+      //   'id'   => 'propro_custom_amount',
+      //   'desc' => sprintf(
+      //     '%s <span class=description>%s</span>',
+      //     __( 'Allow customer to choose the amount to pay', 'project-products' ),
+      //     __( '(enable only if no other plugin implements it)', 'project-products' ),
+      //   ),
+      // ),
+      // array(
+      //   'id' => 'propro_minimum_amount',
+      //   'name' => sprintf(__('Minimum donation amount (%s)', 'project-products'), get_woocommerce_currency_symbol()),
+      //   'type' => 'number',
+      //   'default' => 0,
+      //   // 'custom_attributes' => (get_option('propro_custom_amount') != 'yes') ? [ 'disabled' => 'disabled' ] : [],
+      //   'custom_attributes' => array(
+      //     'min' => 0,
+      //     'size' => 3,
+      //     'step' => 'any',
+      //     (get_option('propro_custom_amount') != 'yes') ? 'disabled' : '' => 1,
+      //   ),
+      // ),
       array(
         'type' => 'sectionend',
         'id' => 'propro_section_projects_end'
       ),
 
-      array(
-        'name'     => __( 'Enable globally', 'project-products' ),
-        'type'     => 'title',
-        'id'       => 'propro_section_global',
-      ),
-      array(
-        'name' => __( 'Default project product', 'project-products' ),
-        'type' => 'select',
-        'id'   => 'propro_default_product',
-        'options' => PROPRO_WC_Admin::select_product_options(),
-        // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
-      ),
-      array(
-        'name' => __( 'Enable categories', 'project-products' ),
-        'type' => 'multiselect',
-        'id'   => 'propro_enable_categories',
-        'options' => PROPRO_WC_Admin::select_category_options(),
-        // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
-      ),
-      array(
-        'name' => __( 'Enable tags', 'project-products' ),
-        'type' => 'multiselect',
-        'id'   => 'propro_enable_tags',
-        'options' => PROPRO_WC_Admin::select_taxonomy_options(),
-        // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
-      ),
-      array(
-        'type' => 'sectionend',
-        'id' => 'propro_section_global_end'
-      ),
-
+    //   array(
+    //     'name'     => __( 'Enable globally', 'project-products' ),
+    //     'type'     => 'title',
+    //     'id'       => 'propro_section_global',
+    //   ),
+    //   array(
+    //     'name' => __( 'Default project product', 'project-products' ),
+    //     'type' => 'select',
+    //     'id'   => 'propro_default_product',
+    //     'options' => PROPRO_WC_Admin::select_product_options(),
+    //     // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
+    //   ),
+    //   array(
+    //     'name' => __( 'Enable categories', 'project-products' ),
+    //     'type' => 'multiselect',
+    //     'id'   => 'propro_enable_categories',
+    //     'options' => PROPRO_WC_Admin::select_category_options(),
+    //     // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
+    //   ),
+    //   array(
+    //     'name' => __( 'Enable tags', 'project-products' ),
+    //     'type' => 'multiselect',
+    //     'id'   => 'propro_enable_tags',
+    //     'options' => PROPRO_WC_Admin::select_taxonomy_options(),
+    //     // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
+    //   ),
+    //   array(
+    //     'type' => 'sectionend',
+    //     'id' => 'propro_section_global_end'
+    //   ),
+    //
     );
     return apply_filters( 'propro_settings', $settings );
   }

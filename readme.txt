@@ -26,6 +26,8 @@ Mostly useful for donations, to allow cutomers to support different project.
 == Installation ==
 
 * Install as usual (download and unzip in wp-content/plugins/ folder, then activate)
+* Optionally, in WooCommerce -> Settings -> Product Projects, activate "create project post type" or choose and existing post type to use as projects
+(if set, a selection menu will be presented to the user instead of a text input box)
 * Create a product, check "Project Product" option
 * Set product price to zero, or to a minimum amount
 * You would probably also activate "Virtual" option

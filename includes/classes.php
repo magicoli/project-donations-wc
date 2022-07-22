@@ -44,7 +44,7 @@ class PROPRO {
     add_filter( 'woocommerce_product_single_add_to_cart_text', __CLASS__ . '::single_add_to_card_button', 10, 2);
 
 		if(get_option('propro_create_project_post_type', false) ==  'yes')  add_action( 'init', 'propro_register_project_posttype' );
-		
+
 		add_action( 'plugins_loaded', __CLASS__ . '::load_plugin_textdomain' );
   }
 
@@ -68,7 +68,7 @@ class PROPRO {
 
   static function add_to_cart_message( $message, $product_id ) {
       // make filter magic happen here...
-      if(!empty($_POST['propro_project_name'])) $message = $_POST['propro_project_name'] . ": $message";
+      if(!empty($_POST['propro-project-name'])) $message = $_POST['propro-project-name'] . ": $message";
       return $message;
   }
 
@@ -95,7 +95,84 @@ class PROPRO {
 		PROPRO::display_custom_fields();
 	}
 
-  /**
+	static function display_custom_field($args) {
+		if(empty($args['name'])) return;
+		$value = NULL;
+		$options = [];
+		$label = NULL;
+		$placeholder = NULL;
+		$required = false;
+		$disabled = false;
+		$type = 'text';
+		$class = '';
+		$custom_attributes = [];
+		extract($args);
+
+		$attributes = [];
+
+		if($required) {
+			$required = 'required';
+			$class = "$class $required";
+			$attributes[] = 'required';
+		}
+
+		if($disabled) {
+			$disabled = 'disabled';
+			$class = "$class $disabled";
+			$attributes[] = 'disabled';
+		}
+
+		foreach($custom_attributes as $key => $value) {
+			$attributes[] = $key . '="' . $value . '"';
+		}
+		switch($type) {
+			case 'select':
+			case 'multiselect':
+			$input = sprintf(
+			  '<select name="%1$s%2$s" id="%1$s" class="%3$s" %4$s %5$s>',
+			  $name,
+			  ($type == 'multiselect')? '[]' : '',
+			  $class,
+			  join(' ', $attributes),
+			  ($type == 'multiselect') ? 'multiple="multiple"' : '',
+			);
+			foreach ( $options as $key => $option ) {
+			  $input .= sprintf(
+			    '<option value="%1$s" %3$s>%2$s</option>',
+			    $key,
+			    $option,
+					(is_array($value)) ? selected(in_array($key, $value, false), true) : selected( $value, $key, false ),
+			  );
+			}
+			$input .= '</select>';
+			break;
+
+			default:
+			$input = sprintf(
+				'<input type="%1$s" class="input-text" name="propro-%2$s" value="%3$s" placeholder="%4$s" %5$s>',
+				$type,
+				$name,
+				$value,
+				$placeholder,
+				join(' ', $attributes),
+			);
+		}
+		printf(
+			'<div class="propro-field propro-field-%1$s">
+				<p class="form-row form-row-wide">
+					<label for="propro-%1$s" class="%2$s">%3$s%4$s</label>
+					%5$s
+				</p>
+			</div>',
+			$name,
+			$class,
+			$label,
+			($required) ? ' <abbr class="required" title="require">*</abbr>' : NULL,
+			$input,
+		);
+
+	}
+	/**
   * Display custom field on the front end
   * @since 1.0.0
   */
@@ -103,47 +180,87 @@ class PROPRO {
 		global $post, $product;
 		if(!propro_is_project_product( $post->ID )) return;
 
-    $project = (isset($_REQUEST['project'])) ? esc_attr($_REQUEST['project']) : NULL;
+		$project = (isset($_REQUEST['project'])) ? esc_attr($_REQUEST['project']) : NULL;
+		$project_id = (isset($_REQUEST['project_id'])) ? esc_attr($_REQUEST['project_id']) : NULL;
 		$price = $product->get_price();
 		$amount = (isset($_REQUEST['amount'])) ? esc_attr($_REQUEST['amount']) : ((isset($_REQUEST['nyp'])) ? esc_attr($_REQUEST['nyp']) : NULL);
 
+		$project_post_type = (get_option('propro_create_project_post_type') == 'yes') ? 'project' : get_option('propro_project_post_type');
 		printf('<div class="propro-fields" style="margin-bottom:1rem">');
-		printf(
-      '<div class="propro-field propro-field-project-name">
-				<p class="form-row form-row-wide">
-        	<label for="propro_project_name" class="required">%s%s</label>
-          <input type="%s" class="input-text" name="propro_project_name" value="%s" placeholder="%s" required>
-        </p>
-      </div>',
-      __('Project', 'project-products'),
-      (empty($project)) ? ' <abbr class="required" title="required">*</abbr>' : ': <span class=project_name>' . $project . '</span>',
-      (empty($project)) ? 'text' : 'hidden',
-      $project,
-      __("Enter a project name", 'project-products'),
-    );
 
-		printf(
-		  '<div class="propro-field propro-field-amount">
-		    <p class="form-row form-row-wide">
-		      <label for="propro_amount" class="required">%s%s</label>
-		      <input type="number" class="input-text" name="propro_amount" value="%s" placeholder="%s" step="any" required>
-		    </p>
-		  </div>',
-		  ($price > 0 ) ? __('Add to fee', 'lodgify-link') : __('Amount', 'lodgify-link'),
-		  ' <abbr class="required" title="required">*</abbr>',
-		  $amount,
-		  ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
+		$fields[] = (empty($project_post_type)) ? array(
+			'name' => 'project-name',
+			'label' => __('Project', 'project-products'),
+			'required' => true,
+			'value' => $project,
+			'placeholder' => __("Enter a project name", 'project-products'),
+		) : array(
+			'name' => 'project-id',
+			'label' => __('Project', 'project-products'),
+			'required' => true,
+			'type' => 'select',
+			'value' => $project_id,
+			'options' => PROPRO::select_post_options(array(
+				'post_type' => $project_post_type,
+				'orderby'     => 'post_title',
+			)),
 		);
+
+		$fields[] = array(
+			'name' => 'amount',
+			'label' => ($price > 0 ) ? __('Add to fee', 'lodgify-link') : __('Amount', 'lodgify-link'),
+			'placeholder' => ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
+			'type' => 'number',
+			'required' => true,
+			'value' => $amount,
+			'custom_attributes' => array(
+				'min' => 0,
+				'step' => 'any',
+			)
+		);
+
+		foreach($fields as $field) {
+			PROPRO::display_custom_field($field);
+		}
+
+
+		// printf(
+    //   '<div class="propro-field propro-field-project-name">
+		// 		<p class="form-row form-row-wide">
+    //     	<label for="propro-project-name" class="required">%s%s</label>
+    //       <input type="%s" class="input-text" name="propro-project-name" value="%s" placeholder="%s" required>
+    //     </p>
+    //   </div>',
+    //   __('Project', 'project-products'),
+    //   (empty($project)) ? ' <abbr class="required" title="required">*</abbr>' : ': <span class=project_name>' . $project . '</span>',
+    //   (empty($project)) ? 'text' : 'hidden',
+    //   $project,
+    //   __("Enter a project name", 'project-products'),
+    // );
+
+		// printf(
+		//   '<div class="propro-field propro-field-amount">
+		//     <p class="form-row form-row-wide">
+		//       <label for="propro-amount" class="required">%s%s</label>
+		//       <input type="number" class="input-text" name="propro-amount" value="%s" placeholder="%s" step="any" required>
+		//     </p>
+		//   </div>',
+		//   ($price > 0 ) ? __('Add to fee', 'lodgify-link') : __('Amount', 'lodgify-link'),
+		//   ' <abbr class="required" title="required">*</abbr>',
+		//   $amount,
+		//   ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
+		// );
 		printf('</div>');
   }
 
   static function validate_custom_field( $passed, $product_id, $quantity ) {
     if($passed && propro_is_project_product( $product_id )) {
-      if(!empty($_POST['propro_project_name'])) $project = sanitize_text_field($_POST['propro_project_name']);
+			if(!empty($_REQUEST['project-id'])) $project = $_REQUEST['project-id'];
+      else if(!empty($_POST['propro-project-name'])) $project = sanitize_text_field($_POST['propro-project-name']);
       else if(!empty($_REQUEST['project'])) $project = sanitize_text_field($_REQUEST['project']);
       else $project = NULL;
 
-			if(!empty($_POST['propro_amount'])) $amount = sanitize_text_field($_POST['propro_amount']);
+			if(!empty($_POST['propro-amount'])) $amount = sanitize_text_field($_POST['propro-amount']);
       else if(!empty($_REQUEST['amount'])) $amount = sanitize_text_field($_REQUEST['amount']);
       else $amount = 0;
 
@@ -183,12 +300,20 @@ class PROPRO {
   static function add_custom_field_item_data( $cart_item_data, $product_id, $variation_id, $quantity ) {
 		if(!propro_is_project_product( wc_get_product( $product_id ) )) return $cart_item_data;
 
-    if(!empty($_POST['propro_project_name'])) $cart_item_data['propro_project_name'] = sanitize_text_field($_POST['propro_project_name']);
-    else if(!empty($_REQUEST['project'])) $cart_item_data['propro_project_name'] = sanitize_text_field($_REQUEST['project']);
+		if(!empty($_REQUEST['project-id'])) {
+			$project = get_the_title($_REQUEST['project-id']);
+			if(!empty($project)) $cart_item_data['propro-project-id'] = sanitize_text_field($_REQUEST['project-id']);
+		}
+    else if(!empty($_POST['propro-project-name'])) $project = $_POST['propro-project-name'];
+    else if(!empty($_REQUEST['project'])) $project = $_REQUEST['project'];
+		else $project = NULL;
+		$cart_item_data['propro-project-name'] = sanitize_text_field($project);
 
-		if(!empty($_POST['propro_amount'])) $cart_item_data['propro_amount'] = sanitize_text_field($_POST['propro_amount']);
-    else if(!empty($_REQUEST['amount'])) $cart_item_data['propro_amount'] = sanitize_text_field($_REQUEST['amount']);
-		else if(!empty($_REQUEST['nyp'])) $cart_item_data['propro_amount'] = sanitize_text_field($_REQUEST['nyp']);
+		if(!empty($_POST['propro-amount'])) $amount = $_POST['propro-amount'];
+    else if(!empty($_REQUEST['amount'])) $amount = $_REQUEST['amount'];
+		else if(!empty($_REQUEST['nyp'])) $amount = $_REQUEST['nyp'];
+		else $amount = NULL;
+		$cart_item_data['propro-amount'] = sanitize_text_field($amount);
 
     return $cart_item_data;
   }
@@ -198,13 +323,12 @@ class PROPRO {
   * @since 1.0.0
   */
   static function cart_item_name( $name, $cart_item, $cart_item_key ) {
-    // error_log(__FUNCTION__ . ' ' . print_r($cart_item, true));
 
-    if( isset( $cart_item['propro_project_name'] ) ) {
+    if( isset( $cart_item['propro-project-name'] ) ) {
       $name = sprintf(
       '%s <span class=propro-project-name>"%s"</span>',
       $name,
-      esc_html( $cart_item['propro_project_name'] ),
+      esc_html( $cart_item['propro-project-name'] ),
       );
     }
     return $name;
@@ -213,17 +337,19 @@ class PROPRO {
   /**
   * Add custom field to order object
   */
-  function add_custom_data_to_order( $item, $cart_item_key, $values, $order ) {
+  static function add_custom_data_to_order( $item, $cart_item_key, $values, $order ) {
     foreach( $item as $cart_item_key=>$values ) {
-      if( isset( $values['propro_project_name'] ) ) {
-        $item->add_meta_data( __( 'Project', 'project-products' ), $values['propro_project_name'], true );
+      if( isset( $values['propro-project-name'] ) ) {
+        $item->add_meta_data( __( 'Project', 'project-products' ), $values['propro-project-name'], true );
+				if( isset( $values['propro-project-id'] ) )
+				$item->add_meta_data( __( 'Project ID', 'project-products' ), $values['propro-project-id'], true );
       }
     }
   }
 
   static function get_price_html( $price_html, $product ) {
     if($product->get_meta( '_linkproject' ) == 'yes') {
-      $price = max($product->get_price(), get_option('propro_project_minimum_price', 0));
+      $price = max($product->get_price(), get_option('propro-project-minimum_price', 0));
       if( $price == 0 ) {
         $price_html = apply_filters( 'woocommerce_empty_price_html', '', $product );
       } else {
@@ -266,17 +392,36 @@ class PROPRO {
     foreach( $cart->get_cart() as $cart_key => $cart_item ) {
       $cached = wp_cache_get('propro_cart_item_processed_' . $cart_key, 'project-products');
       if(!$cached) {
-        if( isset($cart_item['propro_amount']) &! isset($cart_item['propro_amount_added']) ) {
-					// $cart_item['data']->adjust_price( $cart_item['propro_amount'] );
+        if( isset($cart_item['propro-amount']) &! isset($cart_item['propro-amount_added']) ) {
+					// $cart_item['data']->adjust_price( $cart_item['propro-amount'] );
           $price = (float)$cart_item['data']->get_price( 'edit' );
-          $total = isset($cart_item['propro_amount']) ? $price + $cart_item['propro_amount'] : $price;
+          $total = isset($cart_item['propro-amount']) ? $price + $cart_item['propro-amount'] : $price;
           $cart_item['data']->set_price( ( $total ) );
-          $cart_item['propro_amount_added'] = true;
+          $cart_item['propro-amount_added'] = true;
         }
         wp_cache_set('propro_cart_item_processed_' . $cart_key, true, 'project-products');
       }
     }
   }
+
+	static function select_post_options($args = []) {
+		$args = array_merge(array(
+			'status' => 'publish',
+			'order' => 'ASC',
+			'limit' => -1,
+		), $args);
+
+		$posts = get_posts($args);
+		if(!$posts) return [ '' => __('No posts found', 'project-posts')];
+
+		$posts_array = array('' => __('Select a project', 'project-posts'));
+		foreach($posts as $post) {
+			$posts_array[$post->ID] = $post->post_title;
+		}
+
+		return $posts_array;
+	}
+
 }
 
 PROPRO::init();
