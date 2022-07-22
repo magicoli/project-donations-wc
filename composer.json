@@ -1,6 +1,6 @@
 {
-  "name": "magicoli/project-products",
-  "description": "Project Products for WooCommerce",
+  "name": "magicoli/project-donations",
+  "description": "Project Donations for WooCommerce",
   "type": "wordpress-plugin",
   "license": "AGPL-V3",
   "authors": [

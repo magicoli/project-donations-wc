@@ -1,6 +1,6 @@
-# Project Products for WooCommerce
+# Project Donations for WooCommerce
 * Contributors: magicoli69
-* Donate link: https://magiiic.com/support/Project+Products+plugin
+* Donate link: https://magiiic.com/support/Project+Donations+plugin
 * Tags: woocommerce, projects, product, donation
 * Requires at least: 4.5
 * Tested up to: 6.0.1
@@ -13,7 +13,7 @@ Add project field to products, allow cutomers to link their purchase to a projec
 
 ## Description
 
-Allow to set WooCommerce product as "Project Product"
+Allow to set WooCommerce product as "Project Donation"
 
 * add a "Project" field
 * allow creation of a "Project" post type

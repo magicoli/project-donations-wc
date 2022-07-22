@@ -1,27 +1,27 @@
 <?php
 /*
- * @package         PROPRO
+ * @package         PRDWC
  */
 
-class PROPRO_WC_Admin {
+class PRDWC_WC_Admin {
 
   /*
   * Bootstraps the class and hooks required actions & filters.
   *
   */
   public static function init() {
-    add_action( 'woocommerce_settings_tabs_propro', __CLASS__ . '::settings_tab' );
+    add_action( 'woocommerce_settings_tabs_project-donations-wc', __CLASS__ . '::settings_tab' );
     add_filter( 'woocommerce_settings_tabs_array', __CLASS__ . '::add_settings_tab', 50 );
-    add_action( 'woocommerce_update_options_propro', __CLASS__ . '::update_settings' );
+    add_action( 'woocommerce_update_options_project-donations-wc', __CLASS__ . '::update_settings' );
 
-    add_filter( 'plugin_action_links_' . PROPRO_PLUGIN, __CLASS__ . '::add_action_links' );
+    add_filter( 'plugin_action_links_' . PRDWC_PLUGIN, __CLASS__ . '::add_action_links' );
 
   }
 
   public static function add_action_links ( $actions ) {
-    $actions = array_merge( $actions, array(
-      '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=propro' ) . '">' . __('Settings', 'project-products') . '</a>',
-    ));
+    $actions = array_merge( array(
+      '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=project-donations-wc' ) . '">' . __('Settings', 'project-donations-wc') . '</a>',
+    ), $actions);
     return $actions;
   }
 
@@ -32,7 +32,7 @@ class PROPRO_WC_Admin {
   * @return array $settings_tabs Array of WooCommerce setting tabs & their labels, including the Subscription tab.
   */
   public static function add_settings_tab( $settings_tabs ) {
-    $settings_tabs['propro'] = __( 'Project Products', 'project-products' );
+    $settings_tabs['project-donations-wc'] = __( 'Project Donations', 'project-donations-wc' );
     return $settings_tabs;
   }
 
@@ -58,9 +58,9 @@ class PROPRO_WC_Admin {
   }
 
   static function can_disable_custom_backend_projects() {
-    if (get_option('propro_custom_user_projects') == 'yes') return false;
-    if ( get_option('propro_create_project_post_type') != 'yes'
-    && empty(get_option('propro_project_post_type')) ) return false;
+    if (get_option('prdwc_custom_user_projects') == 'yes') return false;
+    if ( get_option('prdwc_create_project_post_type') != 'yes'
+    && empty(get_option('prdwc_project_post_type')) ) return false;
     return true;
   }
   /*
@@ -72,110 +72,110 @@ class PROPRO_WC_Admin {
 
     $settings = array(
       array(
-        'name'     => __( 'Default settings', 'project-products' ),
+        'name'     => __( 'Default settings', 'project-donations-wc' ),
         'type'     => 'title',
-        'id'       => 'propro_section_defaults',
-        'desc' => __( 'These settings can be overridden for each product.', 'project-products' ),
+        'id'       => 'prdwc_section_defaults',
+        'desc' => __( 'These settings can be overridden for each product.', 'project-donations-wc' ),
       ),
       array(
-        'name' => __( 'Add project post type', 'project-products' ),
+        'name' => __( 'Add project post type', 'project-donations-wc' ),
         'type' => 'checkbox',
-        'id'   => 'propro_create_project_post_type',
+        'id'   => 'prdwc_create_project_post_type',
         'desc' => sprintf(
           '%s <span class=description>%s</span>',
-          __( 'Create a project post type', 'project-products' ),
-          __( '(enable only if no other plugin implements it)', 'project-products' ),
+          __( 'Create a project post type', 'project-donations-wc' ),
+          __( '(enable only if no other plugin implements it)', 'project-donations-wc' ),
         ),
         'callback' => 'nocallback',
       ),
       array(
-        'name' => __( 'Get projects from post type', 'project-products' ),
-        'type' => (get_option('propro_create_project_post_type', false) ==  'yes') ? 'disabled' : 'select',
-        'id'   => 'propro_project_post_type',
-        'options' => PROPRO_WC_Admin::select_post_type_options(),
-        // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
+        'name' => __( 'Get projects from post type', 'project-donations-wc' ),
+        'type' => (get_option('prdwc_create_project_post_type', false) ==  'yes') ? 'disabled' : 'select',
+        'id'   => 'prdwc_project_post_type',
+        'options' => PRDWC_WC_Admin::select_post_type_options(),
+        // 'desc_tip' => __( 'Default product for project support.', 'project-donations-wc' ),
       ),
       // array(
-      //   'name' => __( 'Customer defined projects', 'project-products' ),
+      //   'name' => __( 'Customer defined projects', 'project-donations-wc' ),
       //   'type' => 'checkbox',
-      //   'id'   => 'propro_custom_user_projects',
-      //   'desc' => __( 'Allow customer to enter abritrary project names', 'project-products' ),
+      //   'id'   => 'prdwc_custom_user_projects',
+      //   'desc' => __( 'Allow customer to enter abritrary project names', 'project-donations-wc' ),
       //   'custom_attributes' => (
-      //     get_option('propro_create_project_post_type') != 'yes'
-      //     && empty(get_option('propro_project_post_type'))
+      //     get_option('prdwc_create_project_post_type') != 'yes'
+      //     && empty(get_option('prdwc_project_post_type'))
       //   ) ? [ 'disabled' => 'disabled' ] : [],
-      //   'desc_tip' => __( 'Always enabled if project post type is not set', 'project-products' ),
+      //   'desc_tip' => __( 'Always enabled if project post type is not set', 'project-donations-wc' ),
       // ),
       // array(
-      //   'name' => __( 'Back end defined projects', 'project-products' ),
+      //   'name' => __( 'Back end defined projects', 'project-donations-wc' ),
       //   'type' => 'checkbox',
-      //   'id'   => 'propro_custom_backend_projects',
-      //   'desc' => __( 'Allow custom project name passed as parameter', 'project-products' ),
-      //   'desc_tip' => __( 'Always enabled if customer defined projects are enabled or project post type is not set', 'project-products' ),
-      //   'class' => (PROPRO_WC_Admin::can_disable_custom_backend_projects()) ? '' : 'disabled',
-      //   'custom_attributes' => (PROPRO_WC_Admin::can_disable_custom_backend_projects()) ? '' : [ 'disabled' => 'disabled' ] ,
+      //   'id'   => 'prdwc_custom_backend_projects',
+      //   'desc' => __( 'Allow custom project name passed as parameter', 'project-donations-wc' ),
+      //   'desc_tip' => __( 'Always enabled if customer defined projects are enabled or project post type is not set', 'project-donations-wc' ),
+      //   'class' => (PRDWC_WC_Admin::can_disable_custom_backend_projects()) ? '' : 'disabled',
+      //   'custom_attributes' => (PRDWC_WC_Admin::can_disable_custom_backend_projects()) ? '' : [ 'disabled' => 'disabled' ] ,
       // ),
       array(
-        'name' => __( 'Customer defined amount', 'project-products' ),
+        'name' => __( 'Customer defined amount', 'project-donations-wc' ),
         'type' => 'checkbox',
-        'id'   => 'propro_custom_amount',
+        'id'   => 'prdwc_custom_amount',
         'desc' => sprintf(
           '%s <span class=description>%s</span>',
-          __( 'Allow customer to choose the amount to pay', 'project-products' ),
-          __( '(enable only if no other plugin implements it)', 'project-products' ),
+          __( 'Allow customer to choose the amount to pay', 'project-donations-wc' ),
+          __( '(enable only if no other plugin implements it)', 'project-donations-wc' ),
         ),
       ),
       array(
-        'id' => 'propro_minimum_amount',
-        'name' => sprintf(__('Minimum donation amount (%s)', 'project-products'), get_woocommerce_currency_symbol()),
+        'id' => 'prdwc_minimum_amount',
+        'name' => sprintf(__('Minimum donation amount (%s)', 'project-donations-wc'), get_woocommerce_currency_symbol()),
         'type' => 'number',
         'default' => 0,
-        // 'custom_attributes' => (get_option('propro_custom_amount') != 'yes') ? [ 'disabled' => 'disabled' ] : [],
+        // 'custom_attributes' => (get_option('prdwc_custom_amount') != 'yes') ? [ 'disabled' => 'disabled' ] : [],
         'custom_attributes' => array(
           'min' => 0,
           'size' => 3,
           'step' => 'any',
-          (get_option('propro_custom_amount') != 'yes') ? 'disabled' : '' => 1,
+          (get_option('prdwc_custom_amount') != 'yes') ? 'disabled' : '' => 1,
         ),
       ),
       array(
         'type' => 'sectionend',
-        'id' => 'propro_section_projects_end'
+        'id' => 'prdwc_section_projects_end'
       ),
 
     //   array(
-    //     'name'     => __( 'Enable globally', 'project-products' ),
+    //     'name'     => __( 'Enable globally', 'project-donations-wc' ),
     //     'type'     => 'title',
-    //     'id'       => 'propro_section_global',
+    //     'id'       => 'prdwc_section_global',
     //   ),
     //   array(
-    //     'name' => __( 'Default project product', 'project-products' ),
+    //     'name' => __( 'Default project donations', 'project-donations-wc' ),
     //     'type' => 'select',
-    //     'id'   => 'propro_default_product',
-    //     'options' => PROPRO_WC_Admin::select_product_options(),
-    //     // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
+    //     'id'   => 'prdwc_default_product',
+    //     'options' => PRDWC_WC_Admin::select_product_options(),
+    //     // 'desc_tip' => __( 'Default product for project support.', 'project-donations-wc' ),
     //   ),
     //   array(
-    //     'name' => __( 'Enable categories', 'project-products' ),
+    //     'name' => __( 'Enable categories', 'project-donations-wc' ),
     //     'type' => 'multiselect',
-    //     'id'   => 'propro_enable_categories',
-    //     'options' => PROPRO_WC_Admin::select_category_options(),
-    //     // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
+    //     'id'   => 'prdwc_enable_categories',
+    //     'options' => PRDWC_WC_Admin::select_category_options(),
+    //     // 'desc_tip' => __( 'Default product for project support.', 'project-donations-wc' ),
     //   ),
     //   array(
-    //     'name' => __( 'Enable tags', 'project-products' ),
+    //     'name' => __( 'Enable tags', 'project-donations-wc' ),
     //     'type' => 'multiselect',
-    //     'id'   => 'propro_enable_tags',
-    //     'options' => PROPRO_WC_Admin::select_taxonomy_options(),
-    //     // 'desc_tip' => __( 'Default product for project support.', 'project-products' ),
+    //     'id'   => 'prdwc_enable_tags',
+    //     'options' => PRDWC_WC_Admin::select_taxonomy_options(),
+    //     // 'desc_tip' => __( 'Default product for project support.', 'project-donations-wc' ),
     //   ),
     //   array(
     //     'type' => 'sectionend',
-    //     'id' => 'propro_section_global_end'
+    //     'id' => 'prdwc_section_global_end'
     //   ),
     //
     );
-    return apply_filters( 'propro_settings', $settings );
+    return apply_filters( 'prdwc_settings', $settings );
   }
 
   static function select_product_options($args = []) {
@@ -186,9 +186,9 @@ class PROPRO_WC_Admin {
     ), $args);
 
     $products = wc_get_products($args);
-    if(!$products) return [ '' => __('No products found', 'project-products')];
+    if(!$products) return [ '' => __('No products found', 'project-donations-wc')];
 
-    $products_array = array('' => _x('None', 'Select product', 'project-products'));
+    $products_array = array('' => _x('None', 'Select product', 'project-donations-wc'));
     foreach($products as $product) {
       $products_array[$product->id] = $product->get_formatted_name();
     }
@@ -204,9 +204,9 @@ class PROPRO_WC_Admin {
       'hide_empty' => false,
     ), $cat_args);
     $product_categories = get_terms( 'product_cat', $cat_args );
-    if(empty($product_categories)) return [ '' => __('No categories found', 'project-products')];
+    if(empty($product_categories)) return [ '' => __('No categories found', 'project-donations-wc')];
 
-    $categories_array = array('' => _x('None', 'Select category', 'project-products'));
+    $categories_array = array('' => _x('None', 'Select category', 'project-donations-wc'));
     foreach ($product_categories as $key => $category) {
       $categories_array[$category->term_id] = $category->name;
     }
@@ -223,8 +223,8 @@ class PROPRO_WC_Admin {
       'hide_empty' => false,
     ), $tax_args);
     $product_taxonomies = get_terms( $tax_args );
-    if(empty($product_taxonomies)) return [ '' => __('No taxonomies found', 'project-products')];
-    $taxonomies_array = array('' => _x('None', 'Select taxonomy', 'project-products'));
+    if(empty($product_taxonomies)) return [ '' => __('No taxonomies found', 'project-donations-wc')];
+    $taxonomies_array = array('' => _x('None', 'Select taxonomy', 'project-donations-wc'));
     foreach ($product_taxonomies as $key => $taxonomy) {
       $taxonomies_array[$taxonomy->term_id] = $taxonomy->name;
     }
@@ -238,9 +238,9 @@ class PROPRO_WC_Admin {
       // '_builtin' => false
     );
     $post_types = get_post_types($args, 'objects');
-    if(empty($post_types)) return [ '' => __('No post types found, wich is tretty weird.', 'project-products')];
+    if(empty($post_types)) return [ '' => __('No post types found, wich is tretty weird.', 'project-donations-wc')];
 
-    $post_types_array = array('' => _x('None', 'Select post type', 'project-products'));
+    $post_types_array = array('' => _x('None', 'Select post type', 'project-donations-wc'));
     foreach ($post_types as $key => $post_type) {
       $post_types_array[$post_type->name] = $post_type->label;
     }
@@ -249,4 +249,4 @@ class PROPRO_WC_Admin {
   }
 }
 
-PROPRO_WC_Admin::init();
+PRDWC_WC_Admin::init();
