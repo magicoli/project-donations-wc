@@ -42,3 +42,4 @@ node_modules
 composer.lock
 vendor/
 .gitattributes
+.wpignore
