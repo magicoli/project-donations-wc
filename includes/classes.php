@@ -1,5 +1,7 @@
 <?php defined( 'PROPRO_VERSION' ) || die;
 
+require(plugin_dir_path(__FILE__) . 'post-types-project.php');
+
 function propro_is_project_product($product_id) {
   // return true; // let's handle this later
 	return (wc_get_product( $product_id )->get_meta( '_linkproject' ) == 'yes');
@@ -41,6 +43,8 @@ class PROPRO {
     add_filter( 'woocommerce_product_add_to_cart_text', __CLASS__ . '::add_to_card_button', 10, 2);
     add_filter( 'woocommerce_product_single_add_to_cart_text', __CLASS__ . '::single_add_to_card_button', 10, 2);
 
+		if(get_option('propro_create_project_post_type', false) ==  'yes')  add_action( 'init', 'propro_register_project_posttype' );
+		
 		add_action( 'plugins_loaded', __CLASS__ . '::load_plugin_textdomain' );
   }
 

@@ -27,6 +27,8 @@ if(!defined('PROPRO_VERSION')) {
   require(plugin_dir_path(__FILE__) . 'includes/classes.php');
   // if(is_admin()) require(plugin_dir_path(__FILE__) . 'admin/wc-admin-classes.php');
 
+  if(is_admin()) require_once(__DIR__ . '/admin/wc-admin-classes.php');
+
   if(file_exists(plugin_dir_path( __FILE__ ) . 'lib/package-updater.php'))
   include_once plugin_dir_path( __FILE__ ) . 'lib/package-updater.php';
 }
