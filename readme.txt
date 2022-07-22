@@ -16,18 +16,19 @@ Add project field to products, allow cutomers to link their purchase to a projec
 Allow to set WooCommerce product as "Project Product"
 
 * add a "Project" field
-* set flexible price with "Amount" field
+* allow creation of a "Project" post type
+* allow free type project name or select from a list (from projects or another post type)
+* allow flexible price with "Amount" field (if the product has a price higher than zero, the donation amount will be added to the normal product price)
 * compatible with subscriptions and variations
-
-If the product has a price higher than zero, the amount will be added to the regular product price.
 
 Mostly useful for donations, to allow cutomers to support different project.
 
 == Installation ==
 
 * Install as usual (download and unzip in wp-content/plugins/ folder, then activate)
-* Optionally, in WooCommerce -> Settings -> Product Projects, activate "create project post type" or choose and existing post type to use as projects
-(if set, a selection menu will be presented to the user instead of a text input box)
+* Set preferences in WooCommerce -> Settings -> Product Projects
+  - optionally activate "create project post type" or choose and existing post type to use as projects (if set, a selection menu will be presented to the user instead of a text input box)
+  - optionally allow client to choose amount to pay (if you don't already use another plugin for this feature)
 * Create a product, check "Project Product" option
 * Set product price to zero, or to a minimum amount
 * You would probably also activate "Virtual" option

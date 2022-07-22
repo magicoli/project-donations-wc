@@ -85,7 +85,7 @@ class PROPRO_WC_Admin {
         'id'   => 'propro_create_project_post_type',
         'desc' => sprintf(
           '%s <span class=description>%s</span>',
-          __( 'Create a project post type</span>', 'project-products' ),
+          __( 'Create a project post type', 'project-products' ),
           __( '(enable only if no other plugin implements it)', 'project-products' ),
         ),
         'callback' => 'nocallback',
