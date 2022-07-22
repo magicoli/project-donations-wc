@@ -58,6 +58,9 @@ Yes
 
 == Changelog ==
 
+= 1.3.1 =
+* added NL and DE localizations
+
 = 1.3 =
 * new choice to create "project" post type or choose an existing post type as projects * product page display a project selection menu  post type if project post type is set, free type text input instead
 * added allow custom amount option for project products

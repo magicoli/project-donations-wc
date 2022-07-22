@@ -7,7 +7,7 @@
  * Author URI:      https://magiiic.com/
  * Text Domain:     project-products
  * Domain Path:     /languages
- * Version:         1.3
+ * Version:         1.3.1
  *
  * @package         Product_Addons_Autofill
  *
