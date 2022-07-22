@@ -1,6 +1,6 @@
 ## Changelog
 
-### Unreleased
+### 1.4.1
 * fix update library and assets
 
 ### 1.4

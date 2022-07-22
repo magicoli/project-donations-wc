@@ -5,7 +5,7 @@ Tags: woocommerce, projects, product, donation
 Requires at least: 4.5
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,7 +76,7 @@ Not currently, but this feature will be added in a future release. You can still
 
 == Changelog ==
 
-= Unreleased =
+= 1.4.1 =
 * fix update library and assets
 
 = 1.4 =
