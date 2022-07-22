@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.4
+* renamed plugin as project-donations-wc
+
 ### 1.3.1
 * added NL and DE localizations
 

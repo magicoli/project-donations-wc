@@ -5,23 +5,40 @@
 * Requires at least: 4.5
 * Tested up to: 6.0.1
 * Requires PHP: 5.6
-* Stable tag: 1.0
+* Stable tag: 1.4
 * License: GPLv2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Add project field to products, allow cutomers to link their purchase to a project
+Collect donations for projects with Woocommerce.
 
 ## Description
 
-Allow to set WooCommerce product as "Project Donation"
+Collect donations for different projects with a WooCommerce product.
 
-* add a "Project" field
-* allow creation of a "Project" post type
-* allow free type project name or select from a list (from projects or another post type)
-* allow flexible price with "Amount" field (if the product has a price higher than zero, the donation amount will be added to the normal product price)
-* compatible with subscriptions and variations
+If you are like me, you work on several projects and would like to simply collect donations for them, without bothering creating and configuring a product for each project.
 
-Mostly useful for donations, to allow cutomers to support different project.
+This plugin is mostly intended to be easy to set up. It is mostly usefull if you want to get donations and need or already use WooCommerce platform.
+
+### Features
+
+* switch to enable any product as Project Donation
+* **add project field** on enabled product page, with
+  - with free type project name
+  - or drop down selection list (from project or another post type)
+* optionally **add "Project" post type** to WordPress (if needed and not provided by another plugin)
+* optionally replace fixed price with a **flexible Amount field** (if not provided by another plugin). When the product has a fixed price higher than zero, the donation amount will be added to the normal product price)
+* **compatible with subscriptions, variable products**, and probably any other WooCommerce product type
+* **compatible with WooCommerce Name Your Price** (although main features are included in Project Donations)
+* localization ready
+
+### Roadmap
+
+* global or per-product settings
+* collect donations statitics per project
+* add donation field to cart or checkout page
+* allow fixed project for some products
+* permalink like /donate/projectname/amount
+* customize notification mails
 
 ## Frequently Asked Questions
 

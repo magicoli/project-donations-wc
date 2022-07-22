@@ -5,7 +5,7 @@ Tags: woocommerce, projects, product, donation
 Requires at least: 4.5
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 1.0
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,9 @@ Not currently, but these features could be added in a future release.
 Yes
 
 == Changelog ==
+
+= 1.4 =
+* renamed plugin as project-donations-wc
 
 = 1.3.1 =
 * added NL and DE localizations
