@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-22T15:29:54-04:00\n"
+"POT-Creation-Date: 2022-07-22T15:45:49-04:00\n"
 "PO-Revision-Date: \n"
 "Language: de\n"
 "X-Generator: Poedit 3.0.1\n"
@@ -146,12 +146,8 @@ msgid "Amount"
 msgstr "Betrag"
 
 #: includes/classes.php:222
-msgid "Amount to add"
-msgstr "Hinzuzufügender Betrag"
-
-#: includes/classes.php:222
-msgid "Amount to pay"
-msgstr "Zu zahlender Betrag"
+msgid "Donation amount"
+msgstr "Spendenbetrag"
 
 #: includes/classes.php:286
 msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
@@ -312,6 +308,12 @@ msgstr "Name des neuen Etiketts"
 #: includes/post-type-project.php:81
 msgid "Tags"
 msgstr "Etiketten"
+
+#~ msgid "Amount to add"
+#~ msgstr "Hinzuzufügender Betrag"
+
+#~ msgid "Amount to pay"
+#~ msgstr "Zu zahlender Betrag"
 
 #~ msgid "Project Products"
 #~ msgstr "Projekterlöse"
