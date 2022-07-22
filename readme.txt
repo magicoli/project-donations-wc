@@ -5,7 +5,6 @@ Tags: woocommerce, projects, product, donation
 Requires at least: 4.5
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,17 +63,18 @@ https://magiiic.com/donate/project/?project=Project+Donations+plugin&amount=5
 
 = Can I link project to a project page / a specific projects list? =
 
-Not currently, but these features could be added in a future release.
-
-= Can I see sales statistics per project? =
-
-Not currently, but these features could be added in a future release.
+Yes, activate "Add project post type" or choose a post type dedicated to projects in WooCommerce Product Donations settings tab.
 
 = Can cutomer choose the purchase amount? =
 
-Yes
+Yes, activate "Customer defined amount" in WooCommerce Product Donations settings tab.
+
+= Can I see sales statistics per project? =
+
+Not currently, but this feature will be added in a future release. You can still get some insights from WooCommerce stats, however.
 
 == Changelog ==
+
 
 = 1.4 =
 * renamed plugin as project-donations-wc
