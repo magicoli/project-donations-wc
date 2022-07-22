@@ -7,6 +7,10 @@ function propro_is_project_product($product_id) {
 	return (wc_get_product( $product_id )->get_meta( '_linkproject' ) == 'yes');
 }
 
+function propro_allow_custom_amount() {
+	if(get_option('propro_custom_amount') == 'yes') return true;
+	return false;
+}
 /**
  * [PROPRO description]
  */
@@ -207,18 +211,20 @@ class PROPRO {
 			)),
 		);
 
-		$fields[] = array(
-			'name' => 'amount',
-			'label' => ($price > 0 ) ? __('Add to fee', 'lodgify-link') : __('Amount', 'lodgify-link'),
-			'placeholder' => ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
-			'type' => 'number',
-			'required' => true,
-			'value' => $amount,
-			'custom_attributes' => array(
-				'min' => 0,
-				'step' => 'any',
-			)
-		);
+		if(propro_allow_custom_amount()) {
+			$fields[] = array(
+				'name' => 'amount',
+				'label' => ( ($price > 0 ) ? __('Add to fee', 'lodgify-link') : __('Amount', 'lodgify-link') ) . ' (' . get_woocommerce_currency_symbol() . ')',
+				'placeholder' => ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
+				'type' => 'number',
+				'required' => true,
+				'value' => $amount,
+				'custom_attributes' => array(
+					'min' => get_option('propro_minimum_amount', 1),
+					'step' => 'any',
+				)
+			);
+		}
 
 		foreach($fields as $field) {
 			PROPRO::display_custom_field($field);
@@ -261,20 +267,22 @@ class PROPRO {
       else if(!empty($_REQUEST['project'])) $project = sanitize_text_field($_REQUEST['project']);
       else $project = NULL;
 
-			if(!empty($_POST['propro-amount'])) $amount = sanitize_text_field($_POST['propro-amount']);
-      else if(!empty($_REQUEST['amount'])) $amount = sanitize_text_field($_REQUEST['amount']);
-      else $amount = 0;
 
 			$product = wc_get_product( $product_id );
 			$price = $product->get_price();
 
-			if(!is_numeric($amount) || $amount + $price <= 0) {
-				$product_title = $product->get_title();
-				wc_add_notice( sprintf(
-          __('"%s" could not be added to the cart. Please provide a valid amount to pay.', 'lodgify-link'),
-          sprintf('<a href="%s">%s</a>', get_permalink($product_id), $product_title),
-        ), 'error' );
-        return false;
+			if(propro_allow_custom_amount()) {
+				if(!empty($_POST['propro-amount'])) $amount = sanitize_text_field($_POST['propro-amount']);
+				else if(!empty($_REQUEST['amount'])) $amount = sanitize_text_field($_REQUEST['amount']);
+				else $amount = 0;
+				if(!is_numeric($amount) || $amount + $price <= 0) {
+					$product_title = $product->get_title();
+					wc_add_notice( sprintf(
+						__('"%s" could not be added to the cart. Please provide a valid amount to pay.', 'lodgify-link'),
+						sprintf('<a href="%s">%s</a>', get_permalink($product_id), $product_title),
+					), 'error' );
+					return false;
+				}
 			}
 
       if( empty( $project ) ) {
@@ -310,11 +318,13 @@ class PROPRO {
 		else $project = NULL;
 		$cart_item_data['propro-project-name'] = sanitize_text_field($project);
 
-		if(!empty($_POST['propro-amount'])) $amount = $_POST['propro-amount'];
-    else if(!empty($_REQUEST['amount'])) $amount = $_REQUEST['amount'];
-		else if(!empty($_REQUEST['nyp'])) $amount = $_REQUEST['nyp'];
-		else $amount = NULL;
-		$cart_item_data['propro-amount'] = sanitize_text_field($amount);
+		if(propro_allow_custom_amount()) {
+			if(!empty($_POST['propro-amount'])) $amount = $_POST['propro-amount'];
+			else if(!empty($_REQUEST['amount'])) $amount = $_REQUEST['amount'];
+			else if(!empty($_REQUEST['nyp'])) $amount = $_REQUEST['nyp'];
+			else $amount = NULL;
+			$cart_item_data['propro-amount'] = sanitize_text_field($amount);
+		}
 
     return $cart_item_data;
   }
@@ -367,6 +377,7 @@ class PROPRO {
   }
 
 	static function get_variation_price_html( $data, $product, $variation ) {
+		if(!propro_allow_custom_amount()) return $data;
 		// if(propro_is_project_product( $product->get_id() ))
 		if($data['display_price'] > 0) {
 			$data['price_html'] = sprintf(
@@ -389,6 +400,8 @@ class PROPRO {
     if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
       return;
     }
+		if(!propro_allow_custom_amount()) return;
+
     // Iterate through each cart item
     foreach( $cart->get_cart() as $cart_key => $cart_item ) {
       $cached = wp_cache_get('propro_cart_item_processed_' . $cart_key, 'project-products');
