@@ -122,9 +122,10 @@ class PROPRO {
 			$attributes[] = 'disabled';
 		}
 
-		foreach($custom_attributes as $key => $value) {
-			$attributes[] = $key . '="' . $value . '"';
+		foreach($custom_attributes as $attr_key => $attr_value) {
+			$attributes[] = $attr_key . '="' . $attr_value . '"';
 		}
+		
 		switch($type) {
 			case 'select':
 			case 'multiselect':
