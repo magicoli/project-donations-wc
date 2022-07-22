@@ -16,10 +16,10 @@ Add project field to products, allow cutomers to link their purchase to a projec
 Allow to set WooCommerce product as "Project Product"
 
 * add a "Project" field
-* set flexible price with "Amount" field
+* allow creation of a "Project" post type
+* allow free type project name or select from a list (from projects or another post type)
+* allow flexible price with "Amount" field (if the product has a price higher than zero, the donation amount will be added to the normal product price)
 * compatible with subscriptions and variations
-
-If the product has a price higher than zero, the amount will be added to the regular product price.
 
 Mostly useful for donations, to allow cutomers to support different project.
 

@@ -58,6 +58,12 @@ Yes
 
 == Changelog ==
 
+= 1.3 =
+* new choice to create "project" post type or choose an existing post type as projects * product page display a project selection menu  post type if project post type is set, free type text input instead
+* added allow custom amount option for project products
+* added WooCommerce settings tab for Project Products
+* added WooCommerce settings tab
+
 = 1.2.1 =
 * updated readme with 1.2 changes
 
