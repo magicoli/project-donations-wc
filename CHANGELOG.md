@@ -1,5 +1,7 @@
 ## Changelog
 
+### Unreleased
+* fix update library and assets
 
 ### 1.4
 * renamed plugin as project-donations-wc

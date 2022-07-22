@@ -43,3 +43,4 @@ node_modules export-ignore
 composer.lock export-ignore
 vendor/ export-ignore
 .gitattributes export-ignore
+.wpignore export-ignore
