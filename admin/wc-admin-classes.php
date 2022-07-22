@@ -117,29 +117,29 @@ class PROPRO_WC_Admin {
       //   'class' => (PROPRO_WC_Admin::can_disable_custom_backend_projects()) ? '' : 'disabled',
       //   'custom_attributes' => (PROPRO_WC_Admin::can_disable_custom_backend_projects()) ? '' : [ 'disabled' => 'disabled' ] ,
       // ),
-      // array(
-      //   'name' => __( 'Customer defined amount', 'project-products' ),
-      //   'type' => 'checkbox',
-      //   'id'   => 'propro_custom_amount',
-      //   'desc' => sprintf(
-      //     '%s <span class=description>%s</span>',
-      //     __( 'Allow customer to choose the amount to pay', 'project-products' ),
-      //     __( '(enable only if no other plugin implements it)', 'project-products' ),
-      //   ),
-      // ),
-      // array(
-      //   'id' => 'propro_minimum_amount',
-      //   'name' => sprintf(__('Minimum donation amount (%s)', 'project-products'), get_woocommerce_currency_symbol()),
-      //   'type' => 'number',
-      //   'default' => 0,
-      //   // 'custom_attributes' => (get_option('propro_custom_amount') != 'yes') ? [ 'disabled' => 'disabled' ] : [],
-      //   'custom_attributes' => array(
-      //     'min' => 0,
-      //     'size' => 3,
-      //     'step' => 'any',
-      //     (get_option('propro_custom_amount') != 'yes') ? 'disabled' : '' => 1,
-      //   ),
-      // ),
+      array(
+        'name' => __( 'Customer defined amount', 'project-products' ),
+        'type' => 'checkbox',
+        'id'   => 'propro_custom_amount',
+        'desc' => sprintf(
+          '%s <span class=description>%s</span>',
+          __( 'Allow customer to choose the amount to pay', 'project-products' ),
+          __( '(enable only if no other plugin implements it)', 'project-products' ),
+        ),
+      ),
+      array(
+        'id' => 'propro_minimum_amount',
+        'name' => sprintf(__('Minimum donation amount (%s)', 'project-products'), get_woocommerce_currency_symbol()),
+        'type' => 'number',
+        'default' => 0,
+        // 'custom_attributes' => (get_option('propro_custom_amount') != 'yes') ? [ 'disabled' => 'disabled' ] : [],
+        'custom_attributes' => array(
+          'min' => 0,
+          'size' => 3,
+          'step' => 'any',
+          (get_option('propro_custom_amount') != 'yes') ? 'disabled' : '' => 1,
+        ),
+      ),
       array(
         'type' => 'sectionend',
         'id' => 'propro_section_projects_end'

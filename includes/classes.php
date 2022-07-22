@@ -125,7 +125,6 @@ class PROPRO {
 		foreach($custom_attributes as $attr_key => $attr_value) {
 			$attributes[] = $attr_key . '="' . $attr_value . '"';
 		}
-		
 		switch($type) {
 			case 'select':
 			case 'multiselect':
@@ -139,7 +138,8 @@ class PROPRO {
 			);
 			foreach ( $options as $key => $option ) {
 			  $input .= sprintf(
-			    '<option value="%1$s" %3$s>%2$s</option>',
+			    '<option id="%1$s-%2$s" value="%2$s" %4$s>%3$s</option>',
+					$name,
 			    $key,
 			    $option,
 					(is_array($value)) ? selected(in_array($key, $value, false), true) : selected( $value, $key, false ),
@@ -182,7 +182,7 @@ class PROPRO {
 		if(!propro_is_project_product( $post->ID )) return;
 
 		$project = (isset($_REQUEST['project'])) ? esc_attr($_REQUEST['project']) : NULL;
-		$project_id = (isset($_REQUEST['project_id'])) ? esc_attr($_REQUEST['project_id']) : NULL;
+		$project_id = (isset($_REQUEST['project-id'])) ? esc_attr($_REQUEST['project-id']) : NULL;
 		$price = $product->get_price();
 		$amount = (isset($_REQUEST['amount'])) ? esc_attr($_REQUEST['amount']) : ((isset($_REQUEST['nyp'])) ? esc_attr($_REQUEST['nyp']) : NULL);
 
