@@ -9,19 +9,36 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Add project field to products, allow cutomers to link their purchase to a project
+Collect donations for projects with Woocommerce.
 
 == Description ==
 
-Allow to set WooCommerce product as "Project Product"
+Collect donations for different projects with a WooCommerce product.
 
-* add a "Project" field
-* allow creation of a "Project" post type
-* allow free type project name or select from a list (from projects or another post type)
-* allow flexible price with "Amount" field (if the product has a price higher than zero, the donation amount will be added to the normal product price)
-* compatible with subscriptions and variations
+If you are like me, you work on several projects and would like to simply collect donations for them, without bothering creating and configuring a product for each project.
 
-Mostly useful for donations, to allow cutomers to support different project.
+This plugin is mostly intended to be easy to set up. It is mostly usefull if you want to get donations and need or already use WooCommerce platform.
+
+= Features =
+
+* switch to enable any product as Project Donation
+* **add project field** on enabled product page, with
+  - with free type project name
+  - or drop down selection list (from project or another post type)
+* optionally **add "Project" post type** to WordPress (if needed and not provided by another plugin)
+* optionally replace fixed price with a **flexible Amount field** (if not provided by another plugin). When the product has a fixed price higher than zero, the donation amount will be added to the normal product price)
+* **compatible with subscriptions, variable products**, and probably any other WooCommerce product type
+* **compatible with WooCommerce Name Your Price** (although main features are included in Project Donations)
+* localization ready
+
+= Roadmap =
+
+* global or per-product settings
+* collect donations statitics per project
+* add donation field to cart or checkout page
+* allow fixed project for some products
+* permalink like /donate/projectname/amount
+* customize notification mails
 
 == Installation ==
 
@@ -29,9 +46,10 @@ Mostly useful for donations, to allow cutomers to support different project.
 * Set preferences in WooCommerce -> Settings -> Product Projects
   - optionally activate "create project post type" or choose and existing post type to use as projects (if set, a selection menu will be presented to the user instead of a text input box)
   - optionally allow client to choose amount to pay (if you don't already use another plugin for this feature)
-* Create a product, check "Project Product" option
-* Set product price to zero, or to a minimum amount
-* You would probably also activate "Virtual" option
+* Create a product
+  - check "Project Donation" option, near product type selection
+  - check "Virtual" option (recommended but optional)
+  - set product price to zero (recommended), or to a higher amount (in this case, the donation will be added to the fixed price, but it would be clearer for the customer to set a minimum donation amount instead)
 
 The product page will display "Project" and "Amount" fields
 To create a link for a specific project, add "project" parameter to the URL, like:
@@ -63,8 +81,8 @@ Yes
 
 = 1.3 =
 * new choice to create "project" post type or choose an existing post type as projects * product page display a project selection menu  post type if project post type is set, free type text input instead
-* added allow custom amount option for project products
-* added WooCommerce settings tab for Project Products
+* added allow custom amount option for project donations
+* added WooCommerce settings tab for Project Donations
 * added WooCommerce settings tab
 
 = 1.2.1 =
@@ -85,7 +103,7 @@ Yes
 
 = 1.0 =
 * new Project name field on products, autofill if URL parameter project is provided, project name added in cart item name
-* added "Project Product" option to product type section in edit page
+* added "Project Donation" option to product type section in edit page
 * added french localization
 
 = 0.1.0 =
