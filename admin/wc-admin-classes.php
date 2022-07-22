@@ -16,8 +16,6 @@ class PROPRO_WC_Admin {
 
     add_filter( 'plugin_action_links_' . PROPRO_PLUGIN, __CLASS__ . '::add_action_links' );
 
-    // add_filter( "woocommerce_admin_settings_sanitize_option_propro_openprovider_hash", __CLASS__ . '::check_credentials', 10, 3 );
-    // add_filter( "woocommerce_admin_settings_sanitize_option_propro_openprovider_username", __CLASS__ . '::check_credentials', 10, 3 );
   }
 
   public static function add_action_links ( $actions ) {
@@ -182,7 +180,6 @@ class PROPRO_WC_Admin {
 
   static function select_product_options($args = []) {
     $args = array_merge(array(
-      // 'category' => array( 'hoodies' ),
       'status' => 'publish',
       'orderby'  => 'name',
   		'limit' => -1,
@@ -240,8 +237,6 @@ class PROPRO_WC_Admin {
       'public'   => true,
       // '_builtin' => false
     );
-    // $output = 'names'; // 'names' or 'objects' (default: 'names')
-    // $operator = 'and'; // 'and' or 'or' (default: 'and')
     $post_types = get_post_types($args, 'objects');
     if(empty($post_types)) return [ '' => __('No post types found, wich is tretty weird.', 'project-products')];
 
