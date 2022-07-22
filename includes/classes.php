@@ -218,8 +218,8 @@ class PRDWC {
 		if(prdwc_allow_custom_amount()) {
 			$fields[] = array(
 				'name' => 'amount',
-				'label' => ( ($price > 0 ) ? __('Add to fee', 'lodgify-link') : __('Amount', 'lodgify-link') ) . ' (' . get_woocommerce_currency_symbol() . ')',
-				'placeholder' => ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
+				'label' => ( ($price > 0 ) ? __('Add to fee', 'project-donations-wc') : __('Amount', 'project-donations-wc') ) . ' (' . get_woocommerce_currency_symbol() . ')',
+				'placeholder' => __('Donation amount', 'project-donations-wc'),
 				'type' => 'number',
 				'required' => true,
 				'value' => $amount,
@@ -256,10 +256,10 @@ class PRDWC {
 		//       <input type="number" class="input-text" name="prdwc-amount" value="%s" placeholder="%s" step="any" required>
 		//     </p>
 		//   </div>',
-		//   ($price > 0 ) ? __('Add to fee', 'lodgify-link') : __('Amount', 'lodgify-link'),
+		//   ($price > 0 ) ? __('Add to fee', 'project-donations-wc') : __('Amount', 'project-donations-wc'),
 		//   ' <abbr class="required" title="required">*</abbr>',
 		//   $amount,
-		//   ($price > 0 ) ? __("Amount to add", 'lodgify-link') : __("Amount to pay", 'lodgify-link'),
+		//   ($price > 0 ) ? __("Amount to add", 'project-donations-wc') : __('Amount to pay', 'project-donations-wc'),
 		// );
 		printf('</div>');
   }
@@ -283,7 +283,7 @@ class PRDWC {
 				if(!is_numeric($amount) || $amount + $price <= 0) {
 					$product_title = $product->get_title();
 					wc_add_notice( sprintf(
-						__('"%s" could not be added to the cart. Please provide a valid amount to pay.', 'lodgify-link'),
+						__('"%s" could not be added to the cart. Please provide a valid amount to pay.', 'project-donations-wc'),
 						sprintf('<a href="%s">%s</a>', get_permalink($product_id), $product_title),
 					), 'error' );
 					return false;

@@ -1,24 +1,24 @@
 # Copyright (C) 2022 Magiiic
-# This file is distributed under the same license as the Project Products for WooCommerce plugin.
+# This file is distributed under the same license as the Project Donations for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Project Products for WooCommerce 1.2.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-products\n"
+"Project-Id-Version: Project Donations for WooCommerce 1.3.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-22T00:42:12-04:00\n"
+"POT-Creation-Date: 2022-07-22T15:29:54-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 
 #. Plugin Name of the plugin
-msgid "Project Products for WooCommerce"
+msgid "Project Donations for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://magiiic.com/wordpress/plugins/project-products/"
+msgid "https://magiiic.com/wordpress/plugins/project-donations/"
 msgstr ""
 
 #. Description of the plugin
@@ -33,283 +33,283 @@ msgstr ""
 msgid "https://magiiic.com/"
 msgstr ""
 
-#: admin/wc-admin-classes.php:25
+#: admin/wc-admin-classes.php:23
 msgid "Settings"
 msgstr ""
 
-#: admin/wc-admin-classes.php:37
-msgid "Project Products"
+#: admin/wc-admin-classes.php:35
+msgid "Project Donations"
 msgstr ""
 
-#: admin/wc-admin-classes.php:77
+#: admin/wc-admin-classes.php:75
 msgid "Default settings"
 msgstr ""
 
-#: admin/wc-admin-classes.php:80
+#: admin/wc-admin-classes.php:78
 msgid "These settings can be overridden for each product."
 msgstr ""
 
-#: admin/wc-admin-classes.php:83
+#: admin/wc-admin-classes.php:81
 msgid "Add project post type"
 msgstr ""
 
-#: admin/wc-admin-classes.php:88
+#: admin/wc-admin-classes.php:86
 msgid "Create a project post type"
 msgstr ""
 
-#: admin/wc-admin-classes.php:89
-#: admin/wc-admin-classes.php:127
+#: admin/wc-admin-classes.php:87
+#: admin/wc-admin-classes.php:125
 msgid "(enable only if no other plugin implements it)"
 msgstr ""
 
-#: admin/wc-admin-classes.php:94
+#: admin/wc-admin-classes.php:92
 msgid "Get projects from post type"
 msgstr ""
 
-#: admin/wc-admin-classes.php:121
+#: admin/wc-admin-classes.php:119
 msgid "Customer defined amount"
 msgstr ""
 
-#: admin/wc-admin-classes.php:126
+#: admin/wc-admin-classes.php:124
 msgid "Allow customer to choose the amount to pay"
 msgstr ""
 
-#: admin/wc-admin-classes.php:132
+#: admin/wc-admin-classes.php:130
 msgid "Minimum donation amount (%s)"
 msgstr ""
 
-#: admin/wc-admin-classes.php:192
+#: admin/wc-admin-classes.php:189
 msgid "No products found"
 msgstr ""
 
-#: admin/wc-admin-classes.php:194
+#: admin/wc-admin-classes.php:191
 msgctxt "Select product"
 msgid "None"
 msgstr ""
 
-#: admin/wc-admin-classes.php:210
+#: admin/wc-admin-classes.php:207
 msgid "No categories found"
 msgstr ""
 
-#: admin/wc-admin-classes.php:212
+#: admin/wc-admin-classes.php:209
 msgctxt "Select category"
 msgid "None"
 msgstr ""
 
-#: admin/wc-admin-classes.php:229
+#: admin/wc-admin-classes.php:226
 msgid "No taxonomies found"
 msgstr ""
 
-#: admin/wc-admin-classes.php:230
+#: admin/wc-admin-classes.php:227
 msgctxt "Select taxonomy"
 msgid "None"
 msgstr ""
 
-#: admin/wc-admin-classes.php:246
+#: admin/wc-admin-classes.php:241
 msgid "No post types found, wich is tretty weird."
 msgstr ""
 
-#: admin/wc-admin-classes.php:248
+#: admin/wc-admin-classes.php:243
 msgctxt "Select post type"
 msgid "None"
 msgstr ""
 
-#: includes/classes.php:60
-#: includes/classes.php:65
-msgid "Support project"
+#: includes/classes.php:64
+#: includes/classes.php:69
+msgid "Donate"
 msgstr ""
 
-#: includes/classes.php:79
-msgid "Project Product"
+#: includes/classes.php:83
+msgid "Project Donation"
 msgstr ""
 
-#: includes/classes.php:80
+#: includes/classes.php:84
 msgid "Check to add a project field to product page."
 msgstr ""
 
-#: includes/classes.php:194
-#: includes/classes.php:200
-#: includes/classes.php:344
-#: includes/post-types-project.php:6
+#: includes/classes.php:202
+#: includes/classes.php:208
+#: includes/classes.php:359
+#: includes/post-type-project.php:6
 msgid "Project"
 msgstr ""
 
-#: includes/classes.php:197
+#: includes/classes.php:205
 msgid "Enter a project name"
 msgstr ""
 
-#: includes/classes.php:212
+#: includes/classes.php:221
 msgid "Add to fee"
 msgstr ""
 
-#: includes/classes.php:212
+#: includes/classes.php:221
 msgid "Amount"
 msgstr ""
 
-#: includes/classes.php:213
+#: includes/classes.php:222
 msgid "Amount to add"
 msgstr ""
 
-#: includes/classes.php:213
+#: includes/classes.php:222
 msgid "Amount to pay"
 msgstr ""
 
-#: includes/classes.php:274
+#: includes/classes.php:286
 msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
 msgstr ""
 
-#: includes/classes.php:284
+#: includes/classes.php:297
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
 msgstr ""
 
-#: includes/classes.php:346
+#: includes/classes.php:361
 msgid "Project ID"
 msgstr ""
 
-#: includes/classes.php:363
+#: includes/classes.php:378
 msgid "From"
 msgstr ""
 
-#: includes/classes.php:373
+#: includes/classes.php:389
 msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
 msgstr ""
 
-#: includes/classes.php:416
+#: includes/classes.php:434
 msgid "No posts found"
 msgstr ""
 
-#: includes/classes.php:418
+#: includes/classes.php:436
 msgid "Select a project"
 msgstr ""
 
-#: includes/post-types-project.php:5
+#: includes/post-type-project.php:5
 msgid "Projects"
 msgstr ""
 
-#: includes/post-types-project.php:7
+#: includes/post-type-project.php:7
 msgid "Add New"
 msgstr ""
 
-#: includes/post-types-project.php:8
+#: includes/post-type-project.php:8
 msgid "Add New Project"
 msgstr ""
 
-#: includes/post-types-project.php:9
+#: includes/post-type-project.php:9
 msgid "Edit Project"
 msgstr ""
 
-#: includes/post-types-project.php:10
+#: includes/post-type-project.php:10
 msgid "New Project"
 msgstr ""
 
-#: includes/post-types-project.php:11
+#: includes/post-type-project.php:11
 msgid "All Projects"
 msgstr ""
 
-#: includes/post-types-project.php:12
+#: includes/post-type-project.php:12
 msgid "View Project"
 msgstr ""
 
-#: includes/post-types-project.php:13
+#: includes/post-type-project.php:13
 msgid "Search Projects"
 msgstr ""
 
-#: includes/post-types-project.php:14
+#: includes/post-type-project.php:14
 msgid "Nothing found"
 msgstr ""
 
-#: includes/post-types-project.php:15
+#: includes/post-type-project.php:15
 msgid "Nothing found in Trash"
 msgstr ""
 
-#: includes/post-types-project.php:46
+#: includes/post-type-project.php:46
 msgid "Project Categories"
 msgstr ""
 
-#: includes/post-types-project.php:47
+#: includes/post-type-project.php:47
 msgid "Project Category"
 msgstr ""
 
-#: includes/post-types-project.php:48
+#: includes/post-type-project.php:48
 msgid "Search Categories"
 msgstr ""
 
-#: includes/post-types-project.php:49
+#: includes/post-type-project.php:49
 msgid "All Categories"
 msgstr ""
 
-#: includes/post-types-project.php:50
+#: includes/post-type-project.php:50
 msgid "Parent Category"
 msgstr ""
 
-#: includes/post-types-project.php:51
+#: includes/post-type-project.php:51
 msgid "Parent Category:"
 msgstr ""
 
-#: includes/post-types-project.php:52
+#: includes/post-type-project.php:52
 msgid "Edit Category"
 msgstr ""
 
-#: includes/post-types-project.php:53
+#: includes/post-type-project.php:53
 msgid "Update Category"
 msgstr ""
 
-#: includes/post-types-project.php:54
+#: includes/post-type-project.php:54
 msgid "Add New Category"
 msgstr ""
 
-#: includes/post-types-project.php:55
+#: includes/post-type-project.php:55
 msgid "New Category Name"
 msgstr ""
 
-#: includes/post-types-project.php:56
+#: includes/post-type-project.php:56
 msgid "Categories"
 msgstr ""
 
-#: includes/post-types-project.php:57
+#: includes/post-type-project.php:57
 msgid "You currently don't have any project categories."
 msgstr ""
 
-#: includes/post-types-project.php:71
+#: includes/post-type-project.php:71
 msgid "Project Tags"
 msgstr ""
 
-#: includes/post-types-project.php:72
+#: includes/post-type-project.php:72
 msgid "Project Tag"
 msgstr ""
 
-#: includes/post-types-project.php:73
+#: includes/post-type-project.php:73
 msgid "Search Tags"
 msgstr ""
 
-#: includes/post-types-project.php:74
+#: includes/post-type-project.php:74
 msgid "All Tags"
 msgstr ""
 
-#: includes/post-types-project.php:75
+#: includes/post-type-project.php:75
 msgid "Parent Tag"
 msgstr ""
 
-#: includes/post-types-project.php:76
+#: includes/post-type-project.php:76
 msgid "Parent Tag:"
 msgstr ""
 
-#: includes/post-types-project.php:77
+#: includes/post-type-project.php:77
 msgid "Edit Tag"
 msgstr ""
 
-#: includes/post-types-project.php:78
+#: includes/post-type-project.php:78
 msgid "Update Tag"
 msgstr ""
 
-#: includes/post-types-project.php:79
+#: includes/post-type-project.php:79
 msgid "Add New Tag"
 msgstr ""
 
-#: includes/post-types-project.php:80
+#: includes/post-type-project.php:80
 msgid "New Tag Name"
 msgstr ""
 
-#: includes/post-types-project.php:81
+#: includes/post-type-project.php:81
 msgid "Tags"
 msgstr ""
