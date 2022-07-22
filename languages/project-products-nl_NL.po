@@ -1,315 +1,316 @@
-# Copyright (C) 2022 Magiiic
-# This file is distributed under the same license as the Project Products for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Project Products for WooCommerce 1.2.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-products\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-22T00:42:12-04:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Project Products for WooCommerce\n"
+"Language: nl\n"
 
 #. Plugin Name of the plugin
+#: 
 msgid "Project Products for WooCommerce"
-msgstr ""
+msgstr "Project Producten voor WooCommerce"
 
 #. Plugin URI of the plugin
+#: 
+#, fuzzy
 msgid "https://magiiic.com/wordpress/plugins/project-products/"
-msgstr ""
+msgstr "https://magiiic.com/wordpress/plugins/project-products/"
 
 #. Description of the plugin
+#: 
 msgid "Add project field to WooCommerce products, allow clients to link their purchase to a project"
-msgstr ""
+msgstr "Voegt een project veld toe aan WooCommerce producten, zodat de klant zijn aankoop kan koppelen aan een project"
 
 #. Author of the plugin
+#: 
 msgid "Magiiic"
-msgstr ""
+msgstr "Magiiic"
 
 #. Author URI of the plugin
+#: 
 msgid "https://magiiic.com/"
-msgstr ""
+msgstr "https://magiiic.com/"
 
 #: admin/wc-admin-classes.php:25
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: admin/wc-admin-classes.php:37
 msgid "Project Products"
-msgstr ""
+msgstr "Projectproducten"
 
 #: admin/wc-admin-classes.php:77
 msgid "Default settings"
-msgstr ""
+msgstr "Standaard instellingen"
 
 #: admin/wc-admin-classes.php:80
 msgid "These settings can be overridden for each product."
-msgstr ""
+msgstr "Deze instellingen kunnen voor elk product worden gewijzigd."
 
 #: admin/wc-admin-classes.php:83
 msgid "Add project post type"
-msgstr ""
+msgstr "Een projecttype toevoegen"
 
 #: admin/wc-admin-classes.php:88
 msgid "Create a project post type"
-msgstr ""
+msgstr "Creëer een project item type"
 
 #: admin/wc-admin-classes.php:89
 #: admin/wc-admin-classes.php:127
 msgid "(enable only if no other plugin implements it)"
-msgstr ""
+msgstr "(alleen activeren als geen andere extensie het implementeert)"
 
 #: admin/wc-admin-classes.php:94
 msgid "Get projects from post type"
-msgstr ""
+msgstr "Verkrijg projecten van het type artikel"
 
 #: admin/wc-admin-classes.php:121
 msgid "Customer defined amount"
-msgstr ""
+msgstr "Door de klant bepaald bedrag"
 
 #: admin/wc-admin-classes.php:126
 msgid "Allow customer to choose the amount to pay"
-msgstr ""
+msgstr "De klant toestaan het te betalen bedrag te kiezen"
 
 #: admin/wc-admin-classes.php:132
 msgid "Minimum donation amount (%s)"
-msgstr ""
+msgstr "Minimum donatiebedrag (%s)"
 
 #: admin/wc-admin-classes.php:192
 msgid "No products found"
-msgstr ""
+msgstr "Geen producten gevonden"
 
 #: admin/wc-admin-classes.php:194
 msgctxt "Select product"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: admin/wc-admin-classes.php:210
 msgid "No categories found"
-msgstr ""
+msgstr "Geen categorie gevonden"
 
 #: admin/wc-admin-classes.php:212
 msgctxt "Select category"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: admin/wc-admin-classes.php:229
 msgid "No taxonomies found"
-msgstr ""
+msgstr "Geen taxonomie gevonden"
 
 #: admin/wc-admin-classes.php:230
 msgctxt "Select taxonomy"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: admin/wc-admin-classes.php:246
 msgid "No post types found, wich is tretty weird."
-msgstr ""
+msgstr "Geen type artikel gevonden, wat nogal vreemd is."
 
 #: admin/wc-admin-classes.php:248
 msgctxt "Select post type"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: includes/classes.php:60
 #: includes/classes.php:65
 msgid "Support project"
-msgstr ""
+msgstr "Steun het project"
 
 #: includes/classes.php:79
 msgid "Project Product"
-msgstr ""
+msgstr "Project"
 
 #: includes/classes.php:80
 msgid "Check to add a project field to product page."
-msgstr ""
+msgstr "Activeer om een projectveld aan de productpagina toe te voegen."
 
 #: includes/classes.php:194
 #: includes/classes.php:200
 #: includes/classes.php:344
 #: includes/post-types-project.php:6
 msgid "Project"
-msgstr ""
+msgstr "Project"
 
 #: includes/classes.php:197
 msgid "Enter a project name"
-msgstr ""
+msgstr "Voer een projectnaam in"
 
 #: includes/classes.php:212
 msgid "Add to fee"
-msgstr ""
+msgstr "Toevoegen aan prijslijst"
 
 #: includes/classes.php:212
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
 #: includes/classes.php:213
 msgid "Amount to add"
-msgstr ""
+msgstr "Toe te voegen bedrag"
 
 #: includes/classes.php:213
 msgid "Amount to pay"
-msgstr ""
+msgstr "Te betalen bedrag"
 
 #: includes/classes.php:274
 msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
-msgstr ""
+msgstr "\"%s\" kan niet aan het mandje worden toegevoegd. Geef een geldig bedrag om te betalen."
 
 #: includes/classes.php:284
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
-msgstr ""
+msgstr "\"%s\" kan niet aan het mandje worden toegevoegd. Geef een projectnaam."
 
 #: includes/classes.php:346
 msgid "Project ID"
-msgstr ""
+msgstr "Project-ID"
 
 #: includes/classes.php:363
 msgid "From"
-msgstr ""
+msgstr "Van"
 
 #: includes/classes.php:373
 msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
-msgstr ""
+msgstr "Het gekozen bedrag zal worden toegevoegd aan de basisprijs van %s, de totale prijs zal worden berekend voor de validatie van de bestelling."
 
 #: includes/classes.php:416
 msgid "No posts found"
-msgstr ""
+msgstr "Geen items gevonden"
 
 #: includes/classes.php:418
 msgid "Select a project"
-msgstr ""
+msgstr "Kies een project"
 
 #: includes/post-types-project.php:5
 msgid "Projects"
-msgstr ""
+msgstr "Projecten"
 
 #: includes/post-types-project.php:7
 msgid "Add New"
-msgstr ""
+msgstr "Toevoegen"
 
 #: includes/post-types-project.php:8
 msgid "Add New Project"
-msgstr ""
+msgstr "Een project toevoegen"
 
 #: includes/post-types-project.php:9
 msgid "Edit Project"
-msgstr ""
+msgstr "Het project wijzigen"
 
 #: includes/post-types-project.php:10
 msgid "New Project"
-msgstr ""
+msgstr "Nieuw project"
 
 #: includes/post-types-project.php:11
 msgid "All Projects"
-msgstr ""
+msgstr "Alle projecten"
 
 #: includes/post-types-project.php:12
 msgid "View Project"
-msgstr ""
+msgstr "Zie project"
 
 #: includes/post-types-project.php:13
 msgid "Search Projects"
-msgstr ""
+msgstr "Zoeken in projecten"
 
 #: includes/post-types-project.php:14
 msgid "Nothing found"
-msgstr ""
+msgstr "Niets gevonden"
 
 #: includes/post-types-project.php:15
 msgid "Nothing found in Trash"
-msgstr ""
+msgstr "Niets gevonden in de mand"
 
 #: includes/post-types-project.php:46
 msgid "Project Categories"
-msgstr ""
+msgstr "Categorie projecten"
 
 #: includes/post-types-project.php:47
 msgid "Project Category"
-msgstr ""
+msgstr "Categorie projecten"
 
 #: includes/post-types-project.php:48
 msgid "Search Categories"
-msgstr ""
+msgstr "Zoeken in categorieën"
 
 #: includes/post-types-project.php:49
 msgid "All Categories"
-msgstr ""
+msgstr "Alle categorieën"
 
 #: includes/post-types-project.php:50
 msgid "Parent Category"
-msgstr ""
+msgstr "Ouder categorie"
 
 #: includes/post-types-project.php:51
 msgid "Parent Category:"
-msgstr ""
+msgstr "Verwante categorie :"
 
 #: includes/post-types-project.php:52
 msgid "Edit Category"
-msgstr ""
+msgstr "Categorie wijzigen"
 
 #: includes/post-types-project.php:53
 msgid "Update Category"
-msgstr ""
+msgstr "Categorie bijwerken"
 
 #: includes/post-types-project.php:54
 msgid "Add New Category"
-msgstr ""
+msgstr "Een categorie toevoegen"
 
 #: includes/post-types-project.php:55
 msgid "New Category Name"
-msgstr ""
+msgstr "Naam van de nieuwe categorie"
 
 #: includes/post-types-project.php:56
 msgid "Categories"
-msgstr ""
+msgstr "Categorieën"
 
 #: includes/post-types-project.php:57
 msgid "You currently don't have any project categories."
-msgstr ""
+msgstr "U hebt momenteel geen projectcategorieën."
 
 #: includes/post-types-project.php:71
 msgid "Project Tags"
-msgstr ""
+msgstr "Project labels"
 
 #: includes/post-types-project.php:72
 msgid "Project Tag"
-msgstr ""
+msgstr "Projectlabel"
 
 #: includes/post-types-project.php:73
 msgid "Search Tags"
-msgstr ""
+msgstr "Zoeken in etiketten"
 
 #: includes/post-types-project.php:74
 msgid "All Tags"
-msgstr ""
+msgstr "Alle etiketten"
 
 #: includes/post-types-project.php:75
 msgid "Parent Tag"
-msgstr ""
+msgstr "Label van de ouders"
 
 #: includes/post-types-project.php:76
 msgid "Parent Tag:"
-msgstr ""
+msgstr "Ouder label :"
 
 #: includes/post-types-project.php:77
 msgid "Edit Tag"
-msgstr ""
+msgstr "Verander het etiket"
 
 #: includes/post-types-project.php:78
 msgid "Update Tag"
-msgstr ""
+msgstr "Het etiket bijwerken"
 
 #: includes/post-types-project.php:79
 msgid "Add New Tag"
-msgstr ""
+msgstr "Een etiket toevoegen"
 
 #: includes/post-types-project.php:80
 msgid "New Tag Name"
-msgstr ""
+msgstr "Naam van het nieuwe label"
 
 #: includes/post-types-project.php:81
 msgid "Tags"
-msgstr ""
+msgstr "Etiketten"
+
