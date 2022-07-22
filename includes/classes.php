@@ -1,6 +1,6 @@
 <?php defined( 'PROPRO_VERSION' ) || die;
 
-require(plugin_dir_path(__FILE__) . 'post-types-project.php');
+require(plugin_dir_path(__FILE__) . 'post-type-project.php');
 
 function propro_is_project_product($product_id) {
   // return true; // let's handle this later
@@ -72,7 +72,7 @@ class PROPRO {
 
   static function add_to_cart_message( $message, $product_id ) {
       // make filter magic happen here...
-      if(!empty($_POST['propro-project-name'])) $message = $_POST['propro-project-name'] . ": $message";
+      if(!empty($_POST['propro-project-name'])) $message = sanitize_text_field($_POST['propro-project-name']) . ": $message";
       return $message;
   }
 
@@ -111,6 +111,10 @@ class PROPRO {
 		$class = '';
 		$custom_attributes = [];
 		extract($args);
+
+		$name = esc_attr($name);
+		$label = esc_attr($label);
+		$placeholder = esc_attr($placeholder);
 
 		$attributes = [];
 
@@ -185,10 +189,10 @@ class PROPRO {
 		global $post, $product;
 		if(!propro_is_project_product( $post->ID )) return;
 
-		$project = (isset($_REQUEST['project'])) ? esc_attr($_REQUEST['project']) : NULL;
-		$project_id = (isset($_REQUEST['project-id'])) ? esc_attr($_REQUEST['project-id']) : NULL;
+		$project = (isset($_REQUEST['project'])) ? sanitize_text_field($_REQUEST['project']) : NULL;
+		$project_id = (isset($_REQUEST['project-id'])) ? sanitize_text_field($_REQUEST['project-id']) : NULL;
 		$price = $product->get_price();
-		$amount = (isset($_REQUEST['amount'])) ? esc_attr($_REQUEST['amount']) : ((isset($_REQUEST['nyp'])) ? esc_attr($_REQUEST['nyp']) : NULL);
+		$amount = sanitize_text_field((isset($_REQUEST['amount'])) ? $_REQUEST['amount'] : ((isset($_REQUEST['nyp'])) ? $_REQUEST['nyp'] : NULL));
 
 		$project_post_type = (get_option('propro_create_project_post_type') == 'yes') ? 'project' : get_option('propro_project_post_type');
 		printf('<div class="propro-fields" style="margin-bottom:1rem">');
@@ -263,18 +267,19 @@ class PROPRO {
   static function validate_custom_field( $passed, $product_id, $quantity ) {
     if($passed && propro_is_project_product( $product_id )) {
 			if(!empty($_REQUEST['project-id'])) $project = $_REQUEST['project-id'];
-      else if(!empty($_POST['propro-project-name'])) $project = sanitize_text_field($_POST['propro-project-name']);
-      else if(!empty($_REQUEST['project'])) $project = sanitize_text_field($_REQUEST['project']);
+      else if(!empty($_POST['propro-project-name'])) $project = $_POST['propro-project-name'];
+      else if(!empty($_REQUEST['project'])) $project = $_REQUEST['project'];
       else $project = NULL;
-
+			$project = sanitize_text_field($project);
 
 			$product = wc_get_product( $product_id );
 			$price = $product->get_price();
 
 			if(propro_allow_custom_amount()) {
-				if(!empty($_POST['propro-amount'])) $amount = sanitize_text_field($_POST['propro-amount']);
-				else if(!empty($_REQUEST['amount'])) $amount = sanitize_text_field($_REQUEST['amount']);
+				if(!empty($_POST['propro-amount'])) $amount = $_POST['propro-amount'];
+				else if(!empty($_REQUEST['amount'])) $amount = $_REQUEST['amount'];
 				else $amount = 0;
+				$amount = sanitize_text_field($amount);
 				if(!is_numeric($amount) || $amount + $price <= 0) {
 					$product_title = $product->get_title();
 					wc_add_notice( sprintf(
