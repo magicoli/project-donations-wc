@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.4.2
+* updated minimum wp version to 4.7
+
 ### 1.4.1
 * fix update library and assets
 

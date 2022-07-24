@@ -5,7 +5,7 @@ Tags: woocommerce, projects, product, donation
 Requires at least: 4.7
 Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,9 @@ Yes, activate "Customer defined amount" in WooCommerce Product Donations setting
 Not currently, but this feature will be added in a future release. You can still get some insights from WooCommerce stats, however.
 
 == Changelog ==
+
+= 1.4.2 =
+* updated minimum wp version to 4.7
 
 = 1.4.1 =
 * fix update library and assets
