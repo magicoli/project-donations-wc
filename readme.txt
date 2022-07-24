@@ -2,7 +2,7 @@
 Contributors: magicoli69
 Donate link: https://magiiic.com/support/Project+Donations+plugin
 Tags: woocommerce, projects, product, donation
-Requires at least: 4.5
+Requires at least: 4.7
 Tested up to: 6.0.1
 Requires PHP: 5.6
 Stable tag: 1.4.1
