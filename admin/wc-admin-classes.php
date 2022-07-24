@@ -40,10 +40,10 @@ class PRDWC_WC_Admin {
   * Uses the WooCommerce admin fields API to output settings via the @see woocommerce_admin_fields() function.
   *
   * @uses woocommerce_admin_fields()
-  * @uses self::get_settings()
+  * @uses self::get_wc_admin_fields()
   */
   public static function settings_tab() {
-    woocommerce_admin_fields( self::get_settings() );
+    woocommerce_admin_fields( self::get_wc_admin_fields() );
   }
 
 
@@ -51,10 +51,10 @@ class PRDWC_WC_Admin {
   * Uses the WooCommerce options API to save settings via the @see woocommerce_update_options() function.
   *
   * @uses woocommerce_update_options()
-  * @uses self::get_settings()
+  * @uses self::get_wc_admin_fields()
   */
   public static function update_settings() {
-    woocommerce_update_options( self::get_settings() );
+    woocommerce_update_options( self::get_wc_admin_fields() );
   }
 
   static function can_disable_custom_backend_projects() {
@@ -68,7 +68,7 @@ class PRDWC_WC_Admin {
   *
   * @return array Array of settings for @see woocommerce_admin_fields() function.
   */
-  public static function get_settings() {
+  public static function get_wc_admin_fields() {
 
     $settings = array(
       array(
