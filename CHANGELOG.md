@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.4.3
+* fix some sanitizations
+
 ### 1.4.2
 * updated minimum wp version to 4.7
 
