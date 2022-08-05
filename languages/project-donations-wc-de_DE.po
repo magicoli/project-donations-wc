@@ -1,0 +1,325 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Project Products for WooCommerce\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-07-22T15:45:49-04:00\n"
+"PO-Revision-Date: \n"
+"Language: de\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. Plugin Name of the plugin
+msgid "Project Donations for WooCommerce"
+msgstr "Project Donations for WooCommerce"
+
+#. Plugin URI of the plugin
+msgid "https://magiiic.com/wordpress/plugins/project-donations/"
+msgstr "https://magiiic.com/wordpress/plugins/project-donations/"
+
+#. Description of the plugin
+msgid "Add project field to WooCommerce products, allow clients to link their purchase to a project"
+msgstr "Fügt ein Projektfeld zu WooCommerce-Produkten hinzu, ermöglicht es dem Kunden, seinen Kauf mit einem Projekt zu verknüpfen"
+
+#. Author of the plugin
+msgid "Magiiic"
+msgstr "Magiiic"
+
+#. Author URI of the plugin
+msgid "https://magiiic.com/"
+msgstr "https://magiiic.com/"
+
+#: admin/wc-admin-classes.php:23
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: admin/wc-admin-classes.php:35
+msgid "Project Donations"
+msgstr "Projektspenden"
+
+#: admin/wc-admin-classes.php:75
+msgid "Default settings"
+msgstr "Standardeinstellungen"
+
+#: admin/wc-admin-classes.php:78
+msgid "These settings can be overridden for each product."
+msgstr "Diese Einstellungen können für jedes Produkt geändert werden."
+
+#: admin/wc-admin-classes.php:81
+msgid "Add project post type"
+msgstr "Projekttyp hinzufügen"
+
+#: admin/wc-admin-classes.php:86
+msgid "Create a project post type"
+msgstr "Erstellen einer Projektmaterialart"
+
+#: admin/wc-admin-classes.php:87
+#: admin/wc-admin-classes.php:125
+msgid "(enable only if no other plugin implements it)"
+msgstr "(nur aktivieren, wenn keine andere Erweiterung sie implementiert)"
+
+#: admin/wc-admin-classes.php:92
+msgid "Get projects from post type"
+msgstr "Projekte von der Artikelart abrufen"
+
+#: admin/wc-admin-classes.php:119
+msgid "Customer defined amount"
+msgstr "Von der Klientin/dem Klienten festgelegter Betrag"
+
+#: admin/wc-admin-classes.php:124
+msgid "Allow customer to choose the amount to pay"
+msgstr "Dem Kunden erlauben, den zu zahlenden Betrag zu wählen"
+
+#: admin/wc-admin-classes.php:130
+msgid "Minimum donation amount (%s)"
+msgstr "Mindestbetrag der Spende (%s)"
+
+#: admin/wc-admin-classes.php:189
+msgid "No products found"
+msgstr "Keine Produkte gefunden"
+
+#: admin/wc-admin-classes.php:191
+msgctxt "Select product"
+msgid "None"
+msgstr "Keine"
+
+#: admin/wc-admin-classes.php:207
+msgid "No categories found"
+msgstr "Keine Kategorien gefunden"
+
+#: admin/wc-admin-classes.php:209
+msgctxt "Select category"
+msgid "None"
+msgstr "Keine"
+
+#: admin/wc-admin-classes.php:226
+msgid "No taxonomies found"
+msgstr "Keine Taxonomie gefunden"
+
+#: admin/wc-admin-classes.php:227
+msgctxt "Select taxonomy"
+msgid "None"
+msgstr "Keine"
+
+#: admin/wc-admin-classes.php:241
+msgid "No post types found, wich is tretty weird."
+msgstr "Es wurde keine Art von Artikel gefunden, was ziemlich seltsam ist."
+
+#: admin/wc-admin-classes.php:243
+msgctxt "Select post type"
+msgid "None"
+msgstr "Keine"
+
+#: includes/classes.php:64
+#: includes/classes.php:69
+msgid "Donate"
+msgstr "Spenden"
+
+#: includes/classes.php:83
+msgid "Project Donation"
+msgstr "Project Donation"
+
+#: includes/classes.php:84
+msgid "Check to add a project field to product page."
+msgstr "Aktivieren, um ein Projektfeld auf der Produktseite hinzuzufügen."
+
+#: includes/classes.php:202
+#: includes/classes.php:208
+#: includes/classes.php:359
+#: includes/post-type-project.php:6
+msgid "Project"
+msgstr "Projekt"
+
+#: includes/classes.php:205
+msgid "Enter a project name"
+msgstr "Geben Sie einen Projektnamen ein"
+
+#: includes/classes.php:221
+msgid "Add to fee"
+msgstr "Zur Preisliste hinzufügen"
+
+#: includes/classes.php:221
+msgid "Amount"
+msgstr "Betrag"
+
+#: includes/classes.php:222
+msgid "Donation amount"
+msgstr "Spendenbetrag"
+
+#: includes/classes.php:286
+msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
+msgstr "\"%s\" kann nicht in den Warenkorb gelegt werden. Bitte geben Sie einen gültigen zu zahlenden Betrag an."
+
+#: includes/classes.php:297
+msgid "\"%s\" could not be added to the cart. Please provide a project name."
+msgstr "\"%s\" kann nicht in den Warenkorb gelegt werden. Bitte geben Sie einen Projektnamen an."
+
+#: includes/classes.php:361
+msgid "Project ID"
+msgstr "Projekt-ID"
+
+#: includes/classes.php:378
+msgid "From"
+msgstr "Ab"
+
+#: includes/classes.php:389
+msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
+msgstr "Der gewählte Betrag wird zum Basispreis von %s addiert, der Gesamtpreis wird vor der Bestätigung der Bestellung berechnet."
+
+#: includes/classes.php:434
+msgid "No posts found"
+msgstr "Keine Artikel gefunden"
+
+#: includes/classes.php:436
+msgid "Select a project"
+msgstr "Projekt auswählen"
+
+#: includes/post-type-project.php:5
+msgid "Projects"
+msgstr "Projekte"
+
+#: includes/post-type-project.php:7
+msgid "Add New"
+msgstr "Hinzufügen"
+
+#: includes/post-type-project.php:8
+msgid "Add New Project"
+msgstr "Projekt hinzufügen"
+
+#: includes/post-type-project.php:9
+msgid "Edit Project"
+msgstr "Projekt bearbeiten"
+
+#: includes/post-type-project.php:10
+msgid "New Project"
+msgstr "Neues Projekt"
+
+#: includes/post-type-project.php:11
+msgid "All Projects"
+msgstr "Alle Projekte"
+
+#: includes/post-type-project.php:12
+msgid "View Project"
+msgstr "Projekt ansehen"
+
+#: includes/post-type-project.php:13
+msgid "Search Projects"
+msgstr "In Projekten suchen"
+
+#: includes/post-type-project.php:14
+msgid "Nothing found"
+msgstr "Nichts gefunden"
+
+#: includes/post-type-project.php:15
+msgid "Nothing found in Trash"
+msgstr "Nichts im Papierkorb gefunden"
+
+#: includes/post-type-project.php:46
+msgid "Project Categories"
+msgstr "Projektkategorie"
+
+#: includes/post-type-project.php:47
+msgid "Project Category"
+msgstr "Kategorie des Projekts"
+
+#: includes/post-type-project.php:48
+msgid "Search Categories"
+msgstr "Kategorien durchsuchen"
+
+#: includes/post-type-project.php:49
+msgid "All Categories"
+msgstr "Alle Kategorien"
+
+#: includes/post-type-project.php:50
+msgid "Parent Category"
+msgstr "Übergeordnete Kategorie"
+
+#: includes/post-type-project.php:51
+msgid "Parent Category:"
+msgstr "Verwandte Kategorie :"
+
+#: includes/post-type-project.php:52
+msgid "Edit Category"
+msgstr "Kategorie bearbeiten"
+
+#: includes/post-type-project.php:53
+msgid "Update Category"
+msgstr "Kategorie aktualisieren"
+
+#: includes/post-type-project.php:54
+msgid "Add New Category"
+msgstr "Kategorie hinzufügen"
+
+#: includes/post-type-project.php:55
+msgid "New Category Name"
+msgstr "Name der neuen Kategorie"
+
+#: includes/post-type-project.php:56
+msgid "Categories"
+msgstr "Kategorien"
+
+#: includes/post-type-project.php:57
+msgid "You currently don't have any project categories."
+msgstr "Sie haben derzeit keine Projektkategorien."
+
+#: includes/post-type-project.php:71
+msgid "Project Tags"
+msgstr "Projektbeschriftungen"
+
+#: includes/post-type-project.php:72
+msgid "Project Tag"
+msgstr "Projektbeschriftung"
+
+#: includes/post-type-project.php:73
+msgid "Search Tags"
+msgstr "In den Etiketten suchen"
+
+#: includes/post-type-project.php:74
+msgid "All Tags"
+msgstr "Alle Etiketten"
+
+#: includes/post-type-project.php:75
+msgid "Parent Tag"
+msgstr "Übergeordnete Etikette"
+
+#: includes/post-type-project.php:76
+msgid "Parent Tag:"
+msgstr "Parent Label :"
+
+#: includes/post-type-project.php:77
+msgid "Edit Tag"
+msgstr "Etikett bearbeiten"
+
+#: includes/post-type-project.php:78
+msgid "Update Tag"
+msgstr "Etikett aktualisieren"
+
+#: includes/post-type-project.php:79
+msgid "Add New Tag"
+msgstr "Etikett hinzufügen"
+
+#: includes/post-type-project.php:80
+msgid "New Tag Name"
+msgstr "Name des neuen Etiketts"
+
+#: includes/post-type-project.php:81
+msgid "Tags"
+msgstr "Etiketten"
+
+#~ msgid "Amount to add"
+#~ msgstr "Hinzuzufügender Betrag"
+
+#~ msgid "Amount to pay"
+#~ msgstr "Zu zahlender Betrag"
+
+#~ msgid "Project Products"
+#~ msgstr "Projekterlöse"
+
+#~ msgid "Support project"
+#~ msgstr "Unterstützen Sie das Projekt"
+
+#~ msgid "Project Product"
+#~ msgstr "Projekt"
