@@ -266,20 +266,18 @@ class PRDWC {
 
   static function validate_custom_field( $passed, $product_id, $quantity ) {
     if($passed && prdwc_is_donation( $product_id )) {
-			if(!empty($_REQUEST['project-id'])) $project = $_REQUEST['project-id'];
-      else if(!empty($_POST['prdwc-project-name'])) $project = $_POST['prdwc-project-name'];
-      else if(!empty($_REQUEST['project'])) $project = $_REQUEST['project'];
+			if(!empty($_REQUEST['project-id'])) $project = sanitize_text_field($_REQUEST['project-id']);
+      else if(!empty($_POST['prdwc-project-name'])) $project = sanitize_text_field($_POST['prdwc-project-name']);
+      else if(!empty($_REQUEST['project'])) $project = sanitize_text_field($_REQUEST['project']);
       else $project = NULL;
-			$project = sanitize_text_field($project);
 
 			$product = wc_get_product( $product_id );
 			$price = $product->get_price();
 
 			if(prdwc_allow_custom_amount()) {
-				if(!empty($_POST['prdwc-amount'])) $amount = $_POST['prdwc-amount'];
-				else if(!empty($_REQUEST['amount'])) $amount = $_REQUEST['amount'];
+				if(!empty($_POST['prdwc-amount'])) $amount = sanitize_text_field($_POST['prdwc-amount']);
+				else if(!empty($_REQUEST['amount'])) $amount = sanitize_text_field($_REQUEST['amount']);
 				else $amount = 0;
-				$amount = sanitize_text_field($amount);
 				if(!is_numeric($amount) || $amount + $price <= 0) {
 					$product_title = $product->get_title();
 					wc_add_notice( sprintf(
