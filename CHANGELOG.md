@@ -1,6 +1,7 @@
 ## Changelog
 
-### Unreleased
+### 1.4.4
+* fix some more sanitizations
 
 ### 1.4.3
 * fix some sanitizations

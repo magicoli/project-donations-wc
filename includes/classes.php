@@ -313,20 +313,20 @@ class PRDWC {
 		if(!prdwc_is_donation( wc_get_product( $product_id ) )) return $cart_item_data;
 
 		if(!empty($_REQUEST['project-id'])) {
-			$project = get_the_title($_REQUEST['project-id']);
+			$project = get_the_title(sanitize_text_field($_REQUEST['project-id']));
 			if(!empty($project)) $cart_item_data['prdwc-project-id'] = sanitize_text_field($_REQUEST['project-id']);
 		}
-    else if(!empty($_POST['prdwc-project-name'])) $project = $_POST['prdwc-project-name'];
-    else if(!empty($_REQUEST['project'])) $project = $_REQUEST['project'];
+    else if(!empty($_POST['prdwc-project-name'])) $project = sanitize_text_field($_POST['prdwc-project-name']);
+    else if(!empty($_REQUEST['project'])) $project = sanitize_text_field($_REQUEST['project']);
 		else $project = NULL;
-		$cart_item_data['prdwc-project-name'] = sanitize_text_field($project);
+		$cart_item_data['prdwc-project-name'] = $project;
 
 		if(prdwc_allow_custom_amount()) {
-			if(!empty($_POST['prdwc-amount'])) $amount = $_POST['prdwc-amount'];
-			else if(!empty($_REQUEST['amount'])) $amount = $_REQUEST['amount'];
-			else if(!empty($_REQUEST['nyp'])) $amount = $_REQUEST['nyp'];
+			if(!empty($_POST['prdwc-amount'])) $amount = sanitize_text_field($_POST['prdwc-amount']);
+			else if(!empty($_REQUEST['amount'])) $amount = sanitize_text_field($_REQUEST['amount']);
+			else if(!empty($_REQUEST['nyp'])) $amount = sanitize_text_field($_REQUEST['nyp']);
 			else $amount = NULL;
-			$cart_item_data['prdwc-amount'] = sanitize_text_field($amount);
+			$cart_item_data['prdwc-amount'] = $amount;
 		}
 
     return $cart_item_data;
