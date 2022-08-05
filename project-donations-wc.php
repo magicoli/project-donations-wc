@@ -1,13 +1,13 @@
 <?php defined( 'ABSPATH' ) || die;
 /**
- * Plugin Name:     Project Donations for WooCommerce
+ * Plugin Name:     Project Donations for WooCommerce (dev)
  * Plugin URI:      https://magiiic.com/wordpress/plugins/project-donations/
  * Description:     Add project field to WooCommerce products, allow clients to link their purchase to a project
  * Author:          Magiiic
  * Author URI:      https://magiiic.com/
  * Text Domain:     project-donations-wc
  * Domain Path:     /languages
- * Version:         1.4.3
+ * Version:         1.4.3.x-dev
  *
  * @package         Product_Addons_Autofill
  *
@@ -19,7 +19,7 @@
 
 // Your code starts here.
 if(!defined('PRDWC_VERSION')) {
-  define('PRDWC_VERSION', '1.4.3');
+  define('PRDWC_VERSION', '1.4.3.x-dev');
   define('PRDWC_PLUGIN', plugin_basename(__FILE__));
   define('PRDWC_SLUG', dirname(PRDWC_PLUGIN));
   // define('PRDWC_PLUGIN_NAME', 'Project Donations for WooCommerce');

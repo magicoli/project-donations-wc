@@ -76,6 +76,8 @@ Not currently, but this feature will be added in a future release. You can still
 
 == Changelog ==
 
+= Unreleased =
+
 = 1.4.3 =
 * fix some sanitizations
 
