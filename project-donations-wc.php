@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die;
 /**
- * Plugin Name:     Project Donations for WooCommerce 
- * Plugin URI:      https://magiiic.com/wordpress/plugins/project-donations/
+ * Plugin Name:     Project Donations for WooCommerce
+ * Plugin URI:      https://wordpress.org/plugins/project-donations-wc/
  * Description:     Add project field to WooCommerce products, allow clients to link their purchase to a project
  * Author:          Magiiic
  * Author URI:      https://magiiic.com/
@@ -11,10 +11,10 @@
  *
  * @package         Product_Addons_Autofill
  *
- * Icon1x: https://github.com/magicoli/project-donations-wc/raw/master/assets/icon-128x128.jpg
- * Icon2x: https://github.com/magicoli/project-donations-wc/raw/master/assets/icon-256x256.jpg
- * BannerHigh: https://github.com/magicoli/project-donations-wc/raw/master/assets/banner-1544x500.jpg
- * BannerLow: https://github.com/magicoli/project-donations-wc/raw/master/assets/banner-772x250.jpg
+ * Icon1x: https://ps.w.org/project-donations-wc/assets/icon-128x128.jpg
+ * Icon2x: https://ps.w.org/project-donations-wc/assets/icon-256x256.jpg
+ * BannerHigh: https://ps.w.org/project-donations-wc/assets/banner-1544x500.jpg
+ * BannerLow: https://ps.w.org/project-donations-wc/assets/banner-772x250.jpg
  */
 
 // Your code starts here.
