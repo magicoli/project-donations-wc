@@ -43,3 +43,5 @@ composer.lock
 vendor/
 .gitattributes
 .wpignore
+CHANGELOG.md
+INSTALLATION.md
