@@ -1,0 +1,12 @@
+{
+  "name": "magicoli/project-donations",
+  "description": "Project Donations for WooCommerce",
+  "type": "wordpress-plugin",
+  "license": "AGPL-V3",
+  "authors": [
+    {
+      "name": "Olivier van Helden",
+      "email": "olivier@van-helden.net"
+    }
+  ]
+}
