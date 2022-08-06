@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || die;
 /**
  * Plugin Name:     Project Donations for WooCommerce
- * Plugin URI:      https://magiiic.com/wordpress/plugins/project-donations/
+ * Plugin URI:      https://wordpress.org/plugins/project-donations-wc/
  * Description:     Add project field to WooCommerce products, allow clients to link their purchase to a project
  * Author:          Magiiic
  * Author URI:      https://magiiic.com/
