@@ -1,15 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project Products for WooCommerce\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-"
+"wc-dev\n"
+"POT-Creation-Date: 2023-06-04T05:24:51+00:00\n"
+"PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-22T15:43:17-04:00\n"
-"PO-Revision-Date: \n"
-"Language: fr\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #. Plugin Name of the plugin
@@ -17,12 +18,17 @@ msgid "Project Donations for WooCommerce"
 msgstr "Project Donations for WooCommerce"
 
 #. Plugin URI of the plugin
-msgid "https://magiiic.com/wordpress/plugins/project-donations/"
-msgstr "https://magiiic.com/wordpress/plugins/project-donations/"
+#| msgid "https://magiiic.com/wordpress/plugins/project-donations/"
+msgid "https://wordpress.org/plugins/project-donations-wc/"
+msgstr "https://wordpress.org/plugins/project-donations-wc/"
 
 #. Description of the plugin
-msgid "Add project field to WooCommerce products, allow clients to link their purchase to a project"
-msgstr "Ajoute un champ projet aux produits WooCommerce, permet au client de lier leur achat à un projet"
+msgid ""
+"Add project field to WooCommerce products, allow clients to link their "
+"purchase to a project"
+msgstr ""
+"Ajoute un champ projet aux produits WooCommerce, permet au client de lier "
+"leur achat à un projet"
 
 #. Author of the plugin
 msgid "Magiiic"
@@ -36,7 +42,7 @@ msgstr "https://magiiic.com/fr/"
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin/wc-admin-classes.php:35
+#: admin/wc-admin-classes.php:35 includes/product-options.php:45
 msgid "Project Donations"
 msgstr "Project Donations"
 
@@ -56,8 +62,7 @@ msgstr "Ajouter un type projet"
 msgid "Create a project post type"
 msgstr "Créer un type d'articles projet"
 
-#: admin/wc-admin-classes.php:87
-#: admin/wc-admin-classes.php:125
+#: admin/wc-admin-classes.php:87 admin/wc-admin-classes.php:125
 msgid "(enable only if no other plugin implements it)"
 msgstr "(activer uniquement si aucune autre extension de l'implémente)"
 
@@ -113,67 +118,64 @@ msgctxt "Select post type"
 msgid "None"
 msgstr "Aucun"
 
-#: includes/classes.php:64
-#: includes/classes.php:69
+#: includes/classes.php:62 includes/classes.php:67
 msgid "Donate"
 msgstr "Faire un don"
 
-#: includes/classes.php:83
-msgid "Project Donation"
-msgstr "Project Donation"
-
-#: includes/classes.php:84
-msgid "Check to add a project field to product page."
-msgstr "Activer pour ajouter un champ projet à la page produit."
-
-#: includes/classes.php:202
-#: includes/classes.php:208
-#: includes/classes.php:359
+#: includes/classes.php:201 includes/classes.php:207 includes/classes.php:353
 #: includes/post-type-project.php:6
 msgid "Project"
 msgstr "Projet"
 
-#: includes/classes.php:205
+#: includes/classes.php:204
 msgid "Enter a project name"
 msgstr "Entrez un nom de projet"
 
-#: includes/classes.php:221
+#: includes/classes.php:217
 msgid "Add to fee"
 msgstr "Ajouter au tarif"
 
-#: includes/classes.php:221
+#: includes/classes.php:217
 msgid "Amount"
 msgstr "Montant"
 
-#: includes/classes.php:222
+#: includes/classes.php:218
 msgid "Donation amount"
 msgstr "Montant du don"
 
-#: includes/classes.php:286
-msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
-msgstr "\"%s\" ne peut pas être ajouté au panier. Merci de fournir un montant à payer valide."
+#: includes/classes.php:280
+msgid ""
+"\"%s\" could not be added to the cart. Please provide a valid amount to pay."
+msgstr ""
+"\"%s\" ne peut pas être ajouté au panier. Merci de fournir un montant à "
+"payer valide."
 
-#: includes/classes.php:297
+#: includes/classes.php:291
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
-msgstr "\"%s\" ne peut pas être ajouté au panier. Merci de fournir un nom de projet."
+msgstr ""
+"\"%s\" ne peut pas être ajouté au panier. Merci de fournir un nom de projet."
 
-#: includes/classes.php:361
+#: includes/classes.php:355
 msgid "Project ID"
 msgstr "ID du projet"
 
-#: includes/classes.php:378
+#: includes/classes.php:372
 msgid "From"
 msgstr "À partir de"
 
-#: includes/classes.php:389
-msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
-msgstr "Le montant choisi sera ajouté au tarif de base de %s, le prix total sera calculé avant la validation de la commande."
+#: includes/classes.php:383
+msgid ""
+"%s will be added to the chosen amount, the total price will be calculated "
+"before checkout."
+msgstr ""
+"Le montant choisi sera ajouté au tarif de base de %s, le prix total sera "
+"calculé avant la validation de la commande."
 
-#: includes/classes.php:434
+#: includes/classes.php:428
 msgid "No posts found"
 msgstr "Aucun article trouvé"
 
-#: includes/classes.php:436
+#: includes/classes.php:430 includes/product-options.php:70
 msgid "Select a project"
 msgstr "Choisir un projet"
 
@@ -308,6 +310,22 @@ msgstr "Nom de la nouvelle étiquette"
 #: includes/post-type-project.php:81
 msgid "Tags"
 msgstr "Étiquettes"
+
+#: includes/product-options.php:35
+msgid "Project Donation"
+msgstr "Project Donation"
+
+#: includes/product-options.php:36
+msgid "Check to add a project field to product page."
+msgstr "Activer pour ajouter un champ projet à la page produit."
+
+#: includes/product-options.php:68
+msgid "Fixed project"
+msgstr "Projet fixe"
+
+#: includes/product-options.php:84
+msgid "Create at least one project first"
+msgstr "Créez au moins un projet"
 
 #~ msgid "Amount to add"
 #~ msgstr "Montant à ajouter"
