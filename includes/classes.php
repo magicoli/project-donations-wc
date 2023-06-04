@@ -164,6 +164,12 @@ class PRDWC {
 		);
 
 	}
+
+	static function get_product_project($post) {
+		$project_id = get_post_meta($post->ID, 'prdwc_project_select', true);
+		return (empty($project_id)) ? false : $project_id;
+	}
+
 	/**
   * Display custom field on the front end
   * @since 1.0.0
@@ -173,11 +179,21 @@ class PRDWC {
 		if(!prdwc_is_donation( $post->ID )) return;
 
 		$project = (isset($_REQUEST['project'])) ? sanitize_text_field($_REQUEST['project']) : NULL;
-		$project_id = (isset($_REQUEST['project-id'])) ? sanitize_text_field($_REQUEST['project-id']) : NULL;
+		$project_post_type = (get_option('prdwc_create_project_post_type') == 'yes') ? 'project' : get_option('prdwc_project_post_type');
+
+		$project_id = self::get_product_project($post);
+		if($project_id) {
+			$options = [ $project_id => esc_html(get_the_title($project_id)) ];
+		} else {
+			$project_id = (isset($_REQUEST['project-id'])) ? sanitize_text_field($_REQUEST['project-id']) : NULL;
+			$options = ($product_project) ? [ 6037 => 'this one' ] : PRDWC::select_post_options(array(
+				'post_type' => $project_post_type,
+				'orderby'     => 'post_title',
+			));
+		}
 		$price = $product->get_price();
 		$amount = sanitize_text_field((isset($_REQUEST['amount'])) ? $_REQUEST['amount'] : ((isset($_REQUEST['nyp'])) ? $_REQUEST['nyp'] : NULL));
 
-		$project_post_type = (get_option('prdwc_create_project_post_type') == 'yes') ? 'project' : get_option('prdwc_project_post_type');
 		printf('<div class="prdwc-fields" style="margin-bottom:1rem">');
 
 		$fields[] = (empty($project_post_type)) ? array(
@@ -192,10 +208,7 @@ class PRDWC {
 			'required' => true,
 			'type' => 'select',
 			'value' => $project_id,
-			'options' => PRDWC::select_post_options(array(
-				'post_type' => $project_post_type,
-				'orderby'     => 'post_title',
-			)),
+			'options' => $options,
 		);
 
 		if(prdwc_allow_custom_amount()) {
