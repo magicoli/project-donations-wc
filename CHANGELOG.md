@@ -1,5 +1,10 @@
 ## Changelog
 
+### 1.4.6
+- added Project Donations tab to product data
+- select project in product page if product is linked to a project
+- show/hide Project Donations tab when Project Donation according to product option checkbox
+
 ### 1.4.5
 - fix a few glitches while publishing
 
