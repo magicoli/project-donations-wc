@@ -4,8 +4,39 @@ class PRDWC_WooCommerce {
 
   public function __construct() {
     add_filter('woocommerce_product_data_tabs', array($this, 'add_donations_tab'));
+    add_filter( 'product_type_options', __CLASS__ . '::add_product_type_options');
     add_action('woocommerce_product_data_panels', array($this, 'add_donations_tab_content'));
+    add_action('admin_enqueue_scripts', array($this, 'prdwc_enqueue_scripts'));
   }
+
+  function prdwc_enqueue_scripts() {
+    $post_type = get_post_type();
+    $screen = get_current_screen();
+
+    if ($screen && $screen->base === 'post' && $screen->post_type === 'product') {
+      wp_enqueue_script('prdwc-script', plugin_dir_url(__FILE__) . 'product-options.js', array('jquery'), PRDWC_VERSION . '-' . time(), true);
+
+      // Localize script data
+      $data = array(
+          'linkProjectChecked' => get_post_meta(get_the_ID(), '_linkproject', true),
+      );
+      wp_localize_script('prdwc-script', 'prdwcData', $data);
+
+    }
+
+  }
+
+  static function add_product_type_options($product_type_options) {
+    $product_type_options['linkproject'] = array(
+      "id"            => "_linkproject",
+      "wrapper_class" => "show_if_simple show_if_variable",
+      "label"         => __('Project Donation', 'project-donations-wc'),
+      "description"   => __('Check to add a project field to product page.', 'project-donations-wc'),
+      "default"       => "no",
+    );
+    return $product_type_options;
+  }
+
 
   public function add_donations_tab($tabs) {
     $tabs['donations'] = array(

@@ -22,7 +22,6 @@ class PRDWC {
   */
   public static function init() {
 		// Add project option to product edit page
-    add_filter( 'product_type_options', __CLASS__ . '::add_product_type_options');
     add_action( 'save_post_product', __CLASS__ . '::save_product_type_options', 10, 3);
 
 		// Add project field to product page
@@ -77,16 +76,6 @@ class PRDWC {
       return $message;
   }
 
-  static function add_product_type_options($product_type_options) {
-    $product_type_options['linkproject'] = array(
-      "id"            => "_linkproject",
-      "wrapper_class" => "show_if_simple show_if_variable",
-      "label"         => __('Project Donation', 'project-donations-wc'),
-      "description"   => __('Check to add a project field to product page.', 'project-donations-wc'),
-      "default"       => "no",
-    );
-    return $product_type_options;
-  }
 
   public static function save_product_type_options($post_ID, $product, $update) {
     update_post_meta($product->ID, "_linkproject", isset($_POST["_linkproject"]) ? "yes" : "no");
