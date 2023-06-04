@@ -1,15 +1,11 @@
 # Project Donations for WooCommerce
-* Contributors: magicoli69
-* Donate link: https://magiiic.com/support/Project+Donations+plugin
-* Tags: woocommerce, projects, product, donation
-* Requires at least: 4.7
-* Tested up to: 6.0.1
-* Requires PHP: 5.6
-* Stable tag: 1.4.5
-* License: GPLv2 or later
-* License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Collect donations for projects with Woocommerce.
+![Stable 1.4.5](https://badgen.net/badge/Stable/1.4.5/00aa00)
+![WordPress 4.7 - 6.2.2](https://badgen.net/badge/WordPress/4.7%20-%206.2.2/3858e9)
+![Requires PHP 5.6](https://badgen.net/badge/PHP/5.6/7884bf)
+![License GPLv2 or later](https://badgen.net/badge/License/GPLv2%20or%20later/aa0000)
+
+Add project field to WooCommerce products, allow clients to link their purchase to a project
 
 ## Description
 
@@ -21,24 +17,24 @@ This plugin is mostly intended to be easy to set up. It is mostly usefull if you
 
 ### Features
 
-* switch to enable any product as Project Donation
-* **add project field** on enabled product page, with
+- switch to enable any product as Project Donation
+- **add project field** on enabled product page, with
   - with free type project name
   - or drop down selection list (from project or another post type)
-* optionally **add "Project" post type** to WordPress (if needed and not provided by another plugin)
-* optionally replace fixed price with a **flexible Amount field** (if not provided by another plugin). When the product has a fixed price higher than zero, the donation amount will be added to the normal product price)
-* **compatible with subscriptions, variable products**, and probably any other WooCommerce product type
-* **compatible with WooCommerce Name Your Price** (although main features are included in Project Donations)
-* localization ready
+- optionally **add "Project" post type** to WordPress (if needed and not provided by another plugin)
+- optionally replace fixed price with a **flexible Amount field** (if not provided by another plugin). When the product has a fixed price higher than zero, the donation amount will be added to the normal product price)
+- **compatible with subscriptions, variable products**, and probably any other WooCommerce product type
+- **compatible with WooCommerce Name Your Price** (although main features are included in Project Donations)
+- localization ready
 
 ### Roadmap
 
-* global or per-product settings
-* collect donations statitics per project
-* add donation field to cart or checkout page
-* allow fixed project for some products
-* permalink like /donate/projectname/amount
-* customize notification mails
+- global or per-product settings
+- collect donations statitics per project
+- add donation field to cart or checkout page
+- allow fixed project for some products
+- permalink like /donate/projectname/amount
+- customize notification mails
 
 ## Frequently Asked Questions
 
