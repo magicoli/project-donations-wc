@@ -21,8 +21,6 @@ class PRDWC {
   * Bootstraps the class and hooks required actions & filters.
   */
   public static function init() {
-		// Add project option to product edit page
-    add_action( 'save_post_product', __CLASS__ . '::save_product_type_options', 10, 3);
 
 		// Add project field to product page
 		add_action( 'woocommerce_before_add_to_cart_button', __CLASS__ . '::display_custom_fields_simple');
@@ -74,11 +72,6 @@ class PRDWC {
       // make filter magic happen here...
       if(!empty($_POST['prdwc-project-name'])) $message = sanitize_text_field($_POST['prdwc-project-name']) . ": $message";
       return $message;
-  }
-
-
-  public static function save_product_type_options($post_ID, $product, $update) {
-    update_post_meta($product->ID, "_linkproject", isset($_POST["_linkproject"]) ? "yes" : "no");
   }
 
 	static function display_custom_fields_simple() {

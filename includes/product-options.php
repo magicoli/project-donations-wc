@@ -7,6 +7,8 @@ class PRDWC_WooCommerce {
     add_filter( 'product_type_options', __CLASS__ . '::add_product_type_options');
     add_action('woocommerce_product_data_panels', array($this, 'add_donations_tab_content'));
     add_action('admin_enqueue_scripts', array($this, 'prdwc_enqueue_scripts'));
+    add_action( 'save_post_product', array($this, 'save_product_type_options'), 10, 3);
+
   }
 
   function prdwc_enqueue_scripts() {
@@ -63,27 +65,20 @@ class PRDWC_WooCommerce {
     if ($projects->have_posts()) {
 
       echo '<p class="form-field">';
-      echo '<label for="prdwc_project_select">' . __('Default project', 'project-donations-wc') . '</label>';
+      echo '<label for="prdwc_project_select">' . __('Fixed project', 'project-donations-wc') . '</label>';
       echo '<select name="prdwc_project_select" id="prdwc_project_select">';
-      echo '<option value="">' . __('Select a project', 'project-donations-wc') . '</option>';
+      echo '<option value="" class="placeholder">' . __('Select a project', 'project-donations-wc') . '</option>';
+      $current_project_id = get_post_meta($post->ID, 'prdwc_project_select', true);
       while ($projects->have_posts()) {
         $projects->the_post();
-        echo '<option value="' . esc_attr(get_the_ID()) . '">' . esc_html(get_the_title()) . '</option>';
-        // echo '<option value="' . esc_attr(get_the_ID()) . '">' . esc_html(get_the_title()) . '</option>';
-        // echo '<br/>' . esc_html(get_the_title());
+        $project_id = get_the_ID();
+        $project_title = esc_html(get_the_title());
+        $selected = selected($project_id, $current_project_id, false);
+        echo '<option value="' . $project_id . '" ' . $selected . '>' . $project_title . '</option>';
       }
       echo '</select>';
       echo '</p>';
       wp_reset_postdata();
-
-      // echo '<p class="form-field">';
-      woocommerce_wp_checkbox(array(
-        'id'            => 'prdwc_allow_choose_project',
-        'label'         => __('Allow to choose', 'project-donations-wc'),
-        'description'   => __('Check this box to allow users to select another project.', 'project-donations-wc'),
-        'desc_tip'      => true,
-        // 'wrapper_class' => 'hide_if_simple hide_if_external',
-      ));
 
     } else {
       echo '<p>' . __('Create at least one project first', 'project-donations-wc');
@@ -93,6 +88,14 @@ class PRDWC_WooCommerce {
 
     echo '</div>';
     echo '</div>';
+  }
+
+  public static function save_product_type_options($post_ID, $product, $update) {
+    update_post_meta($product->ID, "_linkproject", isset($_POST["_linkproject"]) ? "yes" : "no");
+    if(isset($_POST['prdwc_project_select'])) {
+      $project_select = sanitize_text_field($_POST['prdwc_project_select']);
+      update_post_meta($product->ID, "prdwc_project_select", isset($_POST["prdwc_project_select"]) ? $project_select : null);
+    }
   }
 }
 
