@@ -44,3 +44,5 @@ composer.lock export-ignore
 vendor/ export-ignore
 .gitattributes export-ignore
 .wpignore export-ignore
+CHANGELOG.md export-ignore
+INSTALLATION.md export-ignore

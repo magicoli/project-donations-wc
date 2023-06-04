@@ -7,9 +7,9 @@
  * Author URI:      https://magiiic.com/
  * Text Domain:     project-donations-wc
  * Domain Path:     /languages
- * Version:         1.4.4
+ * Version:         1.4.5
  *
- * @package         Product_Addons_Autofill
+ * @package         project-donations-wc
  *
  * Icon1x: https://ps.w.org/project-donations-wc/assets/icon-128x128.jpg
  * Icon2x: https://ps.w.org/project-donations-wc/assets/icon-256x256.jpg
@@ -19,7 +19,7 @@
 
 // Your code starts here.
 if(!defined('PRDWC_VERSION')) {
-  define('PRDWC_VERSION', '1.4.4');
+  define('PRDWC_VERSION', '1.4.5');
   define('PRDWC_PLUGIN', plugin_basename(__FILE__));
   define('PRDWC_SLUG', dirname(PRDWC_PLUGIN));
   // define('PRDWC_PLUGIN_NAME', 'Project Donations for WooCommerce');

@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.4.5
+* fix a few glitches while publishing
+
 ### 1.4.4
 * fix some more sanitizations
 
