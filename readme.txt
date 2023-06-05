@@ -5,7 +5,7 @@ Tags: woocommerce, projects, product, donation
 Requires at least: 4.7
 Tested up to: 6.2.2
 Requires PHP: 5.6
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,10 @@ Yes, activate "Customer defined amount" in WooCommerce Product Donations setting
 Not currently, but this feature will be added in a future release. You can still get some insights from WooCommerce stats, however.
 
 == Changelog ==
+
+= 1.4.7 =
+* fix empty project list if wrong project-id provided in url parameters
+* fix project name with html code in add to cart options
 
 = 1.4.6 =
 * added Project Donations tab to product data

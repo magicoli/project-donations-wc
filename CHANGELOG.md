@@ -1,5 +1,9 @@
 ## Changelog
 
+### 1.4.7
+- fix empty project list if wrong project-id provided in url parameters
+- fix project name with html code in add to cart options
+
 ### 1.4.6
 - added Project Donations tab to product data
 - select project in product page if product is linked to a project
