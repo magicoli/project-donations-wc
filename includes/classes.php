@@ -182,15 +182,19 @@ class PRDWC {
 		$project_post_type = (get_option('prdwc_create_project_post_type') == 'yes') ? 'project' : get_option('prdwc_project_post_type');
 
 		$project_id = self::get_product_project($post);
-		if($project_id) {
-			$options = [ $project_id => esc_html(get_the_title($project_id)) ];
-		} else {
+		$options = PRDWC::select_post_options(array(
+			'post_type' => $project_post_type,
+			'orderby'     => 'post_title',
+		));
+
+		if(!$project_id) {
 			$project_id = (isset($_REQUEST['project-id'])) ? sanitize_text_field($_REQUEST['project-id']) : NULL;
-			$options = ($product_project) ? [ 6037 => 'this one' ] : PRDWC::select_post_options(array(
-				'post_type' => $project_post_type,
-				'orderby'     => 'post_title',
-			));
 		}
+
+		if($project_id) {
+			$options = array( $project_id => $options[$project_id] );
+		}
+
 		$price = $product->get_price();
 		$amount = sanitize_text_field((isset($_REQUEST['amount'])) ? $_REQUEST['amount'] : ((isset($_REQUEST['nyp'])) ? $_REQUEST['nyp'] : NULL));
 
