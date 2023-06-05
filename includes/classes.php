@@ -159,7 +159,7 @@ class PRDWC {
 			$name,
 			$class,
 			$label,
-			($required) ? ' <abbr class="required" title="require">*</abbr>' : NULL,
+			($required && !empty($label) ) ? ' <abbr class="required" title="require">*</abbr>' : NULL,
 			$input,
 		);
 
@@ -168,6 +168,15 @@ class PRDWC {
 	static function get_product_project($post) {
 		$project_id = get_post_meta($post->ID, 'prdwc_project_select', true);
 		return (empty($project_id)) ? false : $project_id;
+	}
+
+	static function get_request_project() {
+		if ( ! empty($_REQUEST['prdwc-project-id']) ) {
+			return $_REQUEST['prdwc-project-id'];
+		}
+		if ( ! empty($_REQUEST['project-id']) ) {
+			return $_REQUEST['project-id'];
+		}
 	}
 
 	/**
@@ -188,7 +197,7 @@ class PRDWC {
 		));
 
 		if(!$project_id) {
-			$project_id = (isset($_REQUEST['project-id'])) ? sanitize_text_field($_REQUEST['project-id']) : NULL;
+			$project_id = self::get_request_project();
 		}
 
 		if($project_id && isset($options[$project_id])) {
@@ -206,14 +215,19 @@ class PRDWC {
 			'required' => true,
 			'value' => $project,
 			'placeholder' => __("Enter a project name", 'project-donations-wc'),
-		) : array(
+		) : ( empty($project_id ) ? array(
 			'name' => 'project-id',
-			'label' => __('Project', 'project-donations-wc'),
+			// 'label' => __('Project', 'project-donations-wc'),
 			'required' => true,
 			'type' => 'select',
 			'value' => $project_id,
 			'options' => $options,
-		);
+		) : array(
+			'name' => 'project-id',
+			'label' => __('Project: ', 'project-donations-wc') . get_post($project_id)->post_title,
+			'type' => 'hidden',
+			'value' => $project_id,
+		) );
 
 		if(prdwc_allow_custom_amount()) {
 			$fields[] = array(
@@ -266,7 +280,8 @@ class PRDWC {
 
   static function validate_custom_field( $passed, $product_id, $quantity ) {
     if($passed && prdwc_is_donation( $product_id )) {
-			if(!empty($_REQUEST['project-id'])) $project = sanitize_text_field($_REQUEST['project-id']);
+			if(!empty($_REQUEST['prdwc-project-id'])) $project = sanitize_text_field($_REQUEST['prdwc-project-id']);
+			else if(!empty($_REQUEST['project-id'])) $project = sanitize_text_field($_REQUEST['project-id']);
       else if(!empty($_POST['prdwc-project-name'])) $project = sanitize_text_field($_POST['prdwc-project-name']);
       else if(!empty($_REQUEST['project'])) $project = sanitize_text_field($_REQUEST['project']);
       else $project = NULL;
@@ -312,9 +327,10 @@ class PRDWC {
   static function add_custom_field_item_data( $cart_item_data, $product_id, $variation_id, $quantity ) {
 		if(!prdwc_is_donation( wc_get_product( $product_id ) )) return $cart_item_data;
 
-		if(!empty($_REQUEST['project-id'])) {
-			$project = get_the_title(sanitize_text_field($_REQUEST['project-id']));
-			if(!empty($project)) $cart_item_data['prdwc-project-id'] = sanitize_text_field($_REQUEST['project-id']);
+		$project_id = self::get_request_project();
+		if(!empty($project_id)) {
+			$project = get_the_title(sanitize_text_field($project_id));
+			if(!empty($project)) $cart_item_data['prdwc-project-id'] = sanitize_text_field($project_id);
 		}
     else if(!empty($_POST['prdwc-project-name'])) $project = sanitize_text_field($_POST['prdwc-project-name']);
     else if(!empty($_REQUEST['project'])) $project = sanitize_text_field($_REQUEST['project']);
@@ -429,9 +445,9 @@ class PRDWC {
 		), $args);
 
 		$posts = get_posts($args);
-		if(!$posts) return [ '' => __('No posts found', 'project-posts')];
+		if(!$posts) return [ '' => __('No posts found', 'project-donations-wc')];
 
-		$posts_array = array('' => __('Select a project', 'project-posts'));
+		$posts_array = array('' => __('Select a project', 'project-donations-wc'));
 		foreach($posts as $post) {
 			$posts_array[$post->ID] = $post->post_title;
 		}
