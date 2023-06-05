@@ -191,7 +191,7 @@ class PRDWC {
 			$project_id = (isset($_REQUEST['project-id'])) ? sanitize_text_field($_REQUEST['project-id']) : NULL;
 		}
 
-		if($project_id) {
+		if($project_id && isset($options[$project_id])) {
 			$options = array( $project_id => $options[$project_id] );
 		}
 
