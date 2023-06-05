@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Project Products for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-"
 "wc-dev\n"
-"POT-Creation-Date: 2023-06-04T05:24:51+00:00\n"
+"POT-Creation-Date: 2023-06-05T01:48:05+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,6 @@ msgid "Project Donations for WooCommerce"
 msgstr "Project Donations for WooCommerce"
 
 #. Plugin URI of the plugin
-#| msgid "https://magiiic.com/wordpress/plugins/project-donations/"
 msgid "https://wordpress.org/plugins/project-donations-wc/"
 msgstr "https://wordpress.org/plugins/project-donations-wc/"
 
@@ -122,48 +121,52 @@ msgstr "Geen"
 msgid "Donate"
 msgstr "Doneren"
 
-#: includes/classes.php:201 includes/classes.php:207 includes/classes.php:353
+#: includes/classes.php:214 includes/classes.php:373
 #: includes/post-type-project.php:6
 msgid "Project"
 msgstr "Project"
 
-#: includes/classes.php:204
+#: includes/classes.php:217
 msgid "Enter a project name"
 msgstr "Voer een projectnaam in"
 
-#: includes/classes.php:217
+#: includes/classes.php:227
+msgid "Project: "
+msgstr "Project: "
+
+#: includes/classes.php:235
 msgid "Add to fee"
 msgstr "Toevoegen aan prijslijst"
 
-#: includes/classes.php:217
+#: includes/classes.php:235
 msgid "Amount"
 msgstr "Bedrag"
 
-#: includes/classes.php:218
+#: includes/classes.php:236
 msgid "Donation amount"
 msgstr "Donatiebedrag"
 
-#: includes/classes.php:280
+#: includes/classes.php:299
 msgid ""
 "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
 msgstr ""
 "\"%s\" kan niet aan het mandje worden toegevoegd. Geef een geldig bedrag om "
 "te betalen."
 
-#: includes/classes.php:291
+#: includes/classes.php:310
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
 msgstr ""
 "\"%s\" kan niet aan het mandje worden toegevoegd. Geef een projectnaam."
 
-#: includes/classes.php:355
+#: includes/classes.php:375
 msgid "Project ID"
 msgstr "Project-ID"
 
-#: includes/classes.php:372
+#: includes/classes.php:392
 msgid "From"
 msgstr "Van"
 
-#: includes/classes.php:383
+#: includes/classes.php:403
 msgid ""
 "%s will be added to the chosen amount, the total price will be calculated "
 "before checkout."
@@ -171,11 +174,11 @@ msgstr ""
 "Het gekozen bedrag zal worden toegevoegd aan de basisprijs van %s, de totale "
 "prijs zal worden berekend voor de validatie van de bestelling."
 
-#: includes/classes.php:428
+#: includes/classes.php:448
 msgid "No posts found"
 msgstr "Geen items gevonden"
 
-#: includes/classes.php:430 includes/product-options.php:70
+#: includes/classes.php:450 includes/product-options.php:70
 msgid "Select a project"
 msgstr "Kies een project"
 

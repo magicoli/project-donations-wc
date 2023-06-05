@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Project Donations for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Project Donations for WooCommerce 1.4.5\n"
+"Project-Id-Version: Project Donations for WooCommerce 1.4.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc-dev\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-06-04T05:24:51+00:00\n"
+"POT-Creation-Date: 2023-06-05T01:48:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.0\n"
 
@@ -120,54 +120,57 @@ msgstr ""
 msgid "Donate"
 msgstr ""
 
-#: includes/classes.php:201
-#: includes/classes.php:207
-#: includes/classes.php:353
+#: includes/classes.php:214
+#: includes/classes.php:373
 #: includes/post-type-project.php:6
 msgid "Project"
 msgstr ""
 
-#: includes/classes.php:204
+#: includes/classes.php:217
 msgid "Enter a project name"
 msgstr ""
 
-#: includes/classes.php:217
+#: includes/classes.php:227
+msgid "Project: "
+msgstr ""
+
+#: includes/classes.php:235
 msgid "Add to fee"
 msgstr ""
 
-#: includes/classes.php:217
+#: includes/classes.php:235
 msgid "Amount"
 msgstr ""
 
-#: includes/classes.php:218
+#: includes/classes.php:236
 msgid "Donation amount"
 msgstr ""
 
-#: includes/classes.php:280
+#: includes/classes.php:299
 msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
 msgstr ""
 
-#: includes/classes.php:291
+#: includes/classes.php:310
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
 msgstr ""
 
-#: includes/classes.php:355
+#: includes/classes.php:375
 msgid "Project ID"
 msgstr ""
 
-#: includes/classes.php:372
+#: includes/classes.php:392
 msgid "From"
 msgstr ""
 
-#: includes/classes.php:383
+#: includes/classes.php:403
 msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
 msgstr ""
 
-#: includes/classes.php:428
+#: includes/classes.php:448
 msgid "No posts found"
 msgstr ""
 
-#: includes/classes.php:430
+#: includes/classes.php:450
 #: includes/product-options.php:70
 msgid "Select a project"
 msgstr ""
