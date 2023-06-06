@@ -1,6 +1,7 @@
 <?php defined( 'PRDWC_VERSION' ) || die;
 
 require(plugin_dir_path(__FILE__) . 'post-type-project.php');
+require(plugin_dir_path(__FILE__) . 'class-project.php');
 require(plugin_dir_path(__FILE__) . 'product-options.php');
 
 function prdwc_is_donation($product_id) {
