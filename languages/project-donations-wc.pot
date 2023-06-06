@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Project Donations for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Project Donations for WooCommerce 1.4.7\n"
+"Project-Id-Version: Project Donations for WooCommerce 1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc-dev\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-06-06T21:07:31+00:00\n"
+"POT-Creation-Date: 2023-06-06T21:28:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.0\n"
 
@@ -123,54 +123,56 @@ msgstr ""
 msgid "Next goal: "
 msgstr ""
 
-#: includes/class-project.php:159
-msgid "Collected: "
-msgstr ""
+#: includes/class-project.php:162
+msgid "Collected: %s (%s sale)"
+msgid_plural "Collected: %s (%s sales)"
+msgstr[0] ""
+msgstr[1] ""
 
-#: includes/class-project.php:172
+#: includes/class-project.php:182
 msgid "Project goals and counterparts"
 msgstr ""
 
-#: includes/class-project.php:183
+#: includes/class-project.php:193
 msgid "Add a goal"
 msgstr ""
 
-#: includes/class-project.php:190
-#: includes/class-project.php:328
+#: includes/class-project.php:200
+#: includes/class-project.php:338
 #: includes/classes.php:236
 msgid "Amount"
 msgstr ""
 
-#: includes/class-project.php:198
-#: includes/class-project.php:227
-#: includes/class-project.php:328
-#: includes/class-project.php:365
+#: includes/class-project.php:208
+#: includes/class-project.php:237
+#: includes/class-project.php:338
+#: includes/class-project.php:375
 msgid "Description"
 msgstr ""
 
-#: includes/class-project.php:212
+#: includes/class-project.php:222
 msgid "Add a counterpart"
 msgstr ""
 
-#: includes/class-project.php:219
-#: includes/class-project.php:365
+#: includes/class-project.php:229
+#: includes/class-project.php:375
 msgid "Price"
 msgstr ""
 
-#: includes/class-project.php:234
-#: includes/class-project.php:365
+#: includes/class-project.php:244
+#: includes/class-project.php:375
 msgid "Threshold"
 msgstr ""
 
-#: includes/class-project.php:266
+#: includes/class-project.php:276
 msgid "Edit"
 msgstr ""
 
-#: includes/class-project.php:322
+#: includes/class-project.php:332
 msgid "Goals"
 msgstr ""
 
-#: includes/class-project.php:363
+#: includes/class-project.php:373
 msgid "Counterparts"
 msgstr ""
 

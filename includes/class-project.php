@@ -156,7 +156,15 @@ class PRDWC_Project {
       );
 
     } else {
-      $output .= '<p>' . __('Collected: ', 'project-donations-wc') . ' ' . wc_price($sales_total) . ' (' . $sales_count . ' sales)'. '</p>';
+      $output .= '<p>' . sprintf( _n(
+        'Collected: %s (%s sale)',
+        'Collected: %s (%s sales)',
+        $sales_count,
+        'project-donations-wc'
+      ),
+      wc_price($sales_total),
+      $sales_count,
+      ) . '</p>';
     }
 
     // Output the text-based achievement

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Project Products for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-"
 "wc-dev\n"
-"POT-Creation-Date: 2023-06-06T21:07:31+00:00\n"
+"POT-Creation-Date: 2023-06-06T21:28:32+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,6 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
 #. Plugin Name of the plugin
@@ -125,49 +126,51 @@ msgstr "Objectif atteint : "
 msgid "Next goal: "
 msgstr "Objectif suivant : "
 
-#: includes/class-project.php:159
-msgid "Collected: "
-msgstr "Collecté : "
+#: includes/class-project.php:162
+msgid "Collected: %s (%s sale)"
+msgid_plural "Collected: %s (%s sales)"
+msgstr[0] "Collecté : %s (%s vente)"
+msgstr[1] "Collecté : %s (%s ventes)"
 
-#: includes/class-project.php:172
+#: includes/class-project.php:182
 msgid "Project goals and counterparts"
 msgstr "Objectifs et contreparties"
 
-#: includes/class-project.php:183
+#: includes/class-project.php:193
 msgid "Add a goal"
 msgstr "Ajouter un objectif"
 
-#: includes/class-project.php:190 includes/class-project.php:328
+#: includes/class-project.php:200 includes/class-project.php:338
 #: includes/classes.php:236
 msgid "Amount"
 msgstr "Montant"
 
-#: includes/class-project.php:198 includes/class-project.php:227
-#: includes/class-project.php:328 includes/class-project.php:365
+#: includes/class-project.php:208 includes/class-project.php:237
+#: includes/class-project.php:338 includes/class-project.php:375
 msgid "Description"
 msgstr "Description"
 
-#: includes/class-project.php:212
+#: includes/class-project.php:222
 msgid "Add a counterpart"
 msgstr "Ajouter une contrepartie"
 
-#: includes/class-project.php:219 includes/class-project.php:365
+#: includes/class-project.php:229 includes/class-project.php:375
 msgid "Price"
 msgstr "Prix"
 
-#: includes/class-project.php:234 includes/class-project.php:365
+#: includes/class-project.php:244 includes/class-project.php:375
 msgid "Threshold"
 msgstr "Seuil"
 
-#: includes/class-project.php:266
+#: includes/class-project.php:276
 msgid "Edit"
 msgstr "Modifier"
 
-#: includes/class-project.php:322
+#: includes/class-project.php:332
 msgid "Goals"
 msgstr "Objectifs"
 
-#: includes/class-project.php:363
+#: includes/class-project.php:373
 msgid "Counterparts"
 msgstr "Contreparties"
 
