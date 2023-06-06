@@ -65,10 +65,10 @@ class PRDWC_WooCommerce {
     if ($projects->have_posts()) {
 
       echo '<p class="form-field">';
-      echo '<label for="prdwc_project_select">' . __('Fixed project', 'project-donations-wc') . '</label>';
-      echo '<select name="prdwc_project_select" id="prdwc_project_select">';
+      echo '<label for="prdwc_project_id">' . __('Fixed project', 'project-donations-wc') . '</label>';
+      echo '<select name="prdwc_project_id" id="prdwc_project_id">';
       echo '<option value="" class="placeholder">' . __('Select a project', 'project-donations-wc') . '</option>';
-      $current_project_id = get_post_meta($post->ID, 'prdwc_project_select', true);
+      $current_project_id = get_post_meta($post->ID, 'prdwc_project_id', true);
       while ($projects->have_posts()) {
         $projects->the_post();
         $project_id = get_the_ID();
@@ -92,9 +92,9 @@ class PRDWC_WooCommerce {
 
   public static function save_product_type_options($post_ID, $product, $update) {
     update_post_meta($product->ID, "_linkproject", isset($_POST["_linkproject"]) ? "yes" : "no");
-    if(isset($_POST['prdwc_project_select'])) {
-      $project_select = sanitize_text_field($_POST['prdwc_project_select']);
-      update_post_meta($product->ID, "prdwc_project_select", isset($_POST["prdwc_project_select"]) ? $project_select : null);
+    if(isset($_POST['prdwc_project_id'])) {
+      $project_select = sanitize_text_field($_POST['prdwc_project_id']);
+      update_post_meta($product->ID, "prdwc_project_id", isset($_POST["prdwc_project_id"]) ? $project_select : null);
     }
   }
 }

@@ -33,8 +33,8 @@ class PRDWC_Project {
         $project_id = $post_id;
       } else {
         // For other post types, retrieve the project ID from the product meta field
-        $product_id = get_post_meta($post_id, 'prdwc_project_select', true);
-        $project_id = get_post_meta($product_id, 'prdwc_project_select', true);
+        $product_id = get_post_meta($post_id, 'prdwc_project_id', true);
+        $project_id = get_post_meta($product_id, 'prdwc_project_id', true);
       }
     }
 
@@ -46,7 +46,7 @@ class PRDWC_Project {
     // Get the product IDs associated with the project
     $product_ids = wc_get_products(array(
       'status'      => 'publish',
-      'meta_key'    => 'prdwc_project_select',
+      'meta_key'    => 'prdwc_project_id',
       'meta_value'  => $project_id,
       'return'      => 'ids',
     ));
@@ -96,13 +96,15 @@ class PRDWC_Project {
     }
 
     // Get the next goal for the project
-    $goals = get_post_meta($project_id, 'goals', true);
+    $goals = get_post_meta($project_id, 'goals');
     $next_goal = null;
 
     if ($goals && is_array($goals)) {
       foreach ($goals as $goal) {
-        if (empty($goal['amount']) || $goal['amount'] > $sales_total) {
-          $next_goal = $goal;
+        $goal['amount'] = (empty($goal['amount'])) ? 0 : $goal['amount'];
+        $goal['name'] = (empty($goal['description'])) ? wc_price($goal['amount']) : $goal['description'];
+        $next_goal = $goal;
+        if ($sales_total < $goal['amount']) {
           break;
         }
       }
@@ -112,16 +114,13 @@ class PRDWC_Project {
     $output = '';
 
     if ($sales_count > 0) {
-      $output .= '<p>Sales: ' . $sales_count . '</p>';
-      $output .= '<p>Total Amount: ' . wc_price($sales_total) . '</p>';
+      if ($next_goal) {
+        $output .= '<p>' . $next_goal['name'] . ': ' . wc_price($sales_total) . ' / ' . wc_price($next_goal['amount']) . '</p>';
+      } else {
+        $output .= '<p>Collected: ' . wc_price($sales_total) . ' (' . $sales_count . ' sales)'. '</p>';
+      }
     } else {
       $output .= '<p>No sales yet.</p>';
-    }
-
-    if ($next_goal) {
-      $output .= '<p>Next Goal: ' . wc_price($next_goal['amount']) . '</p>';
-    } else {
-      $output .= '<p>No more goals.</p>';
     }
 
     return $output;
@@ -236,7 +235,7 @@ class PRDWC_Project {
               $(document).ready(function() {
                   var %1$sEmpty = $(".%1$s-summary tbody tr").length === 0;
                   if (%1$sEmpty) {
-                      $(".edit-%1$s-button").addClass("active button-primary");
+                      $(".edit-%1$s-button").hide();
                       $(".%1$s-summary").hide();
                       $(".%1$s-edit").show();
                   } else {

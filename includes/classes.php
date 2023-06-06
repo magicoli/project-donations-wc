@@ -167,7 +167,7 @@ class PRDWC {
 	}
 
 	static function get_product_project($post) {
-		$project_id = get_post_meta($post->ID, 'prdwc_project_select', true);
+		$project_id = get_post_meta($post->ID, 'prdwc_project_id', true);
 		return (empty($project_id)) ? false : $project_id;
 	}
 
