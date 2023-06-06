@@ -1,6 +1,6 @@
 # Project Donations for WooCommerce
 
-![Stable 1.4.6](https://badgen.net/badge/Stable/1.4.6/00aa00)
+![Stable 1.4.7](https://badgen.net/badge/Stable/1.4.7/00aa00)
 ![WordPress 4.7 - 6.2.2](https://badgen.net/badge/WordPress/4.7%20-%206.2.2/3858e9)
 ![Requires PHP 5.6](https://badgen.net/badge/PHP/5.6/7884bf)
 ![License GPLv2 or later](https://badgen.net/badge/License/GPLv2%20or%20later/aa0000)

@@ -1,5 +1,10 @@
 ## Changelog
 
+### 1.5
+- new project goals and counterparts
+- added achievements graphical progress bar
+- added project achievements shortcode
+
 ### 1.4.7
 - fix empty project list if wrong project-id provided in url parameters
 - fix project name with html code in add to cart options
