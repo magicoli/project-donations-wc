@@ -1,0 +1,43 @@
+.progress-box {
+  margin: 1em 0;
+}
+.progress-bar {
+  /* display: flex;
+  align-items: center;
+  justify-content: flex-end; */
+  /* display: inline-block; */
+  width: 100%;
+  height: 2em;
+  background-color: #66f166;
+  border-radius: 4px;
+  /* margin-bottom: 10px; */
+}
+
+.progress-goal {
+  height: 100%;
+  background-color: #f1f1f1;
+  width: 100%;
+  margin-right: auto;
+}
+
+.progress {
+  display: inline-block;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 4px 0 0 4px;
+  margin-right: auto;
+}
+
+.progress-box.achieved .progress-bar,
+.progress-box:not(.achieved) .progress-goal {
+  display: flex;
+  align-items: start;
+  /* align-items: center; */
+  justify-content: flex-end;
+}
+
+.amount {
+  white-space: nowrap;
+  padding: 0 0.25em;
+  text-align: right;
+}

@@ -13,11 +13,18 @@ class PRDWC_Project {
   public function init() {
     add_filter('rwmb_meta_boxes', array($this, 'register_fields'));
     add_action('init', array($this, 'register_shortcodes'));
+    add_action( 'wp_enqueue_scripts', array($this, 'enqueue_custom_styles' ));
+    add_action( 'admin_enqueue_scripts', array($this, 'enqueue_custom_styles' ));
+  }
+
+  function enqueue_custom_styles() {
+    wp_enqueue_style( 'custom-progress-bar', plugin_dir_url(__FILE__) . 'project-donations-wc.css', [], PRDWC_VERSION . time() );
   }
 
   function register_shortcodes() {
     add_shortcode('achievements', array($this, 'render_achievements'));
   }
+
 
   function render_achievements($atts) {
     // Check if project_id is set in shortcode attributes
@@ -113,15 +120,58 @@ class PRDWC_Project {
     // Prepare the output HTML
     $output = '';
 
-    if ($sales_count > 0) {
+    // if ($sales_count > 0) {
       if ($next_goal) {
-        $output .= '<p>' . $next_goal['name'] . ': ' . wc_price($sales_total) . ' / ' . wc_price($next_goal['amount']) . '</p>';
+
+        // Check if progress bar is enabled
+        // $achievement_progress_bar = get_option('prdwc_achievement_progress_bar');
+        $achievement_progress_bar = true;
+
+        // if ($achievement_progress_bar) {
+          // Calculate the progress percentage
+          //
+
+          $exceeded = ( $sales_total > $next_goal['amount'] );
+          $progress_percentage = ( $exceeded ) ? ( $next_goal['amount'] / $sales_total ) * 100 : ($sales_total / $next_goal['amount']) * 100;;
+
+          $bar_title = ( ( $sales_total >= $next_goal['amount'] )
+          ? __('Goal achieved: ', 'prdwc-donations-wc')
+          : __('Next goal: ', 'prdwc-donations-wc')
+          ) . $next_goal['name'];
+          // Output the progress bar
+          $output .= sprintf(
+              '<div class="progress-box %s">
+                <h4 class="goal-name">%s</h4>
+                <div class="progress-bar">
+                  <div class="progress-goal" style="width: %s">
+                    <div class="progress" style="width: %s">
+                      <span class="amount">%s</span>
+                    </div>
+                    <span class="amount">%s</span>
+                  </div>
+                  <span class="amount">%s</span>
+                </div>
+              </div>',
+              $exceeded ? 'achieved' : '',
+              $bar_title,
+              $exceeded ? $progress_percentage . '%' : '100%',
+              $exceeded ? '100%' : $progress_percentage . '%',
+              ($exceeded) ? wc_price($next_goal['amount']) : wc_price($sales_total),
+              ($exceeded) ? null: wc_price($next_goal['amount']),
+              ($exceeded) ? wc_price($sales_total) : null,
+              // ( $exdeeded ) ? wc_price($sales_total) : null,
+          );
+
+        // } else {
+        //   // Output the text-based achievement
+        //   $output .= '<p>' . $next_goal['name'] . ': ' . wc_price($sales_total) . ' / ' . wc_price($next_goal['amount']) . '</p>';
+        // }
       } else {
         $output .= '<p>Collected: ' . wc_price($sales_total) . ' (' . $sales_count . ' sales)'. '</p>';
       }
-    } else {
-      $output .= '<p>No sales yet.</p>';
-    }
+    // } else {
+    //   $output .= '<p>No sales yet.</p>';
+    // }
 
     return $output;
   }
