@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Project Donations for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Project Donations for WooCommerce 1.4.6\n"
+"Project-Id-Version: Project Donations for WooCommerce 1.4.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc-dev\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-06-05T01:48:05+00:00\n"
+"POT-Creation-Date: 2023-06-06T21:07:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.0\n"
 
@@ -115,62 +115,117 @@ msgctxt "Select post type"
 msgid "None"
 msgstr ""
 
-#: includes/classes.php:62
-#: includes/classes.php:67
+#: includes/class-project.php:132
+msgid "Goal achieved: "
+msgstr ""
+
+#: includes/class-project.php:133
+msgid "Next goal: "
+msgstr ""
+
+#: includes/class-project.php:159
+msgid "Collected: "
+msgstr ""
+
+#: includes/class-project.php:172
+msgid "Project goals and counterparts"
+msgstr ""
+
+#: includes/class-project.php:183
+msgid "Add a goal"
+msgstr ""
+
+#: includes/class-project.php:190
+#: includes/class-project.php:328
+#: includes/classes.php:236
+msgid "Amount"
+msgstr ""
+
+#: includes/class-project.php:198
+#: includes/class-project.php:227
+#: includes/class-project.php:328
+#: includes/class-project.php:365
+msgid "Description"
+msgstr ""
+
+#: includes/class-project.php:212
+msgid "Add a counterpart"
+msgstr ""
+
+#: includes/class-project.php:219
+#: includes/class-project.php:365
+msgid "Price"
+msgstr ""
+
+#: includes/class-project.php:234
+#: includes/class-project.php:365
+msgid "Threshold"
+msgstr ""
+
+#: includes/class-project.php:266
+msgid "Edit"
+msgstr ""
+
+#: includes/class-project.php:322
+msgid "Goals"
+msgstr ""
+
+#: includes/class-project.php:363
+msgid "Counterparts"
+msgstr ""
+
+#: includes/classes.php:63
+#: includes/classes.php:68
 msgid "Donate"
 msgstr ""
 
-#: includes/classes.php:214
-#: includes/classes.php:373
+#: includes/classes.php:215
+#: includes/classes.php:374
 #: includes/post-type-project.php:6
 msgid "Project"
 msgstr ""
 
-#: includes/classes.php:217
+#: includes/classes.php:218
 msgid "Enter a project name"
 msgstr ""
 
-#: includes/classes.php:227
+#: includes/classes.php:228
 msgid "Project: "
 msgstr ""
 
-#: includes/classes.php:235
+#: includes/classes.php:236
 msgid "Add to fee"
 msgstr ""
 
-#: includes/classes.php:235
-msgid "Amount"
-msgstr ""
-
-#: includes/classes.php:236
+#: includes/classes.php:237
 msgid "Donation amount"
 msgstr ""
 
-#: includes/classes.php:299
+#: includes/classes.php:300
 msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
 msgstr ""
 
-#: includes/classes.php:310
+#: includes/classes.php:311
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
 msgstr ""
 
-#: includes/classes.php:375
+#: includes/classes.php:376
 msgid "Project ID"
 msgstr ""
 
-#: includes/classes.php:392
+#: includes/classes.php:393
 msgid "From"
 msgstr ""
 
-#: includes/classes.php:403
+#: includes/classes.php:404
 msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
 msgstr ""
 
-#: includes/classes.php:448
+#: includes/classes.php:449
 msgid "No posts found"
 msgstr ""
 
-#: includes/classes.php:450
+#: includes/classes.php:451
 #: includes/product-options.php:70
 msgid "Select a project"
 msgstr ""

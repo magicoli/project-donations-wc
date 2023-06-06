@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Project Products for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-"
 "wc-dev\n"
-"POT-Creation-Date: 2023-06-05T01:48:05+00:00\n"
+"POT-Creation-Date: 2023-06-06T21:07:31+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -117,56 +117,106 @@ msgctxt "Select post type"
 msgid "None"
 msgstr "Aucun"
 
-#: includes/classes.php:62 includes/classes.php:67
+#: includes/class-project.php:132
+msgid "Goal achieved: "
+msgstr "Objectif atteint : "
+
+#: includes/class-project.php:133
+msgid "Next goal: "
+msgstr "Objectif suivant : "
+
+#: includes/class-project.php:159
+msgid "Collected: "
+msgstr "Collecté : "
+
+#: includes/class-project.php:172
+msgid "Project goals and counterparts"
+msgstr "Objectifs et contreparties"
+
+#: includes/class-project.php:183
+msgid "Add a goal"
+msgstr "Ajouter un objectif"
+
+#: includes/class-project.php:190 includes/class-project.php:328
+#: includes/classes.php:236
+msgid "Amount"
+msgstr "Montant"
+
+#: includes/class-project.php:198 includes/class-project.php:227
+#: includes/class-project.php:328 includes/class-project.php:365
+msgid "Description"
+msgstr "Description"
+
+#: includes/class-project.php:212
+msgid "Add a counterpart"
+msgstr "Ajouter une contrepartie"
+
+#: includes/class-project.php:219 includes/class-project.php:365
+msgid "Price"
+msgstr "Prix"
+
+#: includes/class-project.php:234 includes/class-project.php:365
+msgid "Threshold"
+msgstr "Seuil"
+
+#: includes/class-project.php:266
+msgid "Edit"
+msgstr "Modifier"
+
+#: includes/class-project.php:322
+msgid "Goals"
+msgstr "Objectifs"
+
+#: includes/class-project.php:363
+msgid "Counterparts"
+msgstr "Contreparties"
+
+#: includes/classes.php:63 includes/classes.php:68
 msgid "Donate"
 msgstr "Faire un don"
 
-#: includes/classes.php:214 includes/classes.php:373
+#: includes/classes.php:215 includes/classes.php:374
 #: includes/post-type-project.php:6
 msgid "Project"
 msgstr "Projet"
 
-#: includes/classes.php:217
+#: includes/classes.php:218
 msgid "Enter a project name"
 msgstr "Entrez un nom de projet"
 
-#: includes/classes.php:227
+#: includes/classes.php:228
 msgid "Project: "
 msgstr "Projet : "
 
-#: includes/classes.php:235
+#: includes/classes.php:236
 msgid "Add to fee"
 msgstr "Ajouter au tarif"
 
-#: includes/classes.php:235
-msgid "Amount"
-msgstr "Montant"
-
-#: includes/classes.php:236
+#: includes/classes.php:237
 msgid "Donation amount"
 msgstr "Montant du don"
 
-#: includes/classes.php:299
+#: includes/classes.php:300
 msgid ""
 "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
 msgstr ""
 "\"%s\" ne peut pas être ajouté au panier. Merci de fournir un montant à "
 "payer valide."
 
-#: includes/classes.php:310
+#: includes/classes.php:311
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
 msgstr ""
 "\"%s\" ne peut pas être ajouté au panier. Merci de fournir un nom de projet."
 
-#: includes/classes.php:375
+#: includes/classes.php:376
 msgid "Project ID"
 msgstr "ID du projet"
 
-#: includes/classes.php:392
+#: includes/classes.php:393
 msgid "From"
 msgstr "À partir de"
 
-#: includes/classes.php:403
+#: includes/classes.php:404
 msgid ""
 "%s will be added to the chosen amount, the total price will be calculated "
 "before checkout."
@@ -174,11 +224,11 @@ msgstr ""
 "Le montant choisi sera ajouté au tarif de base de %s, le prix total sera "
 "calculé avant la validation de la commande."
 
-#: includes/classes.php:448
+#: includes/classes.php:449
 msgid "No posts found"
 msgstr "Aucun article trouvé"
 
-#: includes/classes.php:450 includes/product-options.php:70
+#: includes/classes.php:451 includes/product-options.php:70
 msgid "Select a project"
 msgstr "Choisir un projet"
 
