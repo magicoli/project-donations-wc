@@ -12,6 +12,119 @@ class PRDWC_Project {
 
   public function init() {
     add_filter('rwmb_meta_boxes', array($this, 'register_fields'));
+    add_action('init', array($this, 'register_shortcodes'));
+  }
+
+  function register_shortcodes() {
+    add_shortcode('achievements', array($this, 'render_achievements'));
+  }
+
+  function render_achievements($atts) {
+    // Check if project_id is set in shortcode attributes
+    $project_id = isset($atts['project_id']) ? intval($atts['project_id']) : 0;
+    $project_post_type = get_option('prdwc_project_post_type');
+
+    // If project_id is not set, retrieve it based on post type and current post ID
+    if (!$project_id) {
+      $post_id = get_the_ID();
+
+      // Check if the current post type matches the defined project post type
+      if (get_post_type($post_id) === $project_post_type) {
+        $project_id = $post_id;
+      } else {
+        // For other post types, retrieve the project ID from the product meta field
+        $product_id = get_post_meta($post_id, 'prdwc_project_select', true);
+        $project_id = get_post_meta($product_id, 'prdwc_project_select', true);
+      }
+    }
+
+    // Check if the project ID is valid
+    if (get_post_type($project_id) !== $project_post_type) {
+      return 'Invalid project ID.';
+    }
+
+    // Get the product IDs associated with the project
+    $product_ids = wc_get_products(array(
+      'status'      => 'publish',
+      'meta_key'    => 'prdwc_project_select',
+      'meta_value'  => $project_id,
+      'return'      => 'ids',
+    ));
+
+    // Get the number and total amount of sales for the products
+    $sales_count = 0;
+    $sales_total = 0;
+
+    foreach ($product_ids as $product_id) {
+      $product = wc_get_product($product_id);
+
+      if ($product) {
+        $product_sales = 0;
+
+        // Loop through orders to calculate the sales for each product
+        $orders = wc_get_orders(array(
+          'status'       => 'completed',
+          'return'       => 'ids',
+          'limit'        => -1,
+          'date_created' => '>=' . date('Y-m-d', strtotime('-30 days')), // Example: Retrieve orders from the last 30 days
+          'meta_query'   => array(
+            array(
+              'key'     => '_product_id',
+              'value'   => $product_id,
+              'compare' => '=',
+            ),
+          ),
+        ));
+
+        // Calculate the sales count and total amount
+        foreach ($orders as $order_id) {
+          $order = wc_get_order($order_id);            // $product_id = $item->get_product_id();
+
+          if ($order) {
+            foreach ($order->get_items() as $item) {
+              if ($item->get_product_id() === $product_id) {
+                $sales_count++;
+                $sales_total += $item->get_subtotal();
+              }
+            }
+          }
+        }
+
+        $sales_count += $product_sales;
+        $sales_total += $product_sales;
+      }
+    }
+
+    // Get the next goal for the project
+    $goals = get_post_meta($project_id, 'goals', true);
+    $next_goal = null;
+
+    if ($goals && is_array($goals)) {
+      foreach ($goals as $goal) {
+        if (empty($goal['amount']) || $goal['amount'] > $sales_total) {
+          $next_goal = $goal;
+          break;
+        }
+      }
+    }
+
+    // Prepare the output HTML
+    $output = '';
+
+    if ($sales_count > 0) {
+      $output .= '<p>Sales: ' . $sales_count . '</p>';
+      $output .= '<p>Total Amount: ' . wc_price($sales_total) . '</p>';
+    } else {
+      $output .= '<p>No sales yet.</p>';
+    }
+
+    if ($next_goal) {
+      $output .= '<p>Next Goal: ' . wc_price($next_goal['amount']) . '</p>';
+    } else {
+      $output .= '<p>No more goals.</p>';
+    }
+
+    return $output;
   }
 
   function register_fields( $meta_boxes ) {
