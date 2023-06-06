@@ -43,8 +43,8 @@ class PRDWC {
 		add_action( 'woocommerce_checkout_create_order_line_item', __CLASS__ . '::add_custom_data_to_order', 10, 4 );
 
 		// Set pay button text
-    add_filter( 'woocommerce_product_add_to_cart_text', __CLASS__ . '::add_to_card_button', 10, 2);
-    add_filter( 'woocommerce_product_single_add_to_cart_text', __CLASS__ . '::single_add_to_card_button', 10, 2);
+    add_filter( 'woocommerce_product_add_to_cart_text', __CLASS__ . '::add_to_cart_button', 10, 2);
+    add_filter( 'woocommerce_product_single_add_to_cart_text', __CLASS__ . '::single_add_to_cart_button', 10, 2);
 
 		if(get_option('prdwc_create_project_post_type', false) ==  'yes')  add_action( 'init', 'prdwc_register_project_posttype' );
 
@@ -59,12 +59,12 @@ class PRDWC {
 		);
 	}
 
-  static function add_to_card_button( $text, $product ) {
+  static function add_to_cart_button( $text, $product ) {
     if($product->get_meta( '_linkproject' ) == 'yes') $text = __('Donate', 'project-donations-wc');
   	return $text;
   }
 
-  static function single_add_to_card_button( $text, $product ) {
+  static function single_add_to_cart_button( $text, $product ) {
     if($product->get_meta( '_linkproject' ) == 'yes') $text = __('Donate', 'project-donations-wc');
   	return $text;
   }
