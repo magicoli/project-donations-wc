@@ -1,5 +1,10 @@
 ## Changelog
 
+### 1.5.1
+- added goals shortcode
+- fixed get_project_id() returning wrong projects
+- use magicoli/wp-package-updater-lib library
+
 ### 1.5
 - new project goals and counterparts
 - added achievements graphical progress bar
