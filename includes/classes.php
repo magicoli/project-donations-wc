@@ -94,6 +94,8 @@ class PRDWC {
 		$type = 'text';
 		$class = '';
 		$custom_attributes = [];
+		$hide_empty = false;
+
 		extract($args);
 
 		$name = esc_attr($name);
@@ -138,6 +140,14 @@ class PRDWC {
 			  );
 			}
 			$input .= '</select>';
+			break;
+
+			case 'custom_html':
+			if( empty($value) && $hide_empty ) {
+				return;
+			}
+
+			$input = $value;
 			break;
 
 			default:
@@ -229,14 +239,15 @@ class PRDWC {
 			'type' => 'hidden',
 			'value' => $project_id,
 		) );
-		error_log('getting project for ' . $post->ID);
+
 		$prdwc_project = new PRDWC_Project($post->ID);
 
 		$fields[] = array(
 			'name' => 'achievements',
-			'label' => __('Achivementss: ', 'project-donations-wc'),
+			// 'label' => __('Achievements: ', 'project-donations-wc'),
 			'type' => 'custom_html',
 			'value' => $prdwc_project->render_achievements(),
+			'hide_empty' => true,
 		);
 
 		if(prdwc_allow_custom_amount()) {
