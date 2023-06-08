@@ -36,6 +36,7 @@ class PRDWC_Project {
 
   function register_shortcodes() {
     add_shortcode('achievements', array($this, 'render_achievements'));
+    add_shortcode('goals', array($this, 'render_goals'));
   }
 
   // Retrieve project id based on post type and current post ID
@@ -157,6 +158,7 @@ class PRDWC_Project {
   function render_achievements($atts = []) {
     $achievements = $this->get_achievements($atts);
     $progress_bar = isset($atts['progress_bar']) ? $atts['progress_bar'] : get_option('prdwc_progress_bar', true);
+    $show_goal_name = isset($atts['show_goal_name']) ? $atts['show_goal_name'] : get_option('prdwc_show_goal_name', true);
 
     $next_goal = $achievements['next_goal'];
     $sales_total = $achievements['sales_total'];
@@ -174,12 +176,12 @@ class PRDWC_Project {
 
       $bar_title = ( ( $sales_total >= $next_goal['amount'] )
       ? __('Goal achieved: ', 'project-donations-wc')
-      : __('Next goal: ', 'project-donations-wc')
+      : __('Goal: ', 'project-donations-wc')
       ) . $next_goal['name'];
       // Output the progress bar
       $output .= sprintf(
       '<div class="progress-box %s">
-        <h4 class="goal-name">%s</h4>
+        %s
         <div class="progress-bar">
           <div class="progress-goal" style="width: %s">
             <div class="progress" style="width: %s">
@@ -191,7 +193,7 @@ class PRDWC_Project {
         </div>
       </div>',
       $exceeded ? 'achieved' : '',
-      $bar_title,
+      ($show_goal_name) ? '<h4 class="goal-name">' . $bar_title . '</h4>' : '',
       $exceeded ? $progress_percentage . '%' : '100%',
       $exceeded ? '100%' : $progress_percentage . '%',
       ($exceeded) ? wc_price($next_goal['amount']) : wc_price($sales_total),
@@ -227,7 +229,6 @@ class PRDWC_Project {
       'autosave'   => true,
       'fields'     => [
         [
-          // 'name'              => __( 'Goals', 'project-donations-wc' ),
           'id'                => $prefix . 'goals',
           'type'              => 'group',
           'clone'             => true,
@@ -235,7 +236,10 @@ class PRDWC_Project {
           'add_button'        => __( 'Add a goal', 'project-donations-wc' ),
           'columns'           => 6,
           'class' => 'goals-edit',
-          'before'            => $this->render_goals(),
+          'before'            => $this->render_goals(array(
+            'edit_button' => true,
+            'title' => __( 'Goals', 'project-donations-wc' ),
+          )),
           // 'after'             => __( 'after', 'project-donations-wc' ),
           'fields'            => [
             [
@@ -316,7 +320,7 @@ class PRDWC_Project {
 
       // Button HTML
       $buttonText = __('Edit', 'project-donations-wc');
-      $buttonHTML = sprintf(' <button class="edit-%s-button rwmb-button button-secondary">%s</button> ', $field_group_name, $buttonText);
+      $buttonHTML = sprintf(' <button class="page-title-action edit-%s-button rwmb-button button-secondary">%s</button> ', $field_group_name, $buttonText);
       $html .= $buttonHTML;
 
       // JavaScript code
@@ -360,45 +364,67 @@ class PRDWC_Project {
       return $html;
   }
 
-  function render_goals() {
+  function render_goals($atts = []) {
+    $progress_bar = isset($atts['progress_bar']) ? $atts['progress_bar'] : get_option('prdwc_progress_bar', true);
+    $edit_button = isset($atts['edit_button']) ? $atts['edit_button'] : false;
+    $title = isset($atts['title']) ? $atts['title'] : '';
+    $show_headers = isset($atts['show_headers']) ? $atts['show_headers'] : false;
+    $title .= ($edit_button) ? $this->render_edit_button('goals') : null;
+
+    $achievements = $this->get_achievements($atts);
+    $next_goal = $achievements['next_goal'];
+    $sales_total = $achievements['sales_total'];
     $post_id = $this->get_the_ID();
 
     if( ! $post_id ) return null;
 
     $goals = get_post_meta($post_id, 'goals');
 
-    $html = '<h3>';
-    $html .= __('Goals', 'project-donations-wc');
-    $html .= $this->render_edit_button('goals');
-    $html .= '</h3>';
+    $html = '';
 
-    $html .= '<div class="goals-summary">';
-    $html .= '<table class="goals-table">';
-    $html .= '<thead><tr><th>' . __('Amount', 'project-donations-wc') . '</th><th align=left>' . __('Description', 'project-donations-wc') . '</th></tr></thead>';
+    $html .= ( ! empty($title) ) ? '<h3 class="goals-title">' . $title . '</h3>' : '';
+
+    $html .= '<div class="goals-summary"><table class="goals-table">';
+    // $html .= ( $progress_bar ? '<caption>' . $this->render_achievements( [ 'show_goal_name' => false ] ) . '</caption>' : '' );
+
+    $html .= ($show_headers) ? sprintf(
+      '<thead><tr><th>%s</th><th align=left colspan=2>%s</th></tr></thead>',
+      __('Amount', 'project-donations-wc'),
+      __('Description', 'project-donations-wc'),
+    ) : '';
     $html .= '<tbody>';
 
     if ($goals) {
       foreach ($goals as $goal) {
-        $amount = (empty($goal['amount'])) ? '-' : wc_price($goal['amount']);
+        $class = '';
+        $bar = '';
+        $amount = (empty($goal['amount'])) ? '' : wc_price($goal['amount']);
         $description = esc_html($goal['description']);
 
-        $goal = array_merge(
-          array(
-            'amount' => '-',
-            'description' => null,
-          ), $goal
-        );
+        $achieved = ($sales_total >= @$goal['amount']);
+        if($achieved) $class.='achieved ';
+        else if($progress_bar) {
+          // $bar = $this->render_achievements( [ 'show_goal_name' => false ] );
+          $description = $this->render_achievements();
+          $progress_bar = false;
+        }
 
-        $html .= '<tr>';
-        $html .= '<td class="right price">' . $amount . '</td>';
-        $html .= '<td>' . $description . '</td>';
-        $html .= '</tr>';
+        $html .= sprintf(
+          '<tr class="goal %s">
+          <td class="right price">%s</td>
+          <td class="description" colspan="%s">%s</td>
+          %s
+          </tr>',
+          $class,
+          $amount,
+          $achieved ? 1 : 2,
+          $description . $bar,
+          $achieved ? '<td class="status"><span class="dashicons dashicons-yes-alt"></span></td>' : '',
+          );
       }
     }
-
-    $html .= '</tbody>';
-    $html .= '</table>';
-    $html .= '</div>';
+    $html .= '</tbody>
+    </table></div>';
 
     return $html;
   }
