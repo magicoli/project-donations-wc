@@ -229,6 +229,15 @@ class PRDWC {
 			'type' => 'hidden',
 			'value' => $project_id,
 		) );
+		error_log('getting project for ' . $post->ID);
+		$prdwc_project = new PRDWC_Project($post->ID);
+
+		$fields[] = array(
+			'name' => 'achievements',
+			'label' => __('Achivementss: ', 'project-donations-wc'),
+			'type' => 'custom_html',
+			'value' => $prdwc_project->render_achievements(),
+		);
 
 		if(prdwc_allow_custom_amount()) {
 			$fields[] = array(

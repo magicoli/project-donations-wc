@@ -2,11 +2,19 @@
   "name": "magicoli/project-donations",
   "description": "Project Donations for WooCommerce",
   "type": "wordpress-plugin",
-  "license": "AGPL-V3",
+  "license": "AGPL-3.0-or-later",
   "authors": [
     {
       "name": "Olivier van Helden",
       "email": "olivier@van-helden.net"
     }
-  ]
+  ],
+  "require": {
+    "magicoli/wp-package-updater-lib": "^0.1.9"
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "php vendor/magicoli/wp-package-updater-lib/install.php"
+    ]
+  }
 }

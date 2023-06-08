@@ -20,6 +20,8 @@ class PRDWC_Project {
     }
     $this->project_id = $this->get_project_id($post_id);
     $this->post = get_post($this->project_id);
+
+    if(!empty($args)) error_log("args " . print_r($args, true) . ' project id ' . $this->project_id);
   }
 
   public function init() {
@@ -54,10 +56,15 @@ class PRDWC_Project {
     if($post_id) {
       if (get_post_type($post_id) === $this->post_type) {
         $project_id = $post_id;
+        error_log("this is already a project $project_id");
       } else {
         // For other post types, retrieve the project ID from the product meta field
         $product_id = get_post_meta($post_id, 'prdwc_project_id', true);
-        $project_id = get_post_meta($product_id, 'prdwc_project_id', true);
+        error_log("getting product for post $post_id, found $product_id");
+        if($product_id) {
+          $project_id = get_post_meta($product_id, 'prdwc_project_id', true);
+          error_log("getting project for product $product_id, found $project_id");
+        }
       }
     }
 
