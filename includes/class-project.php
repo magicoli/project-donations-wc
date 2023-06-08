@@ -79,17 +79,7 @@ class PRDWC_Project {
 
   function render_achievements($atts = []) {
     // Check if project_id is set in shortcode attributes
-    // $project_id = isset($atts['project_id']) ? intval($atts['project_id']) : false;
-
-    // If project_id is not set, retrieve it based on post type and current post ID
-    // if ( empty( $project_id )) {
-      $project_id = $this->get_project_id($atts);
-    // }
-
-    // Check if the project ID is valid
-    if (get_post_type($project_id) !== $this->post_type) {
-      return; // 'Invalid project ID ' . $project_id . ' atts ' . print_r($atts, true);
-    }
+    $project_id = $this->get_project_id($atts);
 
     // Get the product IDs associated with the project
     $product_ids = wc_get_products(array(
