@@ -77,7 +77,7 @@ class PRDWC_Project {
     return $project_id;
   }
 
-  function render_achievements($atts = []) {
+  function get_achievements($atts = []) {
     // Check if project_id is set in shortcode attributes
     $project_id = $this->get_project_id($atts);
 
@@ -148,14 +148,26 @@ class PRDWC_Project {
       }
     }
 
+    return array(
+      'next_goal' => $next_goal,
+      'sales_total' => $sales_total,
+    );
+  }
+
+  function render_achievements($atts = []) {
+    $achievements = $this->get_achievements($atts);
+    $progress_bar = isset($atts['progress_bar']) ? $atts['progress_bar'] : get_option('prdwc_progress_bar', true);
+
+    $next_goal = $achievements['next_goal'];
+    $sales_total = $achievements['sales_total'];
+
     // Prepare the output HTML
     $output = '';
 
     if ($next_goal) {
 
       // Check if progress bar is enabled
-      // $achievement_progress_bar = get_option('prdwc_achievement_progress_bar');
-      $achievement_progress_bar = true;
+      // $progress_bar = get_option('prdwc_achievement_progress_bar');
 
       $exceeded = ( $sales_total > $next_goal['amount'] );
       $progress_percentage = ( $exceeded ) ? ( $next_goal['amount'] / $sales_total ) * 100 : ($sales_total / $next_goal['amount']) * 100;;
