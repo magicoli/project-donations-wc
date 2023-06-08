@@ -21,7 +21,6 @@ class PRDWC_Project {
     $this->project_id = $this->get_project_id($post_id);
     $this->post = get_post($this->project_id);
 
-    if(!empty($args)) error_log("args " . print_r($args, true) . ' project id ' . $this->project_id);
   }
 
   public function init() {
@@ -40,7 +39,9 @@ class PRDWC_Project {
   }
 
   // Retrieve project id based on post type and current post ID
-  function get_project_id($args = []) {
+  function get_project_id($args = null) {
+    error_log('get_project_id(' . print_r($args, true) . ')');
+    $post_id = (!empty($this->project_id)) ? $this->project_id : $this->get_the_ID($args);
     $project_id = null;
 
     if(is_integer($args)) {
@@ -48,24 +49,32 @@ class PRDWC_Project {
     } else if (is_object($args) && is_single($args)) {
       $post = $args;
       $post_id = ($post) ? $post->ID : null;
-    } else {
-      $post_id = $this->get_the_ID();
+    } else if (is_array($args)) {
+      $post_id = isset($args['project_id']) ? $args['project_id'] : $post_id;
     }
 
     // Check if the current post type matches the defined project post type
     if($post_id) {
       if (get_post_type($post_id) === $this->post_type) {
         $project_id = $post_id;
-        error_log("this is already a project $project_id");
       } else {
         // For other post types, retrieve the project ID from the product meta field
-        $product_id = get_post_meta($post_id, 'prdwc_project_id', true);
-        error_log("getting product for post $post_id, found $product_id");
-        if($product_id) {
-          $project_id = get_post_meta($product_id, 'prdwc_project_id', true);
-          error_log("getting project for product $product_id, found $project_id");
-        }
+        $project_id = get_post_meta($post_id, 'prdwc_project_id', true);
+        // if($product_id) {
+        //   $project_id = get_post_meta($product_id, 'prdwc_project_id', true);
+        // }
       }
+    }
+
+    if (empty($project_id)) {
+      // error_log('No project found ' . @$post_id . ' args ' . print_r(@$args, true));
+      return false;
+    }
+
+    // Check if the project ID is valid
+    if (get_post_type($project_id) !== $this->post_type) {
+      // error_log('Invalid project ID ' . @$project_id . ' args ' . print_r(@$args, true));
+      return false;
     }
 
     return $project_id;
@@ -73,16 +82,16 @@ class PRDWC_Project {
 
   function render_achievements($atts = []) {
     // Check if project_id is set in shortcode attributes
-    $project_id = isset($atts['project_id']) ? intval($atts['project_id']) : 0;
+    // $project_id = isset($atts['project_id']) ? intval($atts['project_id']) : false;
 
     // If project_id is not set, retrieve it based on post type and current post ID
-    if (!$project_id) {
-      $project_id = $this->get_project_id();
-    }
+    // if ( empty( $project_id )) {
+      $project_id = $this->get_project_id($atts);
+    // }
 
     // Check if the project ID is valid
     if (get_post_type($project_id) !== $this->post_type) {
-      return 'Invalid project ID.';
+      return; // 'Invalid project ID ' . $project_id . ' atts ' . print_r($atts, true);
     }
 
     // Get the product IDs associated with the project
