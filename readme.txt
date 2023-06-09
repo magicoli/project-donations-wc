@@ -5,7 +5,7 @@ Tags: woocommerce, projects, product, donation
 Requires at least: 4.7
 Tested up to: 6.2.2
 Requires PHP: 7.4
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,22 +21,25 @@ This plugin is mostly intended to be easy to set up. It is mostly usefull if you
 
 = Features =
 
-* switch to enable any product as Project Donation
-* **add project field** on enabled product page, with
-  - with free type project name
-  - or drop down selection list (from project or another post type)
-* optionally **add "Project" post type** to WordPress (if needed and not provided by another plugin)
-* optionally replace fixed price with a **flexible Amount field** (if not provided by another plugin). When the product has a fixed price higher than zero, the donation amount will be added to the normal product price)
+* any product as Project Donation
+* define project post type (existing or register a new one)
+* assign project to specific products
+* **add project field** in add to cart block
+  - with free type project name (if no defined project post type)
+  - or drop down selection list of projects
+* replace price with a **flexible Amount field** in add to cart block
 * **compatible with subscriptions, variable products**, and probably any other WooCommerce product type
 * **compatible with WooCommerce Name Your Price** (although main features are included in Project Donations)
 * localization ready
+* add **goals** and **counterparts** to project post edit package
+  - display goal progress in add to cart block
+  - `[goals]` and `[achievements]` shortcodes can be included anywhere
+
 
 = Roadmap =
 
 * global or per-product settings
-* collect donations statitics per project
 * add donation field to cart or checkout page
-* allow fixed project for some products
 * permalink like /donate/projectname/amount
 * customize notification mails
 
@@ -48,11 +51,12 @@ This plugin is mostly intended to be easy to set up. It is mostly usefull if you
   - optionally allow client to choose amount to pay (if you don't already use another plugin for this feature)
 * Create a product
   - check "Project Donation" option, near product type selection
+  - select project in "Project Donation" tab (optional)
   - check "Virtual" option (recommended but optional)
   - set product price to zero (recommended), or to a higher amount (in this case, the donation will be added to the fixed price, but it would be clearer for the customer to set a minimum donation amount instead)
 
-The product page will display "Project" and "Amount" fields
-To create a link for a specific project, add "project" parameter to the URL, like:
+The product page will display "Project", "Amount" fields and achievement progress bar if linked to a project.
+To create use a generic product for donation and get a link for a specific project, add "project" parameter to the URL, like:
 
 https://magiiic.com/donate/project/?project=Project+Donations+plugin
 
@@ -72,9 +76,12 @@ Yes, activate "Customer defined amount" in WooCommerce Product Donations setting
 
 = Can I see sales statistics per project? =
 
-Not currently, but this feature will be added in a future release. You can still get some insights from WooCommerce stats, however.
+Yes, with a progress bar. It will appear on products and can be included with a shortcode on any page.
 
 == Changelog ==
+
+= 1.5.5 =
+* updated readme
 
 = 1.5.4 =
 * code normalized
