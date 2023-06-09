@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.5.5
+- updated readme
+
 ### 1.5.4
 - code normalized
 

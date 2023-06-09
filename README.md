@@ -1,6 +1,6 @@
 # Project Donations for WooCommerce
 
-![Stable 1.5.3](https://badgen.net/badge/Stable/1.5.3/00aa00)
+![Stable 1.5.5](https://badgen.net/badge/Stable/1.5.5/00aa00)
 ![WordPress 4.7 - 6.2.2](https://badgen.net/badge/WordPress/4.7%20-%206.2.2/3858e9)
 ![Requires PHP 7.4](https://badgen.net/badge/PHP/7.4/7884bf)
 ![License GPLv2 or later](https://badgen.net/badge/License/GPLv2%20or%20later/aa0000)
@@ -17,22 +17,25 @@ This plugin is mostly intended to be easy to set up. It is mostly usefull if you
 
 ### Features
 
-- switch to enable any product as Project Donation
-- **add project field** on enabled product page, with
-  - with free type project name
-  - or drop down selection list (from project or another post type)
-- optionally **add "Project" post type** to WordPress (if needed and not provided by another plugin)
-- optionally replace fixed price with a **flexible Amount field** (if not provided by another plugin). When the product has a fixed price higher than zero, the donation amount will be added to the normal product price)
+- any product as Project Donation
+- define project post type (existing or register a new one)
+- assign project to specific products
+- **add project field** in add to cart block
+  - with free type project name (if no defined project post type)
+  - or drop down selection list of projects
+- replace price with a **flexible Amount field** in add to cart block
 - **compatible with subscriptions, variable products**, and probably any other WooCommerce product type
 - **compatible with WooCommerce Name Your Price** (although main features are included in Project Donations)
 - localization ready
+- add **goals** and **counterparts** to project post edit package
+  - display goal progress in add to cart block
+  - `[goals]` and `[achievements]` shortcodes can be included anywhere
+
 
 ### Roadmap
 
 - global or per-product settings
-- collect donations statitics per project
 - add donation field to cart or checkout page
-- allow fixed project for some products
 - permalink like /donate/projectname/amount
 - customize notification mails
 
@@ -48,5 +51,5 @@ Yes, activate "Customer defined amount" in WooCommerce Product Donations setting
 
 ### Can I see sales statistics per project?
 
-Not currently, but this feature will be added in a future release. You can still get some insights from WooCommerce stats, however.
+Yes, with a progress bar. It will appear on products and can be included with a shortcode on any page.
 
