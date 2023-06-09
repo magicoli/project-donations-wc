@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "magicoli/wp-package-updater-lib": "^0.1.9"
+    "magicoli/wp-package-updater-lib": "^1.0"
   },
   "scripts": {
     "post-update-cmd": [
