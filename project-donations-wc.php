@@ -29,8 +29,8 @@ if(!defined('PRDWC_VERSION')) {
 
   if(is_admin()) require_once(__DIR__ . '/admin/wc-admin-classes.php');
 
-  if( file_exists('lib/wp-package-updater-lib/package-updater.php') ) {
+  if( file_exists(__DIR__ . '/lib/wp-package-updater-lib/package-updater.php') ) {
     $wppul_server="https://magiiic.com";
-    include_once( 'lib/wp-package-updater-lib/package-updater.php' );
+    include_once( __DIR__ . '/lib/wp-package-updater-lib/package-updater.php' );
   }
 }
