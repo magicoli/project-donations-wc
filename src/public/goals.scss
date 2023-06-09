@@ -1,0 +1,31 @@
+.goals-table {
+  /* width: auto; */
+  max-width: 100%;
+  /* width: 100%; */
+  background: #f1f1f1;
+  border-collapse:collapse;
+  border-spacing: 10px;
+  border-radius: 5px;
+  margin: 1em auto;
+}
+.goals-table tr {
+  vertical-align: top;
+  border-bottom: solid 1px white;
+}
+.goals-table tr.achieved {
+  background: #4caf50;
+}
+.goals-table tr.locked {
+  color: grey;
+}
+.goals-table td {
+  padding: 10px;
+}
+.goals-table td.price {
+}
+.goals-table td > :first-child {
+  margin-top: 0;
+}
+.goals-table td > :last-child {
+  margin-bottom: 0;
+}

@@ -58,9 +58,8 @@ class PRDWC_WC_Admin {
   }
 
   static function can_disable_custom_backend_projects() {
-    if (get_option('prdwc_custom_user_projects') == 'yes') return false;
-    if ( get_option('prdwc_create_project_post_type') != 'yes'
-    && empty(get_option('prdwc_project_post_type')) ) return false;
+    if ( get_option('prdwc_custom_user_projects') == 'yes') return false;
+    if ( empty(PRDWC_Project::post_type()) ) return false;
     return true;
   }
   /*
@@ -102,7 +101,7 @@ class PRDWC_WC_Admin {
       //   'desc' => __( 'Allow customer to enter abritrary project names', 'project-donations-wc' ),
       //   'custom_attributes' => (
       //     get_option('prdwc_create_project_post_type') != 'yes'
-      //     && empty(get_option('prdwc_project_post_type'))
+      //     && empty(PRDWC_Project::post_type())
       //   ) ? [ 'disabled' => 'disabled' ] : [],
       //   'desc_tip' => __( 'Always enabled if project post type is not set', 'project-donations-wc' ),
       // ),

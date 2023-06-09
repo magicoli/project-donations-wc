@@ -2,15 +2,18 @@
 /**
  * Add a field group to the PRDWC project post type using Meta Box plugin.
 **/
-
+/**
+ * Project class.
+ *    - register project post type if needed
+ *    - register project fields
+ *    - register project and goals related shortcodes
+ */
 class PRDWC_Project {
   protected $post_type;
   protected $post;
   protected $project_id;
 
   public function __construct($args = []) {
-    $this->post_type = get_option('prdwc_project_post_type');
-
     $post_id = null;
     if(is_integer($args)) {
       $post_id = $args;
@@ -23,15 +26,109 @@ class PRDWC_Project {
 
   }
 
+  public static function post_type() {
+    return (get_option('prdwc_create_project_post_type') == 'yes') ? 'project' : get_option('prdwc_project_post_type');
+  }
+
   public function init() {
     add_filter('rwmb_meta_boxes', array($this, 'register_fields'));
     add_action('init', array($this, 'register_shortcodes'));
-    add_action( 'wp_enqueue_scripts', array($this, 'enqueue_custom_styles' ));
-    add_action( 'admin_enqueue_scripts', array($this, 'enqueue_custom_styles' ));
+
+    if(get_option('prdwc_create_project_post_type', false) ==  'yes')
+    add_action( 'init', array($this, 'register_post_types') );
   }
 
-  function enqueue_custom_styles() {
-    wp_enqueue_style( 'custom-progress-bar', plugin_dir_url(__FILE__) . 'project-donations-wc.css', [], PRDWC_VERSION . time() );
+
+  function register_post_types() {
+  	$labels = array(
+  		'name'               => esc_html__( 'Projects', 'project-donations-wc' ),
+  		'singular_name'      => esc_html__( 'Project', 'project-donations-wc' ),
+  		'add_new'            => esc_html__( 'Add New', 'project-donations-wc' ),
+  		'add_new_item'       => esc_html__( 'Add New Project', 'project-donations-wc' ),
+  		'edit_item'          => esc_html__( 'Edit Project', 'project-donations-wc' ),
+  		'new_item'           => esc_html__( 'New Project', 'project-donations-wc' ),
+  		'all_items'          => esc_html__( 'All Projects', 'project-donations-wc' ),
+  		'view_item'          => esc_html__( 'View Project', 'project-donations-wc' ),
+  		'search_items'       => esc_html__( 'Search Projects', 'project-donations-wc' ),
+  		'not_found'          => esc_html__( 'Nothing found', 'project-donations-wc' ),
+  		'not_found_in_trash' => esc_html__( 'Nothing found in Trash', 'project-donations-wc' ),
+  		'parent_item_colon'  => '',
+  	);
+
+  	$args = array(
+  		'labels'             => $labels,
+  		'public'             => true,
+  		'publicly_queryable' => true,
+  		'show_ui'            => true,
+  		'can_export'         => true,
+  		'show_in_nav_menus'  => true,
+  		'query_var'          => true,
+  		'has_archive'        => true,
+  		'rewrite'            => apply_filters(
+  			'et_project_posttype_rewrite_args',
+  			array(
+  				'feeds'      => true,
+  				'slug'       => 'project',
+  				'with_front' => false,
+  			)
+  		),
+  		'capability_type'    => 'post',
+  		'hierarchical'       => false,
+  		'menu_position'      => null,
+  		'menu_icon'					 => 'dashicons-portfolio',
+  		'show_in_rest'       => true,
+  		'supports'           => array( 'title', 'author', 'editor', 'thumbnail', 'excerpt', 'comments', 'revisions', 'custom-fields' ),
+  	);
+  	register_post_type( 'project', apply_filters( 'et_project_posttype_args', $args ) );
+
+  	$labels = array(
+  		'name'              => esc_html__( 'Project Categories', 'project-donations-wc' ),
+  		'singular_name'     => esc_html__( 'Project Category', 'project-donations-wc' ),
+  		'search_items'      => esc_html__( 'Search Categories', 'project-donations-wc' ),
+  		'all_items'         => esc_html__( 'All Categories', 'project-donations-wc' ),
+  		'parent_item'       => esc_html__( 'Parent Category', 'project-donations-wc' ),
+  		'parent_item_colon' => esc_html__( 'Parent Category:', 'project-donations-wc' ),
+  		'edit_item'         => esc_html__( 'Edit Category', 'project-donations-wc' ),
+  		'update_item'       => esc_html__( 'Update Category', 'project-donations-wc' ),
+  		'add_new_item'      => esc_html__( 'Add New Category', 'project-donations-wc' ),
+  		'new_item_name'     => esc_html__( 'New Category Name', 'project-donations-wc' ),
+  		'menu_name'         => esc_html__( 'Categories', 'project-donations-wc' ),
+  		'not_found'         => esc_html__( "You currently don't have any project categories.", 'project-donations-wc' ),
+  	);
+
+  	$project_category_args = array(
+  		'hierarchical'      => true,
+  		'labels'            => $labels,
+  		'show_ui'           => true,
+  		'show_admin_column' => true,
+  		'query_var'         => true,
+  		'show_in_rest'      => true,
+  	);
+  	register_taxonomy( 'project_category', array( 'project' ), $project_category_args );
+
+  	$labels = array(
+  		'name'              => esc_html__( 'Project Tags', 'project-donations-wc' ),
+  		'singular_name'     => esc_html__( 'Project Tag', 'project-donations-wc' ),
+  		'search_items'      => esc_html__( 'Search Tags', 'project-donations-wc' ),
+  		'all_items'         => esc_html__( 'All Tags', 'project-donations-wc' ),
+  		'parent_item'       => esc_html__( 'Parent Tag', 'project-donations-wc' ),
+  		'parent_item_colon' => esc_html__( 'Parent Tag:', 'project-donations-wc' ),
+  		'edit_item'         => esc_html__( 'Edit Tag', 'project-donations-wc' ),
+  		'update_item'       => esc_html__( 'Update Tag', 'project-donations-wc' ),
+  		'add_new_item'      => esc_html__( 'Add New Tag', 'project-donations-wc' ),
+  		'new_item_name'     => esc_html__( 'New Tag Name', 'project-donations-wc' ),
+  		'menu_name'         => esc_html__( 'Tags', 'project-donations-wc' ),
+  	);
+
+  	$project_tag_args = array(
+  		'hierarchical'      => false,
+  		'labels'            => $labels,
+  		'show_ui'           => true,
+  		'show_admin_column' => true,
+  		'query_var'         => true,
+  		'show_in_rest'      => true,
+  	);
+  	register_taxonomy( 'project_tag', array( 'project' ), $project_tag_args );
   }
 
   function register_shortcodes() {
@@ -57,12 +154,12 @@ class PRDWC_Project {
     }
 
     // Check if the current post type matches the defined project post type
-    if (get_post_type($post_id) === $this->post_type) {
+    if (get_post_type($post_id) === PRDWC_Project::post_type()) {
       $project_id = $post_id;
     } else {
       // For other post types, retrieve the project ID from the product meta field
       $project_id = get_post_meta($post_id, 'prdwc_project_id', true);
-      if (get_post_type($project_id) !== $this->post_type) {
+      if (get_post_type($project_id) !== PRDWC_Project::post_type()) {
         // Invalid project ID
         return false;
       }

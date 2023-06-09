@@ -41,7 +41,7 @@ msgstr "https://magiiic.com/"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: admin/wc-admin-classes.php:35 includes/product-options.php:45
+#: admin/wc-admin-classes.php:35 includes/class-woocommerce.php:45
 msgid "Project Donations"
 msgstr "Projektspenden"
 
@@ -179,7 +179,7 @@ msgstr ""
 msgid "No posts found"
 msgstr "Keine Artikel gefunden"
 
-#: includes/classes.php:450 includes/product-options.php:70
+#: includes/classes.php:450 includes/class-woocommerce.php:70
 msgid "Select a project"
 msgstr "Projekt auswählen"
 
@@ -315,19 +315,19 @@ msgstr "Name des neuen Etiketts"
 msgid "Tags"
 msgstr "Etiketten"
 
-#: includes/product-options.php:35
+#: includes/class-woocommerce.php:35
 msgid "Project Donation"
 msgstr "Project Donation"
 
-#: includes/product-options.php:36
+#: includes/class-woocommerce.php:36
 msgid "Check to add a project field to product page."
 msgstr "Aktivieren, um ein Projektfeld auf der Produktseite hinzuzufügen."
 
-#: includes/product-options.php:68
+#: includes/class-woocommerce.php:68
 msgid "Fixed project"
 msgstr ""
 
-#: includes/product-options.php:84
+#: includes/class-woocommerce.php:84
 msgid "Create at least one project first"
 msgstr ""
 

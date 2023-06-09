@@ -45,3 +45,4 @@ vendor/
 .wpignore
 CHANGELOG.md
 INSTALLATION.md
+src/

@@ -1,0 +1,47 @@
+{
+  "name": "project-donations-wc",
+  "version": "1.5.1",
+  "description": "Add project field to WooCommerce products.",
+  "main": "webpack.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties"
+      ]
+    ]
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@wordpress/scripts": "^22.1.0",
+    "php-loader": "^0.2.0"
+  },
+  "homepage": "https://github.com/magicoli/project-donations-wc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magicoli/project-donations-wc"
+  },
+  "bugs": {
+    "url": "https://github.com/magicoli/project-donations-wc/issues"
+  },
+  "keywords": [
+    "donations",
+    "woocommerce",
+    "name-your-price",
+    "crowdfunding"
+  ],
+  "author": "Magiiic",
+  "license": "AGPL-3.0-or-later"
+}
