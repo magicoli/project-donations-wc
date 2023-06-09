@@ -202,6 +202,7 @@ class PRDWC_Project {
       );
 
     } else {
+      $sales_count = isset($sales_count) ? $sales_count : 0;
       $output .= '<p>' . sprintf( _n(
         'Collected: %s (%s sale)',
         'Collected: %s (%s sales)',
