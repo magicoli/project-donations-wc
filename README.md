@@ -1,8 +1,8 @@
 # Project Donations for WooCommerce
 
-![Stable 1.5.2](https://badgen.net/badge/Stable/1.5.2/00aa00)
+![Stable 1.5.3](https://badgen.net/badge/Stable/1.5.3/00aa00)
 ![WordPress 4.7 - 6.2.2](https://badgen.net/badge/WordPress/4.7%20-%206.2.2/3858e9)
-![Requires PHP 5.6](https://badgen.net/badge/PHP/5.6/7884bf)
+![Requires PHP 7.4](https://badgen.net/badge/PHP/7.4/7884bf)
 ![License GPLv2 or later](https://badgen.net/badge/License/GPLv2%20or%20later/aa0000)
 
 Add project field to WooCommerce products, allow clients to link their purchase to a project

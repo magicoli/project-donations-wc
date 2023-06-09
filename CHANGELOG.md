@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.5.4
+- code normalized
+
 ### 1.5.3
 - fix library update conflict
 

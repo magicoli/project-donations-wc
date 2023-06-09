@@ -7,7 +7,7 @@
  * Author URI:      https://magiiic.com/
  * Text Domain:     project-donations-wc
  * Domain Path:     /languages
- * Version:         1.5.3
+ * Version:         1.5.4
  *
  * @package         project-donations-wc
  *
@@ -19,7 +19,7 @@
 
 // Your code starts here.
 if ( ! defined( 'PRDWC_VERSION' ) ) {
-	define( 'PRDWC_VERSION', '1.5.3' );
+	define( 'PRDWC_VERSION', '1.5.4');
 	define( 'PRDWC_PLUGIN', plugin_basename( __FILE__ ) );
 	define( 'PRDWC_SLUG', dirname( PRDWC_PLUGIN ) );
 	// define('PRDWC_PLUGIN_NAME', 'Project Donations for WooCommerce');
