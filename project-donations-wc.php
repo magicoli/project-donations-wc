@@ -18,19 +18,21 @@
  */
 
 // Your code starts here.
-if(!defined('PRDWC_VERSION')) {
-  define('PRDWC_VERSION', '1.5.3');
-  define('PRDWC_PLUGIN', plugin_basename(__FILE__));
-  define('PRDWC_SLUG', dirname(PRDWC_PLUGIN));
-  // define('PRDWC_PLUGIN_NAME', 'Project Donations for WooCommerce');
+if ( ! defined( 'PRDWC_VERSION' ) ) {
+	define( 'PRDWC_VERSION', '1.5.3' );
+	define( 'PRDWC_PLUGIN', plugin_basename( __FILE__ ) );
+	define( 'PRDWC_SLUG', dirname( PRDWC_PLUGIN ) );
+	// define('PRDWC_PLUGIN_NAME', 'Project Donations for WooCommerce');
 
-  require(plugin_dir_path(__FILE__) . 'includes/classes.php');
-  // if(is_admin()) require(plugin_dir_path(__FILE__) . 'admin/wc-admin-classes.php');
+	require plugin_dir_path( __FILE__ ) . 'includes/classes.php';
+	// if(is_admin()) require(plugin_dir_path(__FILE__) . 'admin/wc-admin-classes.php');
 
-  if(is_admin()) require_once(__DIR__ . '/admin/wc-admin-classes.php');
+	if ( is_admin() ) {
+		require_once __DIR__ . '/admin/wc-admin-classes.php';
+	}
 
-  if( file_exists(__DIR__ . '/lib/wp-package-updater-lib/package-updater.php') ) {
-    $wppul_server="https://magiiic.com";
-    include_once( __DIR__ . '/lib/wp-package-updater-lib/package-updater.php' );
-  }
+	if ( file_exists( __DIR__ . '/lib/wp-package-updater-lib/package-updater.php' ) ) {
+		$wppul_server = 'https://magiiic.com';
+		include_once __DIR__ . '/lib/wp-package-updater-lib/package-updater.php';
+	}
 }

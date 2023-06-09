@@ -4,7 +4,7 @@ Donate link: https://magiiic.com/support/Project+Donations+plugin
 Tags: woocommerce, projects, product, donation
 Requires at least: 4.7
 Tested up to: 6.2.2
-Requires PHP: 5.6
+Requires PHP: 7.4
 Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
