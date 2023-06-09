@@ -1,5 +1,9 @@
 ## Changelog
 
+### 1.5.2
+- fix project type hardcoded as records
+- classes reorganisation
+
 ### 1.5.1
 - added goals shortcode
 - fixed get_project_id() returning wrong projects
