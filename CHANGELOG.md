@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.5.3
+- fix library update conflict
+
 ### 1.5.2
 - fix project type hardcoded as records
 - classes reorganisation
