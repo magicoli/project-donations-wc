@@ -323,7 +323,7 @@ class PRDWC_Project {
     $meta_boxes[] = [
       'title'      => __( 'Project goals and counterparts', 'project-donations-wc' ),
       'id'         => 'goals',
-      'post_types' => ['records'],
+      'post_types' => [ PRDWC_Project::post_type() ],
       'autosave'   => true,
       'fields'     => [
         [
