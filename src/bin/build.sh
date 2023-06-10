@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ignore="vendor/*,node_modules/*,sources/,*.asset.php,*/*/*.asset.php,*.map,includes/fullcalendar/fullcalendar.*"
+ignore="vendor/*,node_modules/*,lib/wp-package-updater-lib/wp-package-updater,lib/wp-package-updater-lib/plugin-update-checker/,sources/,*.asset.php,*/*/*.asset.php,*.map,includes/fullcalendar/fullcalendar.*"
 
 PGM=$(basename $0)
 trap 'previous_command=$this_command; this_command=$BASH_COMMAND' DEBUG
