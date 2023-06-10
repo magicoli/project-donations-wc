@@ -11,3 +11,4 @@ composer.lock
 vendor/
 bin/svnrc
 *.map
+.svnrc
