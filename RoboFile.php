@@ -3,34 +3,30 @@
 use Robo\Tasks;
 use Symfony\Component\Finder\Finder;
 
-class RoboFile extends \Robo\Tasks {
-
+class RoboFile extends \Robo\Tasks
+{
 	/**
 	* Bumps the version based on the specified level (major, minor, patch, dev, beta, rc).
 	*
 	* @param string $level The level to increment (major, minor, patch, dev, beta, rc). Default: patch
 	*/
-	public function bumpVersion( $level = 'patch' ) {
+	public function bumpVersion($level = 'patch')
+	{
 		$versionFile = '.version';
 
-		$currentVersion = file_exists( $versionFile ) ? file_get_contents( $versionFile ) : '0.0.0';
-		$nextVersion    = $this->incrementVersion( $currentVersion, $level );
-		file_put_contents( $versionFile, $nextVersion );
+		$currentVersion = file_exists($versionFile) ? file_get_contents($versionFile) : '0.0.0';
+		$nextVersion = $this->incrementVersion($currentVersion, $level);
+		file_put_contents($versionFile, $nextVersion);
 
-		$phpFiles = $this->getPhpFilesWithPackage('project-donations-wc'); // Replace 'your-package-name' with the desired package value
+		$phpFiles = $this->getPhpFilesWithPackage('project-donations-wc'); // Replace 'project-donations-wc' with your package name
 
 		$pattern = '\d+\.\d+\.\d+(-[A-Za-z]+(-[a-zA-Z0-9\.-]+)?)?';
 
-		$this->replaceInFiles( $phpFiles, '/@version\s+' . $pattern . '/', "@version $nextVersion" );
-		$this->replaceInFile( 'README.md', '/Version ' . $pattern . '/', "Version $nextVersion" );
-		$this->replaceInFile( 'README.md', '/Version\/' . $pattern . '\//', "Version/$nextVersion/" );
+		$this->replaceInFiles($phpFiles, '/@version\s+' . $pattern . '/', "@version $nextVersion");
+		$this->replaceInFile('README.md', '/Version ' . $pattern . '/', "Version $nextVersion");
+		$this->replaceInFile('package.json', '/"version":\s*"' . $pattern . '"\s*,/', '"version": "' . $nextVersion . '",');
 
-		$packageJsonPath = 'package.json';
-		$packageJson = json_decode(file_get_contents($packageJsonPath), true);
-		$packageJson['version'] = $nextVersion;
-		file_put_contents($packageJsonPath, json_encode($packageJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-
-		$this->say( "Version bumped to: $nextVersion" );
+		$this->say("Version bumped to: $nextVersion");
 	}
 
 	/**
@@ -100,15 +96,17 @@ class RoboFile extends \Robo\Tasks {
 	/**
 	* Replaces the given pattern with the replacement string in the specified files.
 	*
-	* @param array  $files The files to perform the replacement on.
+	* @param array $files The files to perform the replacement on.
 	* @param string $pattern The pattern to search for.
 	* @param string $replacement The replacement string.
 	*/
-	private function replaceInFiles( $files, $pattern, $replacement ) {
-		foreach ( $files as $file ) {
-			$contents = file_get_contents( $file );
-			$contents = preg_replace( $pattern, $replacement, $contents );
-			file_put_contents( $file, $contents );
+	private function replaceInFiles($files, $pattern, $replacement)
+	{
+		foreach ($files as $file) {
+			$this->say(realpath($file));
+			$contents = file_get_contents($file);
+			$contents = preg_replace($pattern, $replacement, $contents);
+			file_put_contents($file, $contents);
 		}
 	}
 
@@ -119,10 +117,12 @@ class RoboFile extends \Robo\Tasks {
 	* @param string $pattern The pattern to search for.
 	* @param string $replacement The replacement string.
 	*/
-	private function replaceInFile( $file, $pattern, $replacement ) {
-		$contents = file_get_contents( $file );
-		$contents = preg_replace( $pattern, $replacement, $contents );
-		file_put_contents( $file, $contents );
+	private function replaceInFile($file, $pattern, $replacement)
+	{
+		$this->say(realpath($file));
+		$contents = file_get_contents($file);
+		$contents = preg_replace($pattern, $replacement, $contents);
+		file_put_contents($file, $contents);
 	}
 
 	/**
@@ -136,14 +136,15 @@ class RoboFile extends \Robo\Tasks {
 		$finder = new Finder();
 		$finder
 		->files()
-		->in('./')
+		->in('../')
 		->name('*.php')
 		->exclude(['vendor', 'node_modules'])
 		->ignoreVCS(true)
 		->ignoreDotFiles(true)
-		->contains("@package $package"); // Add the condition to match @package value
+		->contains("@package $package");
 
 		$phpFiles = [];
+
 		foreach ($finder as $file) {
 			$phpFiles[] = $file->getRealPath();
 		}
