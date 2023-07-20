@@ -7,13 +7,15 @@ class RoboFile extends \Robo\Tasks
 {
 	protected $rootpath;
 
-	function __construct() {
+	function __construct()
+	{
 		$this->rootpath = $this->getRootPath();
 		if ($this->rootpath === null) {
 			$this->say("Failed to determine the project root path. Make sure the project is inside a Git repository.");
 			die();
 		}
 	}
+
 	/**
 	* Bumps the version based on the specified level (major, minor, patch, dev, beta, rc).
 	*
@@ -29,13 +31,26 @@ class RoboFile extends \Robo\Tasks
 		$nextVersion = $this->incrementVersion($currentVersion, $level);
 		file_put_contents($versionFile, $nextVersion);
 
-		$phpFiles = $this->getPhpFilesWithPackage('project-donations-wc'); // Replace 'project-donations-wc' with your package name
 
 		$pattern = '\d+\.\d+\.\d+(-[A-Za-z]+(-[a-zA-Z0-9\.-]+)?)?';
 
-		$this->replaceInFiles($phpFiles, '/@version\s+' . $pattern . '/', "@version $nextVersion");
-		$this->replaceInFile($this->rootpath . '/README.md', '/Version ' . $pattern . '/', "Version $nextVersion");
-		$this->replaceInFile($this->rootpath . '/package.json', '/"version":\s*"' . $pattern . '"\s*,/', '"version": "' . $nextVersion . '",');
+    $mainPhpFile = $this->findMainPhpFile();
+		$this->replaceInFile($mainPhpFile, '/(\*\s*Version:\s*)' . $pattern . '/', "\${1}$nextVersion" );
+		$this->replaceInFile( 
+			$mainPhpFile,
+			'/define\(\s*\'([A-Za-z0-9_]+_VERSION)\',\s*\'(' . $pattern . ')\'\s*\);/',
+			"define( '$1', '$nextVersion' );"
+		);
+
+		// $this->replaceInFile($this->rootpath . '/package.json', '/"version":\s*"' . $pattern . '"\s*,/', '"version": "' . $nextVersion . '",');
+		// $this->replaceInFile($this->rootpath . '/README.md', '/Version ' . $pattern . '/', "Version $nextVersion");
+		// if (!preg_match('/(dev|beta|rc)/i', $nextVersion)) {
+		// 	$this->replaceInFile($this->rootpath . '/readme.txt', '/Stable tag:\s+' . $pattern . '/', "Stable tag: $nextVersion");
+		// }
+		//
+		// $phpFiles = $this->getPhpFilesWithPackage('project-donations-wc'); // Replace 'project-donations-wc' with your package name
+		// $this->replaceInFiles($phpFiles, '/@version\s+' . $pattern . '/', "@version $nextVersion");
+
 
 		$this->say("Version bumped to: $nextVersion");
 	}
@@ -114,11 +129,7 @@ class RoboFile extends \Robo\Tasks
 	private function replaceInFiles($files, $pattern, $replacement)
 	{
 		foreach ($files as $file) {
-			$this->say('Updating ' . realpath($file));
-			// continue; // DEBUG: don't apply changes
-			$contents = file_get_contents($file);
-			$contents = preg_replace($pattern, $replacement, $contents);
-			file_put_contents($file, $contents);
+			$this->replaceInFile($file, $pattern, $replacement);
 		}
 	}
 
@@ -131,6 +142,7 @@ class RoboFile extends \Robo\Tasks
 	*/
 	private function replaceInFile($file, $pattern, $replacement)
 	{
+		if(empty($file)) return;
 		$this->say('Updating ' . realpath($file));
 		// return; // DEBUG: don't apply changes
 		$contents = file_get_contents($file);
@@ -164,6 +176,30 @@ class RoboFile extends \Robo\Tasks
 		}
 
 		return $phpFiles;
+	}
+
+	/**
+	 * Finds the main PHP file in the root folder based on the docblock.
+	 *
+	 * @return string|null The path of the main PHP file, or null if not found.
+	 */
+	private function findMainPhpFile()
+	{
+	    $finder = new Finder();
+	    $finder
+	        ->files()
+	        ->in($this->rootpath)
+	        ->name('*.php')
+	        ->ignoreVCS(true)
+	        ->ignoreDotFiles(true)
+	        ->depth('== 0')
+	        ->contains('/\*\s*Plugin Name\s*:/');
+
+	    foreach ($finder as $file) {
+	        return $file->getRealPath();
+	    }
+
+	    return null;
 	}
 
 	private function getRootPath()
