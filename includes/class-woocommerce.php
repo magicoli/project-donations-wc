@@ -1,10 +1,24 @@
 <?php
-
+/**
+ * Main class for WooCommerce integration in Project Donations for WooCommerce.
+ *
+ * @package project-donations-wc
+ * @link            https://github.com/magicoli/project-donations-wc
+ * @version 1.5.5
+ *
+ * This class handles the integration with WooCommerce and manages the functionality related to product donations.
+ *
+ * @version 1.4.6
+ *
+ */
 class PRDWC_WooCommerce {
 
 	public function __construct() {
 	}
 
+	/**
+	 * Initialize the WooCommerce integration.
+	 */
 	public function init() {
 
 		// Add project field to product page
@@ -38,23 +52,12 @@ class PRDWC_WooCommerce {
 
 	}
 
-	// function prdwc_enqueue_scripts() {
-	// $post_type = get_post_type();
-	// $screen = get_current_screen();
-	//
-	// if ($screen && $screen->base === 'post' && $screen->post_type === 'product') {
-	// wp_enqueue_script('prdwc-script', plugin_dir_url(__FILE__) . 'product-options.js', array('jquery'), PRDWC_VERSION . '-' . time(), true);
-	//
-	// Localize script data
-	// $data = array(
-	// 'linkProjectChecked' => get_post_meta(get_the_ID(), '_linkproject', true),
-	// );
-	// wp_localize_script('prdwc-script', 'prdwcData', $data);
-	//
-	// }
-	//
-	// }
-
+	/**
+	 * Add product type options for the donations.
+	 *
+	 * @param array $product_type_options Array of product type options.
+	 * @return array Updated array of product type options.
+	 */
 	static function add_product_type_options( $product_type_options ) {
 		$product_type_options['linkproject'] = array(
 			'id'            => '_linkproject',
@@ -66,7 +69,12 @@ class PRDWC_WooCommerce {
 		return $product_type_options;
 	}
 
-
+	/**
+	 * Add the donations tab to the product data tabs.
+	 *
+	 * @param array $tabs Array of product data tabs.
+	 * @return array Updated array of product data tabs.
+	 */
 	public function add_donations_tab( $tabs ) {
 		$tabs['donations'] = array(
 			'label'    => __( 'Project Donations', 'project-donations-wc' ),
@@ -77,6 +85,9 @@ class PRDWC_WooCommerce {
 		return $tabs;
 	}
 
+	/**
+	 * Add the donations tab content.
+	 */
 	public function add_donations_tab_content() {
 		global $post;
 
@@ -119,6 +130,13 @@ class PRDWC_WooCommerce {
 		echo '</div>';
 	}
 
+	/**
+	 * Save the product type options.
+	 *
+	 * @param int     $post_ID Post ID.
+	 * @param WP_Post $product Product object.
+	 * @param bool    $update Whether the post is being updated or created.
+	 */
 	public static function save_product_type_options( $post_ID, $product, $update ) {
 		update_post_meta( $product->ID, '_linkproject', isset( $_POST['_linkproject'] ) ? 'yes' : 'no' );
 		if ( isset( $_POST['prdwc_project_id'] ) ) {
@@ -127,6 +145,9 @@ class PRDWC_WooCommerce {
 		}
 	}
 
+	/**
+	 * Display custom fields on the product page.
+	 */
 	static function display_custom_fields_simple() {
 		global $post, $product;
 		if ( $product->has_child() ) {
@@ -139,6 +160,9 @@ class PRDWC_WooCommerce {
 		self::display_custom_fields();
 	}
 
+	/**
+	 * Display custom fields on the product page.
+	 */
 	static function display_custom_field( $args ) {
 		if ( empty( $args['name'] ) ) {
 			return;

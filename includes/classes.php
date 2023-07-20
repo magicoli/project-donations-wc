@@ -1,8 +1,15 @@
 <?php defined( 'PRDWC_VERSION' ) || die;
 
 /**
- * Main class, used to load global stypes and scripts, and other classes.
+ * Main class, used to load global styles and scripts, and other classes.
+ *
+ * @package project-donations-wc
+ * @link            https://github.com/magicoli/project-donations-wc
+ * @version 1.5.5
+ *
+ * @since 1.4
  */
+
 class PRDWC {
 
 	/*
@@ -19,6 +26,11 @@ class PRDWC {
 		add_action( 'plugins_loaded', __CLASS__ . '::load_plugin_textdomain' );
 	}
 
+	/**
+	 * Enqueues admin styles and scripts.
+	 *
+	 * @since 1.5.5
+	 */
 	function enqueue_admin_styles() {
 		wp_enqueue_script( 'prdwc-admin-script', plugin_dir_url( __DIR__ ) . 'admin/admin.js', array( 'jquery' ), PRDWC_VERSION . '-' . time(), true );
 		$data = array(
@@ -29,6 +41,11 @@ class PRDWC {
 		wp_enqueue_style( 'prdwc-admin-style', plugin_dir_url( __DIR__ ) . 'admin/admin.css', array(), PRDWC_VERSION . time() );
 	}
 
+	/**
+	 * Enqueues public scripts.
+	 *
+	 * @since 1.5.5
+	 */
 	function enqueue_public_scripts() {
 		wp_enqueue_style( 'prdwc-style', plugin_dir_url( __DIR__ ) . 'public/public.css', array(), PRDWC_VERSION . time() );
 	}
@@ -41,6 +58,14 @@ class PRDWC {
 		);
 	}
 
+	/**
+	 * Retrieves an array of post options.
+	 *
+	 * @param array $args Arguments for retrieving posts.
+	 * @return array Post options.
+	 *
+	 * @since 1.5.5
+	 */
 	static function select_post_options( $args = array() ) {
 		$args = array_merge(
 			array(

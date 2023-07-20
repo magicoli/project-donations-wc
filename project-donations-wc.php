@@ -10,6 +10,10 @@
  * Version:         1.5.5
  *
  * @package         project-donations-wc
+ * @link            https://github.com/magicoli/project-donations-wc
+ *
+ * Donate to support the project:
+ * @link          https://magiiic.com/donate/?project=project-donations-wc
  *
  * Icon1x: https://ps.w.org/project-donations-wc/assets/icon-128x128.jpg
  * Icon2x: https://ps.w.org/project-donations-wc/assets/icon-256x256.jpg

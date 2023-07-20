@@ -1,16 +1,56 @@
 <?php
+
 /**
- * Add a field group to the PRDWC project post type using Meta Box plugin.
+ * PRDWC Project Class
+ *
+ * @package project-donations-wc
+ * @link            https://github.com/magicoli/project-donations-wc
+ * @version 1.5.5
+ * @since 1.5
+ *
+ * The PRDWC_Project class handles the project functionality within the Project
+ * Donations for WooCommerce plugin. It registers the project post type, project
+ * fields, and project-related shortcodes. It also provides methods to retrieve
+ * project information such as achievements and goals.
+ *
+ */
+
+/**
  * Project class.
  *    - register project post type if needed
  *    - register project fields
  *    - register project and goals related shortcodes
+ *
+ * @since 1.5
  */
 class PRDWC_Project {
+
+	/**
+	 * The post type for the project.
+	 *
+	 * @var string
+	 */
 	protected $post_type;
+
+	/**
+	 * The project's post object.
+	 *
+	 * @var WP_Post
+	 */
 	protected $post;
+
+	/**
+	 * The project ID.
+	 *
+	 * @var int
+	 */
 	protected $project_id;
 
+	/**
+   * Constructor for the PRDWC_Project class.
+   *
+   * @param mixed $args Project ID or post object.
+   */
 	public function __construct( $args = array() ) {
 		$post_id = null;
 		if ( is_integer( $args ) ) {
@@ -24,10 +64,18 @@ class PRDWC_Project {
 
 	}
 
+	/**
+	 * Retrieves the project post type option value.
+	 *
+	 * @return string The project post type.
+	 */
 	public static function post_type() {
 		return ( get_option( 'prdwc_create_project_post_type' ) == 'yes' ) ? 'project' : get_option( 'prdwc_project_post_type' );
 	}
 
+  /**
+   * Register the PRDWC_Project class hooks.
+   */
 	public function init() {
 		add_filter( 'rwmb_meta_boxes', array( $this, 'register_fields' ) );
 		add_action( 'init', array( $this, 'register_shortcodes' ) );
@@ -37,7 +85,9 @@ class PRDWC_Project {
 		}
 	}
 
-
+	/**
+	 * Registers the project post type.
+	 */
 	function register_post_types() {
 		$labels = array(
 			'name'               => esc_html__( 'Projects', 'project-donations-wc' ),
@@ -130,12 +180,40 @@ class PRDWC_Project {
 		register_taxonomy( 'project_tag', array( 'project' ), $project_tag_args );
 	}
 
+	/**
+	 * Registers the project-related shortcodes.
+	 */
 	function register_shortcodes() {
 		add_shortcode( 'achievements', array( $this, 'render_achievements' ) );
 		add_shortcode( 'goals', array( $this, 'render_goals' ) );
 	}
 
-	// Retrieve project id based on post type and current post ID
+	/**
+	 * Retrieves extends core get_the_ID() to include currently saved form.
+	 *
+	 * @return int|null The current post ID, or null if not found.
+	 */
+	public function get_the_ID() {
+		$post_id = get_the_ID();
+		if ( $post_id ) {
+			return $post_id;
+		}
+
+		if ( isset( $_GET['post'] ) ) {
+			return $_GET['post'];
+		}
+
+		return null;
+	}
+
+	/**
+	 * Retrieves the project ID based on the post type and current post ID.
+	 *
+	 * @since 1.5.1
+	 *
+	 * @param mixed $args Project ID or post object.
+	 * @return int|false The project ID if found, false otherwise.
+	 */
 	function get_project_id( $args = null ) {
 		$post_id = ( ! empty( $this->project_id ) ) ? $this->project_id : get_the_ID( $args );
 		if ( empty( $post_id ) && empty( $args ) ) {
@@ -176,6 +254,14 @@ class PRDWC_Project {
 		return $project_id;
 	}
 
+	/**
+	 * Retrieves the project achievements.
+	 *
+	 * @since 1.5.1
+	 *
+	 * @param array $atts Shortcode attributes.
+	 * @return array The project achievements.
+	 */
 	function get_achievements( $atts = array() ) {
 		// Check if project_id is set in shortcode attributes
 		$project_id = $this->get_project_id( $atts );
@@ -257,6 +343,14 @@ class PRDWC_Project {
 		);
 	}
 
+	/**
+	 * Renders the achievements shortcode.
+	 *
+	 * @since 1.5
+	 *
+	 * @param array $atts Shortcode attributes.
+	 * @return string The rendered achievements output.
+	 */
 	function render_achievements( $atts = array() ) {
 		$achievements   = $this->get_achievements( $atts );
 		$progress_bar   = isset( $atts['progress_bar'] ) ? $atts['progress_bar'] : get_option( 'prdwc_progress_bar', true );
@@ -323,6 +417,12 @@ class PRDWC_Project {
 		return $output;
 	}
 
+	/**
+	 * Registers the project fields using Meta Box plugin.
+	 *
+	 * @param array $meta_boxes The meta boxes array.
+	 * @return array The modified meta boxes array.
+	 */
 	function register_fields( $meta_boxes ) {
 		$prefix = '';
 
@@ -408,19 +508,14 @@ class PRDWC_Project {
 		return $meta_boxes;
 	}
 
-	public function get_the_ID() {
-		$post_id = get_the_ID();
-		if ( $post_id ) {
-			return $post_id;
-		}
-
-		if ( isset( $_GET['post'] ) ) {
-			return $_GET['post'];
-		}
-
-		return null;
-	}
-
+	/**
+	 * Renders the edit button for a field group.
+	 *
+	 * @since 1.5
+	 *
+	 * @param string $field_group_name The name of the field group.
+	 * @return string The rendered edit button HTML.
+	 */
 	function render_edit_button( $field_group_name ) {
 		$html = '';
 
@@ -470,6 +565,14 @@ class PRDWC_Project {
 		return $html;
 	}
 
+	/**
+	 * Renders the goals shortcode.
+	 *
+	 * @since 1.5
+	 *
+	 * @param array $atts Shortcode attributes.
+	 * @return string The rendered goals output.
+	 */
 	function render_goals( $atts = array() ) {
 		$progress_bar = isset( $atts['progress_bar'] ) ? $atts['progress_bar'] : get_option( 'prdwc_progress_bar', true );
 		$edit_button  = isset( $atts['edit_button'] ) ? $atts['edit_button'] : false;
@@ -538,6 +641,13 @@ class PRDWC_Project {
 		return $html;
 	}
 
+	/**
+	 * Renders the counterparts table.
+	 *
+	 * @since 1.5
+	 *
+	 * @return string The rendered counterparts table HTML.
+	 */
 	function render_counterparts() {
 		$post_id = $this->get_the_ID();
 
