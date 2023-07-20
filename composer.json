@@ -13,8 +13,14 @@
     "magicoli/wp-package-updater-lib": "^1.0"
   },
   "scripts": {
+    "bump-version": [
+      "robo bump:version"
+    ],
     "post-update-cmd": [
       "php vendor/magicoli/wp-package-updater-lib/install.php"
     ]
+  },
+  "require-dev": {
+    "consolidation/robo": "^4.0"
   }
 }
