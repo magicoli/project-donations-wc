@@ -12,7 +12,6 @@
  * Donations for WooCommerce plugin. It registers the project post type, project
  * fields, and project-related shortcodes. It also provides methods to retrieve
  * project information such as achievements and goals.
- *
  */
 
 /**
@@ -47,10 +46,10 @@ class PRDWC_Project {
 	protected $project_id;
 
 	/**
-   * Constructor for the PRDWC_Project class.
-   *
-   * @param mixed $args Project ID or post object.
-   */
+	 * Constructor for the PRDWC_Project class.
+	 *
+	 * @param mixed $args Project ID or post object.
+	 */
 	public function __construct( $args = array() ) {
 		$post_id = null;
 		if ( is_integer( $args ) ) {
@@ -73,9 +72,9 @@ class PRDWC_Project {
 		return ( get_option( 'prdwc_create_project_post_type' ) == 'yes' ) ? 'project' : get_option( 'prdwc_project_post_type' );
 	}
 
-  /**
-   * Register the PRDWC_Project class hooks.
-   */
+	/**
+	 * Register the PRDWC_Project class hooks.
+	 */
 	public function init() {
 		add_filter( 'rwmb_meta_boxes', array( $this, 'register_fields' ) );
 		add_action( 'init', array( $this, 'register_shortcodes' ) );

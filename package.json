@@ -25,7 +25,8 @@
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
-    "@wordpress/scripts": "^22.1.0",
+    "@wordpress/scripts": "^26.8.0",
+    "copy-webpack-plugin": "^11.0.0",
     "php-loader": "^0.2.0"
   },
   "homepage": "https://github.com/magicoli/project-donations-wc",

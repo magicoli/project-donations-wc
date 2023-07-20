@@ -9,7 +9,6 @@
  * This class handles the integration with WooCommerce and manages the functionality related to product donations.
  *
  * @version 1.4.6
- *
  */
 class PRDWC_WooCommerce {
 
