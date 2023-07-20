@@ -5,6 +5,15 @@ use Symfony\Component\Finder\Finder;
 
 class RoboFile extends \Robo\Tasks
 {
+	protected $rootpath;
+
+	function __construct() {
+		$this->rootpath = $this->getRootPath();
+		if ($this->rootpath === null) {
+			$this->say("Failed to determine the project root path. Make sure the project is inside a Git repository.");
+			die();
+		}
+	}
 	/**
 	* Bumps the version based on the specified level (major, minor, patch, dev, beta, rc).
 	*
@@ -12,7 +21,9 @@ class RoboFile extends \Robo\Tasks
 	*/
 	public function bumpVersion($level = 'patch')
 	{
-		$versionFile = '.version';
+		$this->say("Project root " . $this->rootpath);
+
+		$versionFile = $this->rootpath . '/.version';
 
 		$currentVersion = file_exists($versionFile) ? file_get_contents($versionFile) : '0.0.0';
 		$nextVersion = $this->incrementVersion($currentVersion, $level);
@@ -23,8 +34,8 @@ class RoboFile extends \Robo\Tasks
 		$pattern = '\d+\.\d+\.\d+(-[A-Za-z]+(-[a-zA-Z0-9\.-]+)?)?';
 
 		$this->replaceInFiles($phpFiles, '/@version\s+' . $pattern . '/', "@version $nextVersion");
-		$this->replaceInFile('README.md', '/Version ' . $pattern . '/', "Version $nextVersion");
-		$this->replaceInFile('package.json', '/"version":\s*"' . $pattern . '"\s*,/', '"version": "' . $nextVersion . '",');
+		$this->replaceInFile($this->rootpath . '/README.md', '/Version ' . $pattern . '/', "Version $nextVersion");
+		$this->replaceInFile($this->rootpath . '/package.json', '/"version":\s*"' . $pattern . '"\s*,/', '"version": "' . $nextVersion . '",');
 
 		$this->say("Version bumped to: $nextVersion");
 	}
@@ -103,7 +114,8 @@ class RoboFile extends \Robo\Tasks
 	private function replaceInFiles($files, $pattern, $replacement)
 	{
 		foreach ($files as $file) {
-			$this->say(realpath($file));
+			$this->say('Updating ' . realpath($file));
+			// continue; // DEBUG: don't apply changes
 			$contents = file_get_contents($file);
 			$contents = preg_replace($pattern, $replacement, $contents);
 			file_put_contents($file, $contents);
@@ -119,7 +131,8 @@ class RoboFile extends \Robo\Tasks
 	*/
 	private function replaceInFile($file, $pattern, $replacement)
 	{
-		$this->say(realpath($file));
+		$this->say('Updating ' . realpath($file));
+		// return; // DEBUG: don't apply changes
 		$contents = file_get_contents($file);
 		$contents = preg_replace($pattern, $replacement, $contents);
 		file_put_contents($file, $contents);
@@ -135,14 +148,15 @@ class RoboFile extends \Robo\Tasks
 	{
 		$finder = new Finder();
 		$finder
-		->files()
-		->in('../')
-		->name('*.php')
-		->exclude(['vendor', 'node_modules'])
-		->ignoreVCS(true)
-		->ignoreDotFiles(true)
-		->contains("@package $package");
+				->files()
+				->in($this->rootpath)
+				->name('*.php')
+				->exclude(['vendor', 'node_modules'])
+				->ignoreVCS(true)
+				->ignoreDotFiles(true)
+				->contains("@package $package");
 
+		// Rest of your code...
 		$phpFiles = [];
 
 		foreach ($finder as $file) {
@@ -150,5 +164,11 @@ class RoboFile extends \Robo\Tasks
 		}
 
 		return $phpFiles;
+	}
+
+	private function getRootPath()
+	{
+			$gitRoot = exec('git rev-parse --show-toplevel');
+			return $gitRoot !== false ? realpath($gitRoot) : null;
 	}
 }

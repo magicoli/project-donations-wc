@@ -14,7 +14,7 @@
   },
   "scripts": {
     "bump-version": [
-      "robo bump:version"
+      "robo --load-from=src/RoboFile.php bump:version"
     ],
     "post-update-cmd": [
       "php vendor/magicoli/wp-package-updater-lib/install.php"
