@@ -5,7 +5,7 @@
  *
  * @package project-donations-wc
  * @link            https://github.com/magicoli/project-donations-wc
- * @version 1.5.5
+ * @version 1.5.6-rc
  * @since 1.5
  *
  * The PRDWC_Project class handles the project functionality within the Project

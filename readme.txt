@@ -3,9 +3,9 @@ Contributors: magicoli69
 Donate link: https://magiiic.com/support/Project+Donations+plugin
 Tags: woocommerce, projects, product, donation
 Requires at least: 4.7
-Tested up to: 6.2.2
+Tested up to: 6.1.1
 Requires PHP: 7.3
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,8 @@ Yes, activate "Customer defined amount" in WooCommerce Product Donations setting
 Yes, with a progress bar. It will appear on products and can be included with a shortcode on any page.
 
 == Changelog ==
+
+= 1.5.6 =
 
 = 1.5.5 =
 * updated readme

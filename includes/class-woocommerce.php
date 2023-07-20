@@ -4,11 +4,11 @@
  *
  * @package project-donations-wc
  * @link            https://github.com/magicoli/project-donations-wc
- * @version 1.5.5
+ * @version 1.5.6-rc
  *
  * This class handles the integration with WooCommerce and manages the functionality related to product donations.
  *
- * @version 1.4.6
+ * @version 1.5.6-rc
  */
 class PRDWC_WooCommerce {
 
