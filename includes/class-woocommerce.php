@@ -337,10 +337,13 @@ class PRDWC_WooCommerce {
 		);
 
 		if ( prdwc_allow_custom_amount() ) {
+			$placeholder = get_option('prdwc_donate_field_placeholder');
+			$placeholder = empty($placeholder) ? __( 'Donation amount', 'project-donations-wc' ) : $placeholder;
+
 			$fields[] = array(
 				'name'              => 'amount',
 				'label'             => ( ( $price > 0 ) ? __( 'Add to fee', 'project-donations-wc' ) : __( 'Amount', 'project-donations-wc' ) ) . ' (' . get_woocommerce_currency_symbol() . ')',
-				'placeholder'       => __( 'Donation amount', 'project-donations-wc' ),
+				'placeholder'       => $placeholder,
 				'type'              => 'number',
 				'required'          => true,
 				'value'             => $amount,
@@ -360,14 +363,16 @@ class PRDWC_WooCommerce {
 
 	static function add_to_cart_button( $text, $product ) {
 		if ( $product->get_meta( '_linkproject' ) == 'yes' ) {
-			$text = __( 'Donate', 'project-donations-wc' );
+			$text = get_option('prdwc_donate_button_label');
+			$text = empty($text) ? __( 'Donate', 'project-donations-wc' ) : $text;
 		}
 		return $text;
 	}
 
 	static function single_add_to_cart_button( $text, $product ) {
 		if ( $product->get_meta( '_linkproject' ) == 'yes' ) {
-			$text = __( 'Donate', 'project-donations-wc' );
+			$text = get_option('prdwc_donate_button_label');
+			$text = empty($text) ? __( 'Donate', 'project-donations-wc' ) : $text;
 		}
 		return $text;
 	}

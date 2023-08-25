@@ -145,6 +145,22 @@ class PRDWC_WC_Admin {
 				),
 			),
 			array(
+				'id'                => 'prdwc_donate_button_label',
+				'name'              => __( 'Donate button label', 'project-donations-wc' ),
+				'type'              => 'text',
+				'std'           => __( 'Donate', 'project-donations-wc' ),
+				'placeholder'           => __( 'Donate', 'project-donations-wc' ),
+				// 'custom_attributes' => (get_option('prdwc_custom_amount') != 'yes') ? [ 'disabled' => 'disabled' ] : [],
+			),
+			array(
+				'id'                => 'prdwc_donate_field_placeholder',
+				'name'              => __( 'Donation field placeholder', 'project-donations-wc' ),
+				'type'              => 'text',
+				'std'           => __( 'Donation amount', 'project-donations-wc' ),
+				'placeholder'           => __( 'Donation amount', 'project-donations-wc' ),
+				// 'custom_attributes' => (get_option('prdwc_custom_amount') != 'yes') ? [ 'disabled' => 'disabled' ] : [],
+			),
+			array(
 				'type' => 'sectionend',
 				'id'   => 'prdwc_section_projects_end',
 			),
