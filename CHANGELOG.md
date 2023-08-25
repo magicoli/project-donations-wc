@@ -1,5 +1,10 @@
 ## Changelog
 
+### Unreleased (1.5.6-rc-3)
+- added docblock comments
+- updated external libraries
+- fix in progress orders not counted in achievements total
+
 ### 1.5.5
 - updated readme
 
