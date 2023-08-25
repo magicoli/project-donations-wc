@@ -1,17 +1,17 @@
 # Copyright (C) 2023 Magiiic
-# This file is distributed under the same license as the Project Donations for WooCommerce plugin.
+# This file is distributed under the same license as the Project Donations for WooCommerceplugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Project Donations for WooCommerce 1.5\n"
+"Project-Id-Version: Project Donations for WooCommerce1.5.6-rc-3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc-dev\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-06-08T23:31:27+00:00\n"
+"POT-Creation-Date: 2023-08-25T18:33:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 
 #. Plugin Name of the plugin
 msgid "Project Donations for WooCommerce"
@@ -33,349 +33,361 @@ msgstr ""
 msgid "https://magiiic.com/"
 msgstr ""
 
-#: admin/wc-admin-classes.php:23
+#: admin/wc-admin-classes.php:24
 msgid "Settings"
 msgstr ""
 
-#: admin/wc-admin-classes.php:35
-#: includes/class-woocommerce.php:45
+#: admin/wc-admin-classes.php:38
+#: includes/class-woocommerce.php:79
 msgid "Project Donations"
 msgstr ""
 
-#: admin/wc-admin-classes.php:75
+#: admin/wc-admin-classes.php:81
 msgid "Default settings"
 msgstr ""
 
-#: admin/wc-admin-classes.php:78
+#: admin/wc-admin-classes.php:84
 msgid "These settings can be overridden for each product."
 msgstr ""
 
-#: admin/wc-admin-classes.php:81
+#: admin/wc-admin-classes.php:87
 msgid "Add project post type"
 msgstr ""
 
-#: admin/wc-admin-classes.php:86
+#: admin/wc-admin-classes.php:92
 msgid "Create a project post type"
 msgstr ""
 
-#: admin/wc-admin-classes.php:87
-#: admin/wc-admin-classes.php:125
+#: admin/wc-admin-classes.php:93
+#: admin/wc-admin-classes.php:131
 msgid "(enable only if no other plugin implements it)"
 msgstr ""
 
-#: admin/wc-admin-classes.php:92
+#: admin/wc-admin-classes.php:98
 msgid "Get projects from post type"
 msgstr ""
 
-#: admin/wc-admin-classes.php:119
+#: admin/wc-admin-classes.php:125
 msgid "Customer defined amount"
 msgstr ""
 
-#: admin/wc-admin-classes.php:124
+#: admin/wc-admin-classes.php:130
 msgid "Allow customer to choose the amount to pay"
 msgstr ""
 
-#: admin/wc-admin-classes.php:130
+#: admin/wc-admin-classes.php:136
 msgid "Minimum donation amount (%s)"
 msgstr ""
 
-#: admin/wc-admin-classes.php:189
+#: admin/wc-admin-classes.php:149
+msgid "Donate button label"
+msgstr ""
+
+#: admin/wc-admin-classes.php:151
+#: admin/wc-admin-classes.php:152
+#: includes/class-woocommerce.php:367
+#: includes/class-woocommerce.php:375
+msgid "Donate"
+msgstr ""
+
+#: admin/wc-admin-classes.php:157
+msgid "Donation field placeholder"
+msgstr ""
+
+#: admin/wc-admin-classes.php:159
+#: admin/wc-admin-classes.php:160
+#: includes/class-woocommerce.php:341
+msgid "Donation amount"
+msgstr ""
+
+#: admin/wc-admin-classes.php:215
 msgid "No products found"
 msgstr ""
 
-#: admin/wc-admin-classes.php:191
+#: admin/wc-admin-classes.php:218
 msgctxt "Select product"
 msgid "None"
 msgstr ""
 
-#: admin/wc-admin-classes.php:207
+#: admin/wc-admin-classes.php:238
 msgid "No categories found"
 msgstr ""
 
-#: admin/wc-admin-classes.php:209
+#: admin/wc-admin-classes.php:241
 msgctxt "Select category"
 msgid "None"
 msgstr ""
 
-#: admin/wc-admin-classes.php:226
+#: admin/wc-admin-classes.php:262
 msgid "No taxonomies found"
 msgstr ""
 
-#: admin/wc-admin-classes.php:227
+#: admin/wc-admin-classes.php:264
 msgctxt "Select taxonomy"
 msgid "None"
 msgstr ""
 
-#: admin/wc-admin-classes.php:241
+#: admin/wc-admin-classes.php:279
 msgid "No post types found, wich is tretty weird."
 msgstr ""
 
-#: admin/wc-admin-classes.php:243
+#: admin/wc-admin-classes.php:282
 msgctxt "Select post type"
 msgid "None"
 msgstr ""
 
-#: includes/class-project.php:178
-msgid "Goal achieved: "
-msgstr ""
-
-#: includes/class-project.php:179
-msgid "Goal: "
-msgstr ""
-
-#: includes/class-project.php:205
-msgid "Collected: %s (%s sale)"
-msgid_plural "Collected: %s (%s sales)"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/class-project.php:226
-msgid "Project goals and counterparts"
-msgstr ""
-
-#: includes/class-project.php:236
-msgid "Add a goal"
-msgstr ""
-
-#: includes/class-project.php:241
-msgid "Goals"
-msgstr ""
-
-#: includes/class-project.php:246
-#: includes/class-project.php:392
-#: includes/classes.php:256
-msgid "Amount"
-msgstr ""
-
-#: includes/class-project.php:254
-#: includes/class-project.php:283
-#: includes/class-project.php:393
-#: includes/class-project.php:440
-msgid "Description"
-msgstr ""
-
-#: includes/class-project.php:268
-msgid "Add a counterpart"
-msgstr ""
-
-#: includes/class-project.php:275
-#: includes/class-project.php:440
-msgid "Price"
-msgstr ""
-
-#: includes/class-project.php:290
-#: includes/class-project.php:440
-msgid "Threshold"
-msgstr ""
-
-#: includes/class-project.php:322
-msgid "Edit"
-msgstr ""
-
-#: includes/class-project.php:438
-msgid "Counterparts"
-msgstr ""
-
-#: includes/classes.php:63
-#: includes/classes.php:68
-msgid "Donate"
-msgstr ""
-
-#: includes/classes.php:225
-#: includes/classes.php:394
-#: includes/post-type-project.php:6
-msgid "Project"
-msgstr ""
-
-#: includes/classes.php:228
-msgid "Enter a project name"
-msgstr ""
-
-#: includes/classes.php:238
-msgid "Project: "
-msgstr ""
-
-#: includes/classes.php:256
-msgid "Add to fee"
-msgstr ""
-
-#: includes/classes.php:257
-msgid "Donation amount"
-msgstr ""
-
-#: includes/classes.php:320
-msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
-msgstr ""
-
-#: includes/classes.php:331
-msgid "\"%s\" could not be added to the cart. Please provide a project name."
-msgstr ""
-
-#: includes/classes.php:396
-msgid "Project ID"
-msgstr ""
-
-#: includes/classes.php:413
-msgid "From"
-msgstr ""
-
-#: includes/classes.php:424
-msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
-msgstr ""
-
-#: includes/classes.php:469
-msgid "No posts found"
-msgstr ""
-
-#: includes/classes.php:471
-#: includes/class-woocommerce.php:70
-msgid "Select a project"
-msgstr ""
-
-#: includes/post-type-project.php:5
+#: includes/class-project.php:92
 msgid "Projects"
 msgstr ""
 
-#: includes/post-type-project.php:7
+#: includes/class-project.php:93
+#: includes/class-woocommerce.php:311
+#: includes/class-woocommerce.php:510
+msgid "Project"
+msgstr ""
+
+#: includes/class-project.php:94
 msgid "Add New"
 msgstr ""
 
-#: includes/post-type-project.php:8
+#: includes/class-project.php:95
 msgid "Add New Project"
 msgstr ""
 
-#: includes/post-type-project.php:9
+#: includes/class-project.php:96
 msgid "Edit Project"
 msgstr ""
 
-#: includes/post-type-project.php:10
+#: includes/class-project.php:97
 msgid "New Project"
 msgstr ""
 
-#: includes/post-type-project.php:11
+#: includes/class-project.php:98
 msgid "All Projects"
 msgstr ""
 
-#: includes/post-type-project.php:12
+#: includes/class-project.php:99
 msgid "View Project"
 msgstr ""
 
-#: includes/post-type-project.php:13
+#: includes/class-project.php:100
 msgid "Search Projects"
 msgstr ""
 
-#: includes/post-type-project.php:14
+#: includes/class-project.php:101
 msgid "Nothing found"
 msgstr ""
 
-#: includes/post-type-project.php:15
+#: includes/class-project.php:102
 msgid "Nothing found in Trash"
 msgstr ""
 
-#: includes/post-type-project.php:46
+#: includes/class-project.php:133
 msgid "Project Categories"
 msgstr ""
 
-#: includes/post-type-project.php:47
+#: includes/class-project.php:134
 msgid "Project Category"
 msgstr ""
 
-#: includes/post-type-project.php:48
+#: includes/class-project.php:135
 msgid "Search Categories"
 msgstr ""
 
-#: includes/post-type-project.php:49
+#: includes/class-project.php:136
 msgid "All Categories"
 msgstr ""
 
-#: includes/post-type-project.php:50
+#: includes/class-project.php:137
 msgid "Parent Category"
 msgstr ""
 
-#: includes/post-type-project.php:51
+#: includes/class-project.php:138
 msgid "Parent Category:"
 msgstr ""
 
-#: includes/post-type-project.php:52
+#: includes/class-project.php:139
 msgid "Edit Category"
 msgstr ""
 
-#: includes/post-type-project.php:53
+#: includes/class-project.php:140
 msgid "Update Category"
 msgstr ""
 
-#: includes/post-type-project.php:54
+#: includes/class-project.php:141
 msgid "Add New Category"
 msgstr ""
 
-#: includes/post-type-project.php:55
+#: includes/class-project.php:142
 msgid "New Category Name"
 msgstr ""
 
-#: includes/post-type-project.php:56
+#: includes/class-project.php:143
 msgid "Categories"
 msgstr ""
 
-#: includes/post-type-project.php:57
+#: includes/class-project.php:144
 msgid "You currently don't have any project categories."
 msgstr ""
 
-#: includes/post-type-project.php:71
+#: includes/class-project.php:158
 msgid "Project Tags"
 msgstr ""
 
-#: includes/post-type-project.php:72
+#: includes/class-project.php:159
 msgid "Project Tag"
 msgstr ""
 
-#: includes/post-type-project.php:73
+#: includes/class-project.php:160
 msgid "Search Tags"
 msgstr ""
 
-#: includes/post-type-project.php:74
+#: includes/class-project.php:161
 msgid "All Tags"
 msgstr ""
 
-#: includes/post-type-project.php:75
+#: includes/class-project.php:162
 msgid "Parent Tag"
 msgstr ""
 
-#: includes/post-type-project.php:76
+#: includes/class-project.php:163
 msgid "Parent Tag:"
 msgstr ""
 
-#: includes/post-type-project.php:77
+#: includes/class-project.php:164
 msgid "Edit Tag"
 msgstr ""
 
-#: includes/post-type-project.php:78
+#: includes/class-project.php:165
 msgid "Update Tag"
 msgstr ""
 
-#: includes/post-type-project.php:79
+#: includes/class-project.php:166
 msgid "Add New Tag"
 msgstr ""
 
-#: includes/post-type-project.php:80
+#: includes/class-project.php:167
 msgid "New Tag Name"
 msgstr ""
 
-#: includes/post-type-project.php:81
+#: includes/class-project.php:168
 msgid "Tags"
 msgstr ""
 
-#: includes/class-woocommerce.php:35
+#: includes/class-project.php:378
+msgid "Goal achieved: "
+msgstr ""
+
+#: includes/class-project.php:379
+msgid "Goal: "
+msgstr ""
+
+#: includes/class-project.php:407
+msgid "Collected: %1$s (%2$s sale)"
+msgid_plural "Collected: %1$s (%2$s sales)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-project.php:434
+msgid "Project goals and counterparts"
+msgstr ""
+
+#: includes/class-project.php:444
+msgid "Add a goal"
+msgstr ""
+
+#: includes/class-project.php:450
+msgid "Goals"
+msgstr ""
+
+#: includes/class-project.php:456
+#: includes/class-project.php:611
+#: includes/class-woocommerce.php:345
+msgid "Amount"
+msgstr ""
+
+#: includes/class-project.php:464
+#: includes/class-project.php:493
+#: includes/class-project.php:612
+#: includes/class-project.php:669
+msgid "Description"
+msgstr ""
+
+#: includes/class-project.php:478
+msgid "Add a counterpart"
+msgstr ""
+
+#: includes/class-project.php:485
+#: includes/class-project.php:669
+msgid "Price"
+msgstr ""
+
+#: includes/class-project.php:500
+#: includes/class-project.php:669
+msgid "Threshold"
+msgstr ""
+
+#: includes/class-project.php:527
+msgid "Edit"
+msgstr ""
+
+#: includes/class-project.php:667
+msgid "Counterparts"
+msgstr ""
+
+#: includes/class-woocommerce.php:64
 msgid "Project Donation"
 msgstr ""
 
-#: includes/class-woocommerce.php:36
+#: includes/class-woocommerce.php:65
 msgid "Check to add a project field to product page."
 msgstr ""
 
-#: includes/class-woocommerce.php:68
+#: includes/class-woocommerce.php:107
 msgid "Fixed project"
 msgstr ""
 
-#: includes/class-woocommerce.php:84
+#: includes/class-woocommerce.php:109
+#: includes/classes.php:84
+msgid "Select a project"
+msgstr ""
+
+#: includes/class-woocommerce.php:123
 msgid "Create at least one project first"
+msgstr ""
+
+#: includes/class-woocommerce.php:314
+msgid "Enter a project name"
+msgstr ""
+
+#: includes/class-woocommerce.php:324
+msgid "Project: "
+msgstr ""
+
+#: includes/class-woocommerce.php:345
+msgid "Add to fee"
+msgstr ""
+
+#: includes/class-woocommerce.php:417
+msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
+msgstr ""
+
+#: includes/class-woocommerce.php:431
+msgid "\"%s\" could not be added to the cart. Please provide a project name."
+msgstr ""
+
+#: includes/class-woocommerce.php:512
+msgid "Project ID"
+msgstr ""
+
+#: includes/class-woocommerce.php:532
+msgid "From"
+msgstr ""
+
+#: includes/class-woocommerce.php:545
+msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
+msgstr ""
+
+#: includes/classes.php:81
+msgid "No posts found"
 msgstr ""
