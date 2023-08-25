@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) || die;
 /**
- * Plugin Name:     Project Donations for WooCommerce
+ * Plugin Name:     Project Donations for WooCommerce (dev)
  * Plugin URI:      https://wordpress.org/plugins/project-donations-wc/
  * Description:     Add project field to WooCommerce products, allow clients to link their purchase to a project
  * Author:          Magiiic
@@ -23,7 +23,7 @@
 
 // Your code starts here.
 if ( ! defined( 'PRDWC_VERSION' ) ) {
-	define( 'PRDWC_VERSION', '1.5.6-rc-2' );
+	define( 'PRDWC_VERSION', '1.5.6-rc-2');
 	define( 'PRDWC_PLUGIN', plugin_basename( __FILE__ ) );
 	define( 'PRDWC_SLUG', dirname( PRDWC_PLUGIN ) );
 	// define('PRDWC_PLUGIN_NAME', 'Project Donations for WooCommerce');

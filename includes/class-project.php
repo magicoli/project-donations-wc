@@ -239,16 +239,16 @@ class PRDWC_Project {
 			$project_id = get_post_meta( $post_id, 'prdwc_project_id', true );
 			if ( get_post_type( $project_id ) !== self::post_type() ) {
 				// Invalid project ID
-				return false;
+				$project_id  = false;
+				// return false;
 			}
 		}
 
 		if ( empty( $project_id ) ) {
 			// No project found
-			return false;
+			$project_id  = false;
+			// return false;
 		}
-
-		// Check if the project ID is valid
 
 		return $project_id;
 	}
@@ -264,6 +264,9 @@ class PRDWC_Project {
 	function get_achievements( $atts = array() ) {
 		// Check if project_id is set in shortcode attributes
 		$project_id = $this->get_project_id( $atts );
+		if(empty($project_id)) {
+			return false;
+		}
 
 		// Get the product IDs associated with the project
 		$product_ids = wc_get_products(
@@ -288,10 +291,10 @@ class PRDWC_Project {
 				// Loop through orders to calculate the sales for each product
 				$orders = wc_get_orders(
 					array(
-						'status'       => 'completed',
+						'status'       => [ 'wc-processing', 'completed' ],
 						'return'       => 'ids',
 						'limit'        => -1,
-						'date_created' => '>=' . date( 'Y-m-d', strtotime( '-30 days' ) ), // Example: Retrieve orders from the last 30 days
+						// 'date_created' => '>=' . date( 'Y-m-d', strtotime( '-30 days' ) ), // Example: Retrieve orders from the last 30 days
 						'meta_query'   => array(
 							array(
 								'key'     => '_product_id',
@@ -352,6 +355,8 @@ class PRDWC_Project {
 	 */
 	function render_achievements( $atts = array() ) {
 		$achievements   = $this->get_achievements( $atts );
+		if(empty( $achievements) ) return '';
+
 		$progress_bar   = isset( $atts['progress_bar'] ) ? $atts['progress_bar'] : get_option( 'prdwc_progress_bar', true );
 		$show_goal_name = isset( $atts['show_goal_name'] ) ? $atts['show_goal_name'] : get_option( 'prdwc_show_goal_name', true );
 
@@ -580,6 +585,10 @@ class PRDWC_Project {
 		$title       .= ( $edit_button ) ? $this->render_edit_button( 'goals' ) : null;
 
 		$achievements = $this->get_achievements( $atts );
+		if(empty($achievements)) {
+			return '';
+		}
+
 		$next_goal    = $achievements['next_goal'];
 		$sales_total  = $achievements['sales_total'];
 		$post_id      = $this->get_the_ID();
