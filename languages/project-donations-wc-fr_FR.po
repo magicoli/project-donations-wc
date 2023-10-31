@@ -1,8 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project Products for WooCommerce\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-"
-"wc-dev\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc-dev\n"
 "POT-Creation-Date: 2023-08-25T18:33:34+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: gpt-po v1.0.7\n"
@@ -22,13 +21,8 @@ msgstr "Project Donations for WooCommerce"
 msgid "https://wordpress.org/plugins/project-donations-wc/"
 msgstr "https://wordpress.org/plugins/project-donations-wc/"
 
-#. Description of the plugin
-msgid ""
-"Add project field to WooCommerce products, allow clients to link their "
-"purchase to a project"
-msgstr ""
-"Ajoute un champ projet aux produits WooCommerce, permet au client de lier "
-"leur achat à un projet"
+msgid "Empower charity and crowdfunding projects with WooCommerce integration."
+msgstr "Boostez vos projets caritatifs et crowdfundings avec WooCommerce."
 
 #. Author of the plugin
 msgid "Magiiic"
@@ -104,37 +98,17 @@ msgstr "Montant du don"
 msgid "No products found"
 msgstr "Aucun produit trouvé"
 
-#: admin/wc-admin-classes.php:218
-msgctxt "Select product"
-msgid "None"
-msgstr "Aucun"
-
 #: admin/wc-admin-classes.php:238
 msgid "No categories found"
 msgstr "Aucune catégorie trouvée"
-
-#: admin/wc-admin-classes.php:241
-msgctxt "Select category"
-msgid "None"
-msgstr "Aucune"
 
 #: admin/wc-admin-classes.php:262
 msgid "No taxonomies found"
 msgstr "Aucune taxonomie trouvée"
 
-#: admin/wc-admin-classes.php:264
-msgctxt "Select taxonomy"
-msgid "None"
-msgstr "Aucune"
-
 #: admin/wc-admin-classes.php:279
 msgid "No post types found, wich is tretty weird."
 msgstr "Aucun type d'article trouvé, ce qui est plutôt bizarre."
-
-#: admin/wc-admin-classes.php:282
-msgctxt "Select post type"
-msgid "None"
-msgstr "Aucun"
 
 #: includes/class-project.php:92
 msgid "Projects"
@@ -362,16 +336,12 @@ msgid "Add to fee"
 msgstr "Ajouter au tarif"
 
 #: includes/class-woocommerce.php:417
-msgid ""
-"\"%s\" could not be added to the cart. Please provide a valid amount to pay."
-msgstr ""
-"\"%s\" ne peut pas être ajouté au panier. Merci de fournir un montant à "
-"payer valide."
+msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
+msgstr "\"%s\" ne peut pas être ajouté au panier. Merci de fournir un montant à payer valide."
 
 #: includes/class-woocommerce.php:431
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
-msgstr ""
-"\"%s\" ne peut pas être ajouté au panier. Merci de fournir un nom de projet."
+msgstr "\"%s\" ne peut pas être ajouté au panier. Merci de fournir un nom de projet."
 
 #: includes/class-woocommerce.php:512
 msgid "Project ID"
@@ -382,16 +352,32 @@ msgid "From"
 msgstr "À partir de"
 
 #: includes/class-woocommerce.php:545
-msgid ""
-"%s will be added to the chosen amount, the total price will be calculated "
-"before checkout."
-msgstr ""
-"Le montant choisi sera ajouté au tarif de base de %s, le prix total sera "
-"calculé avant la validation de la commande."
+msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
+msgstr "Le montant choisi sera ajouté au tarif de base de %s, le prix total sera calculé avant la validation de la commande."
 
 #: includes/classes.php:81
 msgid "No posts found"
 msgstr "Aucun article trouvé"
+
+#: admin/wc-admin-classes.php:218
+msgctxt "Select product"
+msgid "None"
+msgstr "Aucun"
+
+#: admin/wc-admin-classes.php:241
+msgctxt "Select category"
+msgid "None"
+msgstr "Aucune"
+
+#: admin/wc-admin-classes.php:264
+msgctxt "Select taxonomy"
+msgid "None"
+msgstr "Aucune"
+
+#: admin/wc-admin-classes.php:282
+msgctxt "Select post type"
+msgid "None"
+msgstr "Aucun"
 
 #~ msgid "Next goal: "
 #~ msgstr "Objectif suivant : "

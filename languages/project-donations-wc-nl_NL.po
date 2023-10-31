@@ -1,8 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project Products for WooCommerce\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-"
-"wc-dev\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project-donations-wc-dev\n"
 "POT-Creation-Date: 2023-08-25T18:33:34+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: gpt-po v1.0.7\n"
@@ -22,13 +21,8 @@ msgstr "Project Donations for WooCommerce"
 msgid "https://wordpress.org/plugins/project-donations-wc/"
 msgstr "https://wordpress.org/plugins/project-donations-wc/"
 
-#. Description of the plugin
-msgid ""
-"Add project field to WooCommerce products, allow clients to link their "
-"purchase to a project"
-msgstr ""
-"Voegt een project veld toe aan WooCommerce producten, zodat de klant zijn "
-"aankoop kan koppelen aan een project"
+msgid "Empower charity and crowdfunding projects with WooCommerce integration."
+msgstr "Boost je liefdadigheids- en crowdfundingprojecten met WooCommerce."
 
 #. Author of the plugin
 msgid "Magiiic"
@@ -86,8 +80,8 @@ msgstr "Minimum donatiebedrag (%s)"
 msgid "Donate button label"
 msgstr "Knop voor doneren"
 
-#: admin/wc-admin-classes.php:151 admin/wc-admin-classes.php:152
-#: includes/class-woocommerce.php:367 includes/class-woocommerce.php:375
+#: admin/wc-admin-classes.php:151 admin/wc-admin-classes.php:152 includes/class-woocommerce.php:367
+#: includes/class-woocommerce.php:375
 msgid "Donate"
 msgstr "Doneren"
 
@@ -95,8 +89,7 @@ msgstr "Doneren"
 msgid "Donation field placeholder"
 msgstr "Donatieveld placeholder"
 
-#: admin/wc-admin-classes.php:159 admin/wc-admin-classes.php:160
-#: includes/class-woocommerce.php:341
+#: admin/wc-admin-classes.php:159 admin/wc-admin-classes.php:160 includes/class-woocommerce.php:341
 msgid "Donation amount"
 msgstr "Donatiebedrag"
 
@@ -104,44 +97,23 @@ msgstr "Donatiebedrag"
 msgid "No products found"
 msgstr "Geen producten gevonden"
 
-#: admin/wc-admin-classes.php:218
-msgctxt "Select product"
-msgid "None"
-msgstr "Geen"
-
 #: admin/wc-admin-classes.php:238
 msgid "No categories found"
 msgstr "Geen categorie gevonden"
-
-#: admin/wc-admin-classes.php:241
-msgctxt "Select category"
-msgid "None"
-msgstr "Geen"
 
 #: admin/wc-admin-classes.php:262
 msgid "No taxonomies found"
 msgstr "Geen taxonomie gevonden"
 
-#: admin/wc-admin-classes.php:264
-msgctxt "Select taxonomy"
-msgid "None"
-msgstr "Geen"
-
 #: admin/wc-admin-classes.php:279
 msgid "No post types found, wich is tretty weird."
 msgstr "Geen type artikel gevonden, wat nogal vreemd is."
-
-#: admin/wc-admin-classes.php:282
-msgctxt "Select post type"
-msgid "None"
-msgstr "Geen"
 
 #: includes/class-project.php:92
 msgid "Projects"
 msgstr "Projecten"
 
-#: includes/class-project.php:93 includes/class-woocommerce.php:311
-#: includes/class-woocommerce.php:510
+#: includes/class-project.php:93 includes/class-woocommerce.php:311 includes/class-woocommerce.php:510
 msgid "Project"
 msgstr "Project"
 
@@ -299,13 +271,12 @@ msgstr "Voeg een doel toe"
 msgid "Goals"
 msgstr "Doelen"
 
-#: includes/class-project.php:456 includes/class-project.php:611
-#: includes/class-woocommerce.php:345
+#: includes/class-project.php:456 includes/class-project.php:611 includes/class-woocommerce.php:345
 msgid "Amount"
 msgstr "Bedrag"
 
-#: includes/class-project.php:464 includes/class-project.php:493
-#: includes/class-project.php:612 includes/class-project.php:669
+#: includes/class-project.php:464 includes/class-project.php:493 includes/class-project.php:612
+#: includes/class-project.php:669
 msgid "Description"
 msgstr "Beschrijving"
 
@@ -362,16 +333,12 @@ msgid "Add to fee"
 msgstr "Toevoegen aan prijslijst"
 
 #: includes/class-woocommerce.php:417
-msgid ""
-"\"%s\" could not be added to the cart. Please provide a valid amount to pay."
-msgstr ""
-"\"%s\" kan niet aan het mandje worden toegevoegd. Geef een geldig bedrag om "
-"te betalen."
+msgid "\"%s\" could not be added to the cart. Please provide a valid amount to pay."
+msgstr "\"%s\" kan niet aan het mandje worden toegevoegd. Geef een geldig bedrag om te betalen."
 
 #: includes/class-woocommerce.php:431
 msgid "\"%s\" could not be added to the cart. Please provide a project name."
-msgstr ""
-"\"%s\" kan niet aan het mandje worden toegevoegd. Geef een projectnaam."
+msgstr "\"%s\" kan niet aan het mandje worden toegevoegd. Geef een projectnaam."
 
 #: includes/class-woocommerce.php:512
 msgid "Project ID"
@@ -382,16 +349,34 @@ msgid "From"
 msgstr "Van"
 
 #: includes/class-woocommerce.php:545
-msgid ""
-"%s will be added to the chosen amount, the total price will be calculated "
-"before checkout."
+msgid "%s will be added to the chosen amount, the total price will be calculated before checkout."
 msgstr ""
-"Het gekozen bedrag zal worden toegevoegd aan de basisprijs van %s, de totale "
-"prijs zal worden berekend voor de validatie van de bestelling."
+"Het gekozen bedrag zal worden toegevoegd aan de basisprijs van %s, de totale prijs zal worden berekend voor de "
+"validatie van de bestelling."
 
 #: includes/classes.php:81
 msgid "No posts found"
 msgstr "Geen items gevonden"
+
+#: admin/wc-admin-classes.php:218
+msgctxt "Select product"
+msgid "None"
+msgstr "Geen"
+
+#: admin/wc-admin-classes.php:241
+msgctxt "Select category"
+msgid "None"
+msgstr "Geen"
+
+#: admin/wc-admin-classes.php:264
+msgctxt "Select taxonomy"
+msgid "None"
+msgstr "Geen"
+
+#: admin/wc-admin-classes.php:282
+msgctxt "Select post type"
+msgid "None"
+msgstr "Geen"
 
 #~ msgid "Amount to add"
 #~ msgstr "Toe te voegen bedrag"
