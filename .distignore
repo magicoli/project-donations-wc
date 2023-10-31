@@ -46,3 +46,4 @@ vendor/
 CHANGELOG.md
 INSTALLATION.md
 src/
+RoboFile.php
