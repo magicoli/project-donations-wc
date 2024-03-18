@@ -1,11 +1,11 @@
-=== Project Donations for WooCommerce (dev) ===
+=== Project Donations for WooCommerce ===
 Contributors: magicoli69
 Donate link: https://magiiic.com/support/Project+Donations+plugin
 Tags: woocommerce, projects, product, donation
 Requires at least: 4.7
-Tested up to: 6.3
+Tested up to: 6.5
 Requires PHP: 7.3
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,10 +80,11 @@ Yes, with a progress bar. It will appear on products and can be included with a 
 
 == Changelog ==
 
-= Unreleased (1.5.6-rc-3) =
-* added docblock comments
+= 1.5.6 =
+* added option to customize donate placeholder and button label
+* fixed in progress orders not counted in achievements total
 * updated external libraries
-* fix in progress orders not counted in achievements total
+* updated docblock comments
 
 = 1.5.5 =
 * updated readme

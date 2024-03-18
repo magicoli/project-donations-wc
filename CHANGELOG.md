@@ -1,9 +1,10 @@
 ## Changelog
 
-### Unreleased (1.5.6-rc-3)
-- added docblock comments
+### 1.5.6
+- added option to customize donate placeholder and button label
+- fixed in progress orders not counted in achievements total
 - updated external libraries
-- fix in progress orders not counted in achievements total
+- updated docblock comments
 
 ### 1.5.5
 - updated readme
